@@ -83,6 +83,18 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group"></i></div>
                                 Contribuyentes
                             </a>
+                            <a class="nav-link" href="{{route('ejecutivos.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
+                                Ejecutivos
+                            </a>
+                            <a class="nav-link" href="{{route('reportes.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-flag"></i></div>
+                                Reportes
+                            </a>
+                            <a class="nav-link" href="{{route('etapas.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                                Etapas
+                            </a>
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables

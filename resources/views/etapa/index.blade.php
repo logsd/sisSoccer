@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Club')
+@section('title', 'Etapas')
 
 @push('css')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -29,88 +29,90 @@ Toast.fire({
 </script>
 @endif
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Clubs</h1>
+                        <h1 class="mt-4">Etapas</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item active">Clubs</li>
+                            <li class="breadcrumb-item active">Etapas</li>
                         </ol>
                         <div class="mb-4">
-                        <a href="{{route('clubs.create')}}">
-                            <button type="button" class="btn btn-primary">Añadir nuevo Club</button>
+                        <a href="{{route('etapas.create')}}">
+                            <button type="button" class="btn btn-primary">Añadir nueva Etapa</button>
                         </a>
                         </div>
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Tabla Clubs
+                                Tabla Ligas
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple" class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Club</th>
-                                            <th>Ruc</th>
-                                            <th>Email</th>
+                                            <th>Nombre</th>
+                                            <th>Validez</th>
+                                            <th>Ejecutivo</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($clubs as $club )
+                                        @foreach ($etapas as $etapa )
                                             <tr>
                                                 <td>
-                                                    {{$club->name}}
+                                                    {{$etapa->name}}
                                                 </td>
                                                 <td>
-                                                    {{$club->ruc}}
-                                                </td>
-                                                <td>
-                                                    {{$club->email}}
-                                                </td>
-                                                <td>
-                                                    @if ($club->state == 1)
-                                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                                                @if ($etapa->validity == 1)
+                                                    <span class="fw-bolder rounded p-1 bg-success text-white">Activo</span>
                                                     @else
-                                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
-
+                                                    <span class="fw-bolder rounded p-1 bg-danger text-white">Inactivo</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                {{$etapa->leagueExecutive->name}}
+                                                </td>
+                                                <td>
+                                                @if ($etapa->state == 1)
+                                                    <span class="fw-bolder rounded p-1 bg-success text-white">Activo</span>
+                                                    @else
+                                                    <span class="fw-bolder rounded p-1 bg-danger text-white">Inactivo</span>
                                                     @endif
                                                 </td>
                                                 <td>
                                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                    <form action="{{route('clubs.edit',['club'=>$club])}}" method="get">
+                                                    <form action="{{route('etapas.edit',['etapa'=>$etapa])}}" method="get">
                                                     <button type="submit" class="btn btn-warning">Editar</button>
                                                     </form>
-                                                    <button type="button" class="btn btn-secondary " data-bs-toggle="modal" data-bs-target="#verModal-{{$club->id}}">Ver</button>
-                                                    @if ($club->state == 1)
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$club->id}}">Eliminar</button>
+                                                    <button type="button" class="btn btn-secondary " data-bs-toggle="modal" data-bs-target="#verModal-{{$etapa->id}}">Ver</button>
+                                                    @if ($etapa->state == 1)
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$etapa->id}}">Eliminar</button>
                                                     @else
-                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$club->id}}">Restaurar</button>
+                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$etapa->id}}">Restaurar</button>
                                                     @endif
                                                 </div>
                                                 </td>
                                             </tr>
-                                            <!-- Modal Ver-->
-<div class="modal fade" id="verModal-{{$club->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Ver-->
+<div class="modal fade" id="verModal-{{$etapa->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Club Detalles</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Detalles</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="row mb-3">
-          <label> <span class="fw-bolder">Nombre:</span> {{$club->name}}</label>
+          <label> <span class="fw-bolder">Descripción:</span> {{$etapa->description}}</label>
         </div>
         <div class="row mb-3">
-          <label> <span class="fw-bolder">Descripción:</span> {{$club->description}}</label>
-        </div>
-        <div class="row mb-3">
-          <label class="fw-bolder mb-3" >Imagen:</label>
+          <label class="fw-bolder mb-3" >Ejecutivo:</label>
+          <label> <span class="fw-bolder">Nombre:</span> {{$etapa->leagueExecutive->name}}</label>
           <div>
-            @if ($club->logo != null)
-                <img src="{{ Storage::url('public/clubs/'. $club->logo)}}" alt="{{$club->name}}" class="img-fluid img-thumbnail border border-4 rounded">
+            @if ($etapa->leagueExecutive->img_path != null)
+                <img src="{{ Storage::url('public/ejecutivos/'. $etapa->leagueExecutive->img_path)}}" alt="{{$etapa->leagueExecutive->name}}" class="img-fluid img-thumbnail border border-4 rounded">
             @else
-            <img src="" alt="{{$club->name}}">
+            <img src="" alt="{{$etapa->leagueExecutive->name}}">
             @endif
           </div>
         </div>
@@ -121,8 +123,8 @@ Toast.fire({
     </div>
   </div>
 </div>
-<!-- Modal Eliminar -->
-<div class="modal fade" id="confirmModal-{{$club->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Acciones -->
+<div class="modal fade" id="confirmModal-{{$etapa->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -130,11 +132,11 @@ Toast.fire({
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$club->state ==1 ? 'Seguro que quieres eliminar este Club?' : 'Seguro que quieres restaurar este Club?'}}
+        Seguro que quieres eliminar esta Etapa?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <form action="{{route('clubs.destroy',['club'=>$club->id])}}" method="post">
+        <form action="{{route('etapas.destroy',['etapa'=>$etapa->id])}}" method="post">
             @method('DELETE')
             @csrf
         <button type="submit" class="btn btn-danger">Confirmar</button>
@@ -150,11 +152,10 @@ Toast.fire({
                         </div>
                     </div>
                     </div>
-                    </div>
+</div>
 @endsection
 
 @push('js')
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
 <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
-
 @endpush

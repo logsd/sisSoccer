@@ -8,6 +8,9 @@ use App\Http\Controllers\clubController;
 use App\Http\Controllers\estadoController;
 use App\Http\Controllers\telefonoController;
 use App\Http\Controllers\contribuyenteController;
+use App\Http\Controllers\ejecutivoController;
+use App\Http\Controllers\reporteController;
+use App\Http\Controllers\etapaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +30,9 @@ Route::resources([
     'estados' => estadoController::class,
     'telefonos' => telefonoController::class,
     'contribuyentes' => contribuyenteController::class,
+    'ejecutivos' => ejecutivoController::class,
+    'reportes' => reporteController::class,
+    'etapas' => etapaController::class,
 ]
 
 );

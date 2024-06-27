@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,8 +40,8 @@ class Club extends Model
          public function hanbleUploadImage($image){
             $file = $image;
             $name = time() . $file -> getClientOriginalName();
-            $file->move(public_path().'/img/clubs/',$name);
-
+            //$file->move(public_path().'/img/clubs/',$name);
+            Storage::putFileAs('/public/clubs/',$file,$name,'public');
             return $name;
          }
 }

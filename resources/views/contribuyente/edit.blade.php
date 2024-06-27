@@ -1,10 +1,10 @@
 @extends('template')
 
-@section('title', 'Editar Cargo')
+@section('title', 'Editar Contribuyente')
 
 @push('css')
 <style>
-    #observation{
+    #description{
         resize: none;
     }
 </style>
@@ -12,61 +12,58 @@
 
 @section('content')
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Editar Cargos</h1>
+                        <h1 class="mt-4">Editar Contribuyentes</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item "><a href="{{route('cargos.index')}}">Cargos</a> </li>
-                            <li class="breadcrumb-item active">Editar Cargo</li>
+                            <li class="breadcrumb-item "><a href="{{route('contribuyentes.index')}}">Contribuyentes</a> </li>
+                            <li class="breadcrumb-item active">Editar Contribuyente</li>
                         </ol>
 
                         <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
-<form action="{{route('cargos.update',['cargo'=>$cargo])}}" method="post">
+<form action="{{route('contribuyentes.update',['contribuyente'=>$contribuyente])}}" method="post">
     @method('PATCH')
     @csrf
     <div class="row g-3">
 
 <div class="col-md-6">
         <label for="name" class="form-label">Nombre:</label>
-        <input type="text" name="name" id="name" class="form-control" value="{{old('name',$cargo->name)}}">
+        <input type="text" name="name" id="name" class="form-control" value="{{old('name',$contribuyente->name)}}">
         @error('name')
         <small class="text-danger">{{'*'.$message}}</small>
         @enderror
 </div>
 
-<div class="col-md-6">
-        <label for="f_start" class="form-label">Fecha Entrada:</label>
-        <input type="date" name="f_start" id="f_start" class="form-control" value="{{old('f_start',$cargo->f_start)}}">
-        @error('f_start')
-        <small class="text-danger">{{'*'.$message}}</small>
-        @enderror
-</div>
+<div class="col-md-12">
+                <label for="description" class="form-label">Descripción:</label>
+                <textarea name="description" id="description" rows="3" class="form-control">{{old('description',$contribuyente->description)}}</textarea>
+                @error('description')
+                <small class="text-danger">{{'*'.$message}}</small>
+                @enderror
+        </div>
+
 
 <div class="col-md-6">
-        <label for="f_end" class="form-label">Fecha Salida:</label>
-        <input type="date" name="f_end" id="f_end" class="form-control" value="{{old('f_end',$cargo->f_end)}}">
-        @error('f_end')
-        <small class="text-danger">{{'*'.$message}}</small>
-        @enderror
+        <div class="form-check form-switch">
+        <input type="hidden" name="a_cont" value="0">
+            <label class="form-check-label" for="a_cont">A Cont</label>
+             <input  name="a_cont" class="form-check-input" type="checkbox" role="switch" id="a_cont" value="1" {{ old('a_cont', $contribuyente->a_cont) ? 'checked' : '' }}>
+                @error('a_cont')
+                <small class="text-danger">{{'*'.$message}}</small>
+                @enderror
+</div>
 </div>
 
 <div class="col-md-6">
         <div class="form-check form-switch">
         <input type="hidden" name="vg" value="0">
             <label class="form-check-label" for="vg">V.g</label>
-             <input  name="vg" class="form-check-input" type="checkbox" role="switch" id="vg" value="1" {{ old('vg', $cargo->vg) ? 'checked' : '' }}>
+             <input  name="vg" class="form-check-input" type="checkbox" role="switch" id="vg" value="1" {{ old('vg', $contribuyente->vg) ? 'checked' : '' }}>
                 @error('vg')
                 <small class="text-danger">{{'*'.$message}}</small>
                 @enderror
 </div>
 </div>
 
-<div class="col-md-12">
-        <label for="observation" class="form-label">Observación:</label>
-        <textarea name="observation" id="observation" rows="3" class="form-control">{{old('observation',$cargo->observation)}}</textarea>
-        @error('observation')
-        <small class="text-danger">{{'*'.$message}}</small>
-        @enderror
-</div>
         <div class="col-12 text-center">
             <button type="submit" class="btn btn-success ">Actualizar</button>
             <button type="reset" class="btn btn-secondary">Reiniciar</button>

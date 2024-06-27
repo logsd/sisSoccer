@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Crear Contribuyente')
+@section('title', 'Crear Reporte')
 
 @push('css')
 <style>
@@ -12,14 +12,14 @@
 
 @section('content')
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Crear Contribuyentes</h1>
+                        <h1 class="mt-4">Crear Reportes</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item "><a href="{{route('contribuyentes.index')}}">Contribuyentes</a> </li>
-                            <li class="breadcrumb-item active">Crear Contribuyentes</li>
+                            <li class="breadcrumb-item "><a href="{{route('reportes.index')}}">Reportes</a> </li>
+                            <li class="breadcrumb-item active">Crear Reportes</li>
                         </ol>
 <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
-<form action="{{route('contribuyentes.store')}}" method="post">
+<form action="{{route('reportes.store')}}" method="post">
     @csrf
     <div class="row g-3">
 
@@ -31,28 +31,30 @@
                 @enderror
         </div>
 
+
+        <div class="col-md-6">
+                <label for="role" class="form-label">Rol:</label>
+                <input type="text" name="role" id="role" class="form-control" value="{{old('role')}}">
+                @error('role')
+                <small class="text-danger">{{'*'.$message}}</small>
+                @enderror
+        </div>
+
+        
         <div class="col-md-12">
                 <label for="description" class="form-label">Descripción:</label>
-                <textarea name="description" id="description" rows="3" class="form-control">{{old('description')}}</textarea>
+                <textarea name="description" id="description" rows="3" class="form-control"></textarea>
                 @error('description')
                 <small class="text-danger">{{'*'.$message}}</small>
                 @enderror
         </div>
 
+
         <div class="col-md-6">
         <div class="form-check form-switch">
-            <label class="form-check-label" for="vg">A Cont</label>
-             <input  name="a_cont" class="form-check-input" type="checkbox" role="switch" id="vg" value="1" {{ old('a_cont') ? 'checked' : '' }}>
-                @error('a_cont')
-                <small class="text-danger">{{'*'.$message}}</small>
-                @enderror
-        </div>
-        </div>
-        <div class="col-md-6">
-        <div class="form-check form-switch">
-            <label class="form-check-label" for="vg">V.g</label>
-             <input  name="vg" class="form-check-input" type="checkbox" role="switch" id="vg" value="1" {{ old('vg') ? 'checked' : '' }}>
-                @error('vg')
+            <label class="form-check-label" for="vg">Validez</label>
+             <input  name="validity" class="form-check-input" type="checkbox" role="switch" id="validity" value="1" {{ old('validity') ? 'checked' : '' }}>
+                @error('validity')
                 <small class="text-danger">{{'*'.$message}}</small>
                 @enderror
         </div>

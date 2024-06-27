@@ -7,6 +7,12 @@
     #observation{
         resize: none;
     }
+    .img-container {
+            width: 300px; /* Establece el ancho del contenedor */
+            height: 200px; /* Establece la altura del contenedor */
+            overflow: hidden; /* Esconde cualquier contenido que se desborde */
+            position: relative;
+        }
 </style>
 @endpush
 
@@ -20,7 +26,7 @@
                         </ol>
 
                         <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
-<form action="{{route('clubs.update',['club'=>$club])}}" method="post">
+<form action="{{route('clubs.update',['club'=>$club])}}" method="post" enctype="multipart/form-data">
     @method('PATCH')
     @csrf
     <div class="row g-3">
@@ -106,7 +112,13 @@
         
         <div class="col-md-6">
                 <label for="logo" class="form-label">Logo:</label>
-                <input type="text" name="logo" id="logo" class="form-control" value="{{old('logo',$club->logo)}}">
+                @if($club->logo)
+                <div class="img-container">
+                <img src="{{ Storage::url('public/clubs/'. $club->logo)}}" alt="{{$club->name}}" class="img-fluid img-thumbnail border border-4 rounded">
+                </div>
+            @endif
+            <br>
+                <input type="file" name="logo" id="logo" class="form-control" accept="Image/*">
                 @error('logo')
                 <small class="text-danger">{{'*'.$message}}</small>
                 @enderror

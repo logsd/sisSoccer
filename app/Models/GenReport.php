@@ -12,4 +12,11 @@ class GenReport extends Model
     public function genOffices(){
         return $this->hasMany(GenOffice::class);
     }
+
+    protected $fillable = [
+        'name',
+        'role',
+        'description',
+        'validity',
+        'state'];
 }

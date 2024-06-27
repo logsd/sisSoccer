@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Cargo')
+@section('title', 'Contribuyente')
 
 @push('css')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -29,51 +29,44 @@ Toast.fire({
 </script>
 @endif
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Cargos</h1>
+                        <h1 class="mt-4">Contribuyentes</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item active">Cargos</li>
+                            <li class="breadcrumb-item active">Contribuyentes</li>
                         </ol>
                         <div class="mb-4">
-                        <a href="{{route('cargos.create')}}">
-                            <button type="button" class="btn btn-primary">Añadir nuevo Cargo</button>
+                        <a href="{{route('contribuyentes.create')}}">
+                            <button type="button" class="btn btn-primary">Añadir nuevo Contribuyente</button>
                         </a>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Tabla Cargos
+                                Tabla Contribuyentes
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple" class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
-                                            <th>F Entrada</th>
-                                            <th>F Salida</th>
-                                            <th>Observación</th>
+                                            <th>Descripción</th>
+                                            <th>A_Cont</th>
                                             <th>V.G</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($cargos as $cargo )
+                                        @foreach ($contribuyentes as $contribuyente )
                                             <tr>
                                                 <td>
-                                                    {{$cargo->name}}
+                                                    {{$contribuyente->name}}
                                                 </td>
                                                 <td>
-                                                    {{$cargo->f_start}}
+                                                    {{$contribuyente->description}}
                                                 </td>
                                                 <td>
-                                                    {{$cargo->f_end}}
-                                                </td>
-                                                <td>
-                                                    {{$cargo->observation}}
-                                                </td>
-                                                <td>
-                                                @if ($cargo->vg == 1)
+                                                    @if ($contribuyente->a_cont == 1)
                                                     <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
                                                     @else
                                                     <span class="fw-bolder p-1 rounded bg-danger text-white">Inactivo</span>
@@ -81,7 +74,15 @@ Toast.fire({
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($cargo->state == 1)
+                                                @if ($contribuyente->vg == 1)
+                                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                                                    @else
+                                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Inactivo</span>
+
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($contribuyente->state == 1)
                                                     <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
                                                     @else
                                                     <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
@@ -90,19 +91,19 @@ Toast.fire({
                                                 </td>
                                                 <td>
                                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                    <form action="{{route('cargos.edit',['cargo'=>$cargo])}}" method="get">
+                                                    <form action="{{route('contribuyentes.edit',['contribuyente'=>$contribuyente])}}" method="get">
                                                     <button type="submit" class="btn btn-warning">Editar</button>
                                                     </form>
-                                                    @if ($cargo->state == 1)
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargo->id}}">Eliminar</button>
+                                                    @if ($contribuyente->state == 1)
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$contribuyente->id}}">Eliminar</button>
                                                     @else
-                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargo->id}}">Restaurar</button>
+                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$contribuyente->id}}">Restaurar</button>
                                                     @endif
                                                 </div>
                                                 </td>
                                             </tr>
 <!-- Modal -->
-<div class="modal fade" id="confirmModal-{{$cargo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmModal-{{$contribuyente->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -110,11 +111,11 @@ Toast.fire({
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$cargo->state ==1 ? 'Seguro que quieres eliminar este Cargo?' : 'Seguro que quieres restaurar este Cargo?'}}
+        {{$contribuyente->state ==1 ? 'Seguro que quieres eliminar este Contribuyente?' : 'Seguro que quieres restaurar este Contribuyente?'}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <form action="{{route('cargos.destroy',['cargo'=>$cargo->id])}}" method="post">
+        <form action="{{route('contribuyentes.destroy',['contribuyente'=>$contribuyente->id])}}" method="post">
             @method('DELETE')
             @csrf
         <button type="submit" class="btn btn-danger">Confirmar</button>

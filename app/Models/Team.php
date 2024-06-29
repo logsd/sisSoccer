@@ -17,11 +17,11 @@ class Team extends Model
         return $this->hasMany(Period::class);
     }
 
-    public function categorys(){
+    public function category(){
         return $this->belongsTo(Category::class);
     }
 
-    public function clubs(){
+    public function club(){
         return $this->belongsTo(Club::class);
     }
 }

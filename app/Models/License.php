@@ -9,11 +9,11 @@ class License extends Model
 {
     use HasFactory;
 
-    public function players(){
+    public function player(){
         return $this->belongsTo(Player::class);
     }
 
-    public function Championships(){
+    public function Championship(){
         return $this->belongsTo(Championship::class);
     }
 }

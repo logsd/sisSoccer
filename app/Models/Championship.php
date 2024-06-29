@@ -25,7 +25,7 @@ class Championship extends Model
         return $this->hasMany(LeagueGroups::class);
     }
 
-    public function categorys(){
+    public function category(){
         return $this->belongsTo(Category::class);
     }
 }

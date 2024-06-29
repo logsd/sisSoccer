@@ -64,9 +64,10 @@ Toast.fire({
                                                 </td>
                                                 <td>
                                                 @if ($etapa->validity == 1)
-                                                    <span class="fw-bolder rounded p-1 bg-success text-white">Activo</span>
+                                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
                                                     @else
-                                                    <span class="fw-bolder rounded p-1 bg-danger text-white">Inactivo</span>
+                                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Inactivo</span>
+
                                                     @endif
                                                 </td>
                                                 <td>

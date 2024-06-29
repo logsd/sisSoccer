@@ -27,7 +27,7 @@ class StoreClubRequest extends FormRequest
             'name' =>'required|max:60|unique:clubs,name,' .  $clubId,
             'trade_name'=> 'nullable',
             'reason_social'=> 'nullable',
-            'ruc'=> 'required|max:13',
+            'ruc'=> 'required|max:13|min:13|unique:clubs,ruc,' .  $clubId,
             'direction'=> 'nullable',
             'email'=> 'nullable|unique:clubs,email,' . $clubId,
             'date_constion'=> 'nullable',

@@ -17,7 +17,7 @@ class LeaguePhase extends Model
         return $this->hasMany(LeagueDates::class);
     }
 
-    public function championships(){
+    public function championship(){
         return $this->belongsTo(Championship::class);
     }
 }

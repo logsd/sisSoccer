@@ -9,11 +9,11 @@ class GenTelephone extends Model
 {
     use HasFactory;
 
-    public function leagueExecutives(){
+    public function leagueExecutive(){
         return $this->belongsTo(LeagueExecutive::class);
     }
 
-    public function employees(){
+    public function employee(){
         return $this->belongsTo(Employee::class);
     }
 }

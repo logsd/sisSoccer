@@ -51,6 +51,7 @@ Toast.fire({
                                             <th>Club</th>
                                             <th>Ruc</th>
                                             <th>Email</th>
+                                            <th>Parish</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -66,6 +67,9 @@ Toast.fire({
                                                 </td>
                                                 <td>
                                                     {{$club->email}}
+                                                </td>
+                                                <td>
+                                                    {{$club->current}}
                                                 </td>
                                                 <td>
                                                     @if ($club->state == 1)

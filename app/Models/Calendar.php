@@ -9,7 +9,7 @@ class Calendar extends Model
 {
     use HasFactory;
 
-    public function calendars(){
+    public function calendar(){
         return $this->belongsTo(Calendar::class);
     }
 }

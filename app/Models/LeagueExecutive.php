@@ -10,10 +10,10 @@ class LeagueExecutive extends Model
 {
     use HasFactory;
 
-    public function genTelephone(){
+    public function genTelephones(){
         return $this->hasMany(GenTelephone::class);
     }
-    public function genState(){
+    public function genStates(){
         return $this->hasMany(GenState::class);
     }
 

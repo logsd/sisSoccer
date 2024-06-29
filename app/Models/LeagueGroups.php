@@ -9,10 +9,10 @@ class LeagueGroups extends Model
 {
     use HasFactory;
 
-    public function leaguePhases(){
+    public function leaguePhase(){
         return $this->belongsTo(LeaguePhase::class);
     }
-    public function championships(){
+    public function championship(){
         return $this->belongsTo(Championship::class);
     }
 }

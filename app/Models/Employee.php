@@ -21,11 +21,11 @@ class Employee extends Model
         return $this->belongsTo(CivilStatus::class);
     }
 
-    public function provinces(){
+    public function province(){
         return $this->belongsTo(Province::class);
     }
 
-    public function genTelephone(){
+    public function genTelephones(){
         return $this->hasMany(GenTelephone::class);
     }
 }

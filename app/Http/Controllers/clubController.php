@@ -125,7 +125,7 @@ class clubController extends Controller
                 'logo' => $name,
                 'description' => $request->description,
                 'parish' => $request->parish,
-                'current' => $request->has('current') ? 1 : 0,
+                'current' => $request->current,
             ]);
 
             $club->save();

@@ -8,21 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Player extends Model
 {
     use HasFactory;
-    public function provinces(){
+    public function province(){
         return $this->belongsTo(Province::class);
     }
 
-    public function teams(){
+    public function team(){
         return $this->belongsTo(Team::class);
     }
-    public function leagues(){
+    public function league(){
         return $this->belongsTo(League::class);
     }
 
-    public function categorys(){
+    public function category(){
         return $this->belongsTo(Category::class);
     }
-    public function loans(){
+    public function loan(){
         return $this->belongsTo(Loan::class);
     }
 

@@ -83,7 +83,7 @@ class etapaController extends Controller
             $etapa->fill([
                 'name' => $request->name,
                 'description' => $request->description,
-                'validity' => $request->has('validity') ? 1 : 0,
+                'validity' => $request->validity,
                 'league_executive_id' => $request->league_executive_id
             ]);
 
@@ -93,6 +93,7 @@ class etapaController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
+        return redirect()->route('etapas.index')->with('success', 'Estapa actualizada!');
     }
 
     /**

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('observation');
             $table->foreignId('championship_id')->nullable()->constrained('championships')->onDelete('set null');
-
+            $table->tinyInteger('state')->default(1);
             $table->timestamps();
         });
     }

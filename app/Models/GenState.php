@@ -16,8 +16,7 @@ class GenState extends Model
     protected $fillable = [
         'name',
         'description',
-        'validity',
-        'league_executive_id'
-
+        'league_executive_id',
+        'state'
     ];
 }

@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('description')->nullable();
             $table->string('parish')->nullable();
-            $table->tinyInteger('current')->nullable();
             $table->tinyInteger('state')->default(1);
             $table->timestamps();
         });

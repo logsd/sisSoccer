@@ -36,6 +36,6 @@ class StoreClubRequest extends FormRequest
             'logo'=> 'nullable|image|mimes:png,jpg,jpeg|max:2048',
             'description'=> 'nullable|max:255',
             'parish'=> 'nullable',
-            'current'=> 'nullable|boolean'];
+        ];
     }
 }

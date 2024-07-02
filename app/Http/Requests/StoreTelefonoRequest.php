@@ -24,7 +24,6 @@ class StoreTelefonoRequest extends FormRequest
         $phoneId = $this->route('telefono') ? $this->route('telefono')->id : null;
         return [
             'name'=>'required|max:60|unique:phone_operators,name,' .  $phoneId,
-            'vg' => 'nullable|boolean'
         ];
     }
 }

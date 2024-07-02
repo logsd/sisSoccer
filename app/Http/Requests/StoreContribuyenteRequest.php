@@ -26,8 +26,7 @@ class StoreContribuyenteRequest extends FormRequest
         return [
             'name'=>'required|max:60|unique:taxpayer_types,name,' .  $contribuyenteId,
             'description'=>'nullable|max:255',
-            'a_cont'=> 'nullable|boolean',
-            'vg'=> 'nullable|boolean',
+            'a_cont'=> 'nullable|boolean'
         ];
     }
 }

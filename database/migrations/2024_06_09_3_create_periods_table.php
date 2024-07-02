@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('start');
             $table->date('end');
             $table->string('description');
-            $table->tinyInteger('validity')->default(1);
+            $table->tinyInteger('state')->default(1);
             $table->foreignId('team_id')->nullable()->constrained('teams')->onDelete('set null');
 
             $table->timestamps();

@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('direct_clubs', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email')->unique()->nullable();
+            $table->string('phone')->nullable();
+            $table->string('position')->unique()->nullable(); // Posición en el club (e.g., Presidente, Vicepresidente)
             $table->string('observation');
             $table->foreignId('club_id')->nullable()->constrained('clubs')->onDelete('set null');
+            $table->tinyInteger('state')->default(1);
 
             $table->timestamps();
         });

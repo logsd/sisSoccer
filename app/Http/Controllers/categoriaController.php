@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use Exception;
+use Illuminate\Validation\Rules\Can;
 
 class categoriaController extends Controller
 {
@@ -16,7 +17,7 @@ class categoriaController extends Controller
     public function index()
     {
         $categorias = Category::latest()->get();
-        return view('categoria.index',['categorias' => $categorias]);
+        return view('categoria.index', ['categorias' => $categorias]);
     }
 
     /**
@@ -33,19 +34,16 @@ class categoriaController extends Controller
     public function store(StoreCategoriaRequest $request)
     {
 
-        try{
+        try {
             DB::beginTransaction();
-   
-        // Validar y obtener los datos validados
-        $validatedData = $request->validated();
 
-        // Manejar el valor del checkbox 'vg'
-        $validatedData['validity'] = $request->has('validity') ? 1 : 0;
-        // Crear la posición
-        Category::create($validatedData);
-            
+            // Validar y obtener los datos validados
+            $validatedData = $request->validated();
+
+            Category::create($validatedData);
+
             DB::commit();
-        }catch(Exception $e){
+        } catch (Exception $e) {
             DB::rollBack();
         }
         return redirect()->route('categorias.index')->with('success', 'Categoria registrada!');
@@ -64,8 +62,7 @@ class categoriaController extends Controller
      */
     public function edit(Category $categoria)
     {
-        return view('categoria.edit',['categoria'=>$categoria]);
-
+        return view('categoria.edit', ['categoria' => $categoria]);
     }
 
     /**
@@ -85,17 +82,28 @@ class categoriaController extends Controller
         $message = '';
         $categoria = Category::find($id);
 
-        if($categoria->state == 1){
+        if ($categoria->state == 1) {
             $categoria->update([
                 'state' => 0
             ]);
-            $message = 'Categoria eliminada';
-        }else{
+            $message = 'Categoria Desabilitada';
+        } else {
             $categoria->update([
                 'state' => 1
             ]);
             $message = 'Categoria restaurada';
         }
         return redirect()->route('categorias.index')->with('success', $message);
+    }
+
+    public function forceDelete($id)
+    {
+        $categoria = Category::find($id);
+        if ($categoria) {
+            $categoria->delete();
+            return redirect()->route('categorias.index')->with('success', 'Categoria eliminada definitivamente');
+        }
+
+        return redirect()->route('categorias.index')->with('error', 'La Categoria no fue encontrado');
     }
 }

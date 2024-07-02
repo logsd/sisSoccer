@@ -38,9 +38,6 @@ class cargoController extends Controller
         // Validar y obtener los datos validados
         $validatedData = $request->validated();
 
-        // Manejar el valor del checkbox 'vg'
-        $validatedData['vg'] = $request->has('vg') ? 1 : 0;
-        // Crear la posición
         Position::create($validatedData);
             
             DB::commit();
@@ -88,7 +85,7 @@ class cargoController extends Controller
             $cargo->update([
                 'state' => 0
             ]);
-            $message = 'Cargo eliminado';
+            $message = 'Cargo desabilitado';
         }else{
             $cargo->update([
                 'state' => 1
@@ -96,5 +93,16 @@ class cargoController extends Controller
             $message = 'Cargo restaurado';
         }
         return redirect()->route('cargos.index')->with('success', $message);
+    }
+
+    public function forceDelete($id)
+    {
+        $cargo = Position::find($id);
+        if ($cargo) {
+            $cargo->delete();
+            return redirect()->route('cargos.index')->with('success', 'Cargo eliminado definitivamente');
+        }
+
+        return redirect()->route('cargos.index')->with('error', 'El Cargo no fue encontrado');
     }
 }

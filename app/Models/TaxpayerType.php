@@ -13,6 +13,6 @@ class TaxpayerType extends Model
         return $this->hasMany(GeneralParameter::class);
     }
 
-    protected $fillable = ['name','description','a_cont','vg', 'state'];
+    protected $fillable = ['name','description','a_cont', 'state'];
 
 }

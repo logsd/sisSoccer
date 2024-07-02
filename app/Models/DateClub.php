@@ -9,7 +9,16 @@ class DateClub extends Model
 {
     use HasFactory;
 
-    public function club(){
+    public function club()
+    {
         return $this->belongsTo(Club::class);
     }
+
+    protected $fillable = [
+        'phone',
+        'operator',
+        'description',
+        'state',
+        'club_id'
+    ];
 }

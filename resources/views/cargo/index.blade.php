@@ -52,7 +52,6 @@ Toast.fire({
                                             <th>F Entrada</th>
                                             <th>F Salida</th>
                                             <th>Observación</th>
-                                            <th>V.G</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -73,14 +72,6 @@ Toast.fire({
                                                     {{$cargo->observation}}
                                                 </td>
                                                 <td>
-                                                @if ($cargo->vg == 1)
-                                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
-                                                    @else
-                                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Inactivo</span>
-
-                                                    @endif
-                                                </td>
-                                                <td>
                                                     @if ($cargo->state == 1)
                                                     <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
                                                     @else
@@ -94,10 +85,15 @@ Toast.fire({
                                                     <button type="submit" class="btn btn-warning">Editar</button>
                                                     </form>
                                                     @if ($cargo->state == 1)
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargo->id}}">Eliminar</button>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargo->id}}">Desabilitar</button>
                                                     @else
                                                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargo->id}}">Restaurar</button>
                                                     @endif
+                                                    <form action="{{route('cargos.forceDelete',[$cargo->id])}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    </form>
                                                 </div>
                                                 </td>
                                             </tr>
@@ -110,7 +106,7 @@ Toast.fire({
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$cargo->state ==1 ? 'Seguro que quieres eliminar este Cargo?' : 'Seguro que quieres restaurar este Cargo?'}}
+        {{$cargo->state ==1 ? 'Seguro que quieres desabilitar  este Cargo?' : 'Seguro que quieres restaurar este Cargo?'}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

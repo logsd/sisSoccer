@@ -47,16 +47,6 @@
                 @enderror
         </div>
 
-        <div class="col-md-6">
-        <div class="form-check form-switch">
-            <label class="form-check-label" for="vg">V.g</label>
-             <input  name="vg" class="form-check-input" type="checkbox" role="switch" id="vg" value="1" {{ old('vg') ? 'checked' : '' }}>
-                @error('vg')
-                <small class="text-danger">{{'*'.$message}}</small>
-                @enderror
-        </div>
-        </div>
-
         <div class="col-md-12">
                 <label for="observation" class="form-label">Observación:</label>
                 <textarea name="observation" id="observation" rows="3" class="form-control"></textarea>

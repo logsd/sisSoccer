@@ -13,6 +13,6 @@ class StateParameter extends Model
         return $this->hasMany(GeneralParameter::class);
     }
 
-    protected $fillable = ['name','process','description','vg', 'state'];
+    protected $fillable = ['name','process','description', 'state'];
 
 }

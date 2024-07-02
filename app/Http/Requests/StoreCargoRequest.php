@@ -25,10 +25,9 @@ class StoreCargoRequest extends FormRequest
 
         return [
             'name'=>'required|max:60|unique:positions,name,' .  $cargoId,
-            'f_start'=> 'nullable',
-            'f_end'=> 'nullable',
-            'observation'=>'nullable|max:255',
-            'vg'=> 'nullable|boolean',
+            'f_start'=> 'required',
+            'f_end'=> 'required',
+            'observation'=>'nullable|max:255'
         ];
     }
 }

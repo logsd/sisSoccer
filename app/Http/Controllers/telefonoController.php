@@ -38,9 +38,6 @@ class telefonoController extends Controller
         // Validar y obtener los datos validados
         $validatedData = $request->validated();
 
-        // Manejar el valor del checkbox 'vg'
-        $validatedData['vg'] = $request->has('vg') ? 1 : 0;
-        // Crear la posición
         PhoneOperator::create($validatedData);
             
             DB::commit();
@@ -78,18 +75,35 @@ class telefonoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
+     
     public function destroy(string $id)
     {
         $message = '';
-        try {
-            $phone = PhoneOperator::findOrFail($id);
-            $phone->delete();
-            $message = 'Cargo eliminado';
+        $telefono = PhoneOperator::find($id);
 
-            return redirect()->route('telefonos.index')->with('success', $message);
-        } catch (Exception $e) {
-            $message = 'Hubo un problema al eliminar el teléfono.';
-            return redirect()->route('telefonos.index')->with('success', $message);
+        if ($telefono->state == 1) {
+            $telefono->update([
+                'state' => 0
+            ]);
+            $message = 'Operadora Desabilitada';
+        } else {
+            $telefono->update([
+                'state' => 1
+            ]);
+            $message = 'Operadora restaurada';
         }
+        return redirect()->route('telefonos.index')->with('success', $message);
+    }
+
+    public function forceDelete($id)
+    {
+        $telefono = PhoneOperator::find($id);
+        if ($telefono) {
+            $telefono->delete();
+            return redirect()->route('telefonos.index')->with('success', 'Operadora eliminada definitivamente');
+        }
+
+        return redirect()->route('telefonos.index')->with('error', 'La Operadora no fue encontrada');
     }
 }

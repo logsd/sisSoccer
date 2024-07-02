@@ -34,7 +34,6 @@ class Club extends Model
         'logo',
         'description',
         'parish',
-        'current',
          'state'];
 
          public function hanbleUploadImage($image){

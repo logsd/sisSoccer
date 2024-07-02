@@ -11,6 +11,8 @@ use App\Http\Controllers\contribuyenteController;
 use App\Http\Controllers\ejecutivoController;
 use App\Http\Controllers\reporteController;
 use App\Http\Controllers\etapaController;
+use App\Http\Controllers\dataClubController;
+use App\Http\Controllers\campeonatoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,9 +35,38 @@ Route::resources([
     'ejecutivos' => ejecutivoController::class,
     'reportes' => reporteController::class,
     'etapas' => etapaController::class,
+    'dataClubs' => dataClubController::class,
+    'campeonatos' => campeonatoController::class,
 ]
 
 );
+
+Route::delete('/ligas/force-delete/{id}', [ligaController::class, 'forceDelete'
+])->name('ligas.forceDelete');
+Route::delete('/departamentos/force-delete/{id}', [departamentoController::class, 'forceDelete'
+])->name('departamentos.forceDelete');
+Route::delete('/cargos/force-delete/{id}', [cargoController::class, 'forceDelete'
+])->name('cargos.forceDelete');
+Route::delete('/clubs/force-delete/{id}', [clubController::class, 'forceDelete'
+])->name('clubs.forceDelete');
+Route::delete('/dataClubs/force-delete/{id}', [dataClubController::class, 'forceDelete'
+])->name('dataClubs.forceDelete');
+Route::delete('/categorias/force-delete/{id}', [categoriaController::class, 'forceDelete'
+])->name('categorias.forceDelete');
+Route::delete('/etapas/force-delete/{id}', [etapaController::class, 'forceDelete'
+])->name('etapas.forceDelete');
+Route::delete('/estados/force-delete/{id}', [estadoController::class, 'forceDelete'
+])->name('estados.forceDelete');
+Route::delete('/telefonos/force-delete/{id}', [telefonoController::class, 'forceDelete'
+])->name('telefonos.forceDelete');
+Route::delete('/contribuyentes/force-delete/{id}', [contribuyenteController::class, 'forceDelete'
+])->name('contribuyentes.forceDelete');
+Route::delete('/ejecutivos/force-delete/{id}', [ejecutivoController::class, 'forceDelete'
+])->name('ejecutivos.forceDelete');
+Route::delete('/reportes/force-delete/{id}', [reporteController::class, 'forceDelete'
+])->name('reportes.forceDelete');
+Route::delete('/campeonatos/force-delete/{id}', [campeonatoController::class, 'forceDelete'
+])->name('campeonatos.forceDelete');
 
 Route::get('/login', function () {
     return view('auth.login');

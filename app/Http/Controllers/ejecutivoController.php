@@ -144,7 +144,7 @@ class ejecutivoController extends Controller
             $ejecutivo->update([
                 'state' => 0
             ]);
-            $message = 'Ejecutivo eliminado';
+            $message = 'Ejecutivo desabilitado';
         }else{
             $ejecutivo->update([
                 'state' => 1
@@ -154,4 +154,14 @@ class ejecutivoController extends Controller
         return redirect()->route('ejecutivos.index')->with('success', $message);
     }
     
+    public function forceDelete($id)
+    {
+        $ejecutivo = LeagueExecutive::find($id);
+        if ($ejecutivo) {
+            $ejecutivo->delete();
+            return redirect()->route('ejecutivos.index')->with('success', 'Ejecutivo eliminado definitivamente');
+        }
+
+        return redirect()->route('ejecutivos.index')->with('error', 'El Ejecutivo no fue encontrado');
+    }
 }

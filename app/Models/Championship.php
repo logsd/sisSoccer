@@ -9,23 +9,41 @@ class Championship extends Model
 {
     use HasFactory;
 
-    public function licenses(){
+    public function licenses()
+    {
         return $this->hasMany(License::class);
     }
 
-    public function leaguePhases(){
+    public function leaguePhases()
+    {
         return $this->hasMany(LeaguePhase::class);
     }
 
-    public function calendars(){
+    public function calendars()
+    {
         return $this->hasMany(Calendar::class);
     }
 
-    public function leagueGroups(){
+    public function leagueGroups()
+    {
         return $this->hasMany(LeagueGroups::class);
     }
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
+
+    protected $fillable = [
+        'name',
+        'year',
+        'start_date',
+        'end_date',
+        'from',
+        'until',
+        'description',
+        'observation',
+        'state',
+        'category_id'
+    ];
 }

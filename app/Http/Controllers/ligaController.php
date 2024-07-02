@@ -68,27 +68,36 @@ class ligaController extends Controller
         return redirect()->route('ligas.index')->with('success', 'Liga actualizada!');
     }
 
+    
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $message = '';
         $liga = League::find($id);
+        $message = '';
 
-        if($liga->state == 1){
-            $liga->update([
-                'state' => 0
-            ]);
-            $message = 'Liga eliminada';
-        }else{
-            $liga->update([
-                'state' => 1
-            ]);
-            $message = 'Liga restaurada';
+        if ($liga) {
+            if ($liga->state == 1) {
+                $liga->update(['state' => 0]);
+                $message = 'Liga eliminado lógicamente';
+            } else {
+                $liga->update(['state' => 1]);
+                $message = 'Liga restaurado';
+            }
         }
-        return redirect()->route('ligas.index')->with('success', $message);
 
+        return redirect()->route('ligas.index')->with('success', $message);
     }
     
+    public function forceDelete($id)
+    {
+        $liga = League::find($id);
+        if ($liga) {
+            $liga->delete();
+            return redirect()->route('ligas.index')->with('success', 'Liga eliminado definitivamente');
+        }
+
+        return redirect()->route('ligas.index')->with('error', 'La Liga no fue encontrada');
+    }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('phone_operators', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->tinyInteger('vg')->default(1);
+            $table->tinyInteger('state')->default(1);
             $table->timestamps();
         });
     }

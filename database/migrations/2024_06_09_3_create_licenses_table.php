@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('licenses', function (Blueprint $table) {
             $table->id();
             $table->string('cod');
+            $table->tinyInteger('state')->default(1);
             $table->foreignId('player_id')->nullable()->constrained('players')->onDelete('set null');
             $table->foreignId('championship_id')->nullable()->constrained('championships')->onDelete('set null');
             $table->timestamps();

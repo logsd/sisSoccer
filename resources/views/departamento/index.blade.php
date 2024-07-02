@@ -73,10 +73,15 @@ Toast.fire({
                                                     <button type="submit" class="btn btn-warning">Editar</button>
                                                     </form>
                                                     @if ($departamento->state == 1)
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}">Eliminar</button>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}">Desabilitar</button>
                                                     @else
                                                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}">Restaurar</button>
                                                     @endif
+                                                    <form action="{{route('departamentos.forceDelete',[$departamento->id])}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    </form>
                                                 </div>
                                                 </td>
                                             </tr>

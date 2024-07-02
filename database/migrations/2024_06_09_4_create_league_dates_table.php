@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->tinyInteger('validity')->default(1);
+            $table->tinyInteger('state')->default(1);
             $table->foreignId('league_phase_id')->nullable()->constrained('league_phases')->onDelete('set null');
             $table->timestamps();
         });

@@ -22,11 +22,10 @@ class StoreGenTelefonoRequest extends FormRequest
     public function rules(): array
     {
         
-            $genTelefonoId = $this->route('genTelefonos') ? $this->route('genTelefonos')->id : null;
+            $genTelefonoId = $this->route('genTelefono') ? $this->route('genTelefono')->id : null;
             return[
                 'number' => 'required|max:10|min:10|unique:gen_telephones,number,' . $genTelefonoId,
                 'description' => 'nullable',
-                'validity' => 'nullable|boolean',
                 'league_executive_id' => 'nullable|integer|exists:league_executives,id',    
                 'employee_id' => 'nullable|integer|exists:employees,id', 
             ];
@@ -36,7 +35,6 @@ class StoreGenTelefonoRequest extends FormRequest
             
             'number'=>'numero',
             'description'=>'descripcion',
-            'validity'=> 'validacion',
             'league_executive_id' => 'ejecutivo',
             'employee_id' => 'empleado',             
         ];

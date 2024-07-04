@@ -85,7 +85,7 @@ Toast.fire({
                                                     <button type="submit" class="btn btn-warning">Editar</button>
                                                     </form>
                                                     @if ($genTelefono->state == 1)
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genTelefono->id}}">Desabilitar</button>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genTelefono->id}}">Desabilitar</button>
                                                     @else
                                                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genTelefono->id}}">Restaurar</button>
                                                     @endif

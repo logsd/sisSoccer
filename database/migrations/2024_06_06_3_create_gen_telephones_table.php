@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('gen_telephones', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('number');
+            $table->string('number');
             $table->string('description');
             $table->tinyInteger('state')->default(1);
             $table->foreignId('league_executive_id')->nullable()->constrained('league_executives')->onDelete('set null');

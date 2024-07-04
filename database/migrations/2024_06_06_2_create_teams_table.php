@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->tinyInteger('gender')->default(1);
+            $table->tinyInteger('gender');
             $table->tinyInteger('state')->default(1);
             $table->string('cluster');
-            $table->string('championship');
-            $table->bigInteger('points');
-            $table->bigInteger('player_number');
-            $table->string('gol_afa');
-            $table->string('gol_enc');
+            $table->bigInteger('points')->nullable();
+            $table->bigInteger('player_number')->nullable();
+            $table->string('gol_afa')->nullable();
+            $table->string('gol_enc')->nullable();
             $table->string('description');
+            $table->foreignId('championship_id')->nullable()->constrained('championships')->onDelete('set null');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
             $table->foreignId('club_id')->nullable()->constrained('clubs')->onDelete('set null');
 

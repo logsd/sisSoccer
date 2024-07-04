@@ -13,6 +13,8 @@ use App\Http\Controllers\reporteController;
 use App\Http\Controllers\etapaController;
 use App\Http\Controllers\dataClubController;
 use App\Http\Controllers\campeonatoController;
+use App\Http\Controllers\equipoController;
+use App\Http\Controllers\periodoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,6 +39,8 @@ Route::resources([
     'etapas' => etapaController::class,
     'dataClubs' => dataClubController::class,
     'campeonatos' => campeonatoController::class,
+    'equipos' => equipoController::class,
+    'periodos' => periodoController::class,
 ]
 
 );
@@ -67,6 +71,10 @@ Route::delete('/reportes/force-delete/{id}', [reporteController::class, 'forceDe
 ])->name('reportes.forceDelete');
 Route::delete('/campeonatos/force-delete/{id}', [campeonatoController::class, 'forceDelete'
 ])->name('campeonatos.forceDelete');
+Route::delete('/equipos/force-delete/{id}', [equipoController::class, 'forceDelete'
+])->name('equipos.forceDelete');
+Route::delete('/periodos/force-delete/{id}', [periodoController::class, 'forceDelete'
+])->name('periodos.forceDelete');
 
 Route::get('/login', function () {
     return view('auth.login');

@@ -91,6 +91,10 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-flag"></i></div>
                                 Reportes
                             </a>
+                            <a class="nav-link" href="{{route('periodos.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                                Periodos
+                            </a>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-futbol"></i></div>
@@ -99,8 +103,23 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="">Ver</a>
-                                    <a class="nav-link" href="{{route('campeonatos.index')}}">Crear</a>
+                                    <a class="nav-link" href="{{route('campeonatos.index')}}">Ver</a>
+                                    <a class="nav-link" href="{{route('campeonatos.create')}}">
+                                        Crear
+                                    </a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-futbol"></i></div>
+                                Equipos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Ver</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">
+                                        Crear
+                                    </a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="{{route('etapas.index')}}">

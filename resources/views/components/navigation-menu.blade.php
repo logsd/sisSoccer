@@ -109,8 +109,13 @@
                             </a>
 
                             <a class="nav-link" href="{{route('empleados.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear"></i></div>
                                 Empleados
+                            </a>
+
+                            <a class="nav-link" href="{{route('genTelefonos.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-phone"></i></div>
+                                Telefonos
                             </a>
 
                             

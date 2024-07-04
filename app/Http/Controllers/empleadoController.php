@@ -103,6 +103,7 @@ class empleadoController extends Controller
                 'direction' => $request->direction,
                 'f_income' => $request->f_income,
                 'f_exit' => $request->f_exit,  
+                //'img_url' => $request->img_url,
                 'province_id' => $request-> province_id,    
                 'department_id' => $request->department_id,
                 'civil_status_id' => $request -> civil_status_id,

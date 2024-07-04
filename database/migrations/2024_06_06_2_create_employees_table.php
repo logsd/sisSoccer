@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('last_name');
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->tinyInteger('sex');
             $table->tinyInteger('state')->default(1);
             $table->date('birth_date');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->date('f_income');
             $table->date('f_exit')->nullable();
             $table->date('f_re_entry')->nullable();
-            $table->string('img_url');
+            $table->string('img_url')->nullable();;
             $table->foreignId('province_id')->nullable()->constrained('provinces')->onDelete('set null');
             $table->foreignId('department_id')->nullable()->constrained('departments')->onDelete('set null');
             $table->foreignId('civil_status_id')->nullable()->constrained('civil_statuses')->onDelete('set null');

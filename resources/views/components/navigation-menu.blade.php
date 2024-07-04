@@ -108,6 +108,11 @@
                                 Etapas
                             </a>
 
+                            <a class="nav-link" href="{{route('empleados.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                                Empleados
+                            </a>
+
                             
                             
                             <a class="nav-link" href="#">

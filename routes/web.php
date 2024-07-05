@@ -19,13 +19,17 @@ use App\Http\Controllers\empleadoController;
 use App\Http\Controllers\genTelefonoController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('template');
-})->name('home');
+//Route::get('/', function () {
+   // return view('template');
+//})->name('home');
 
 Route::get('/panel', function () {
     return view('panel.index');
 })->name('panel');
+Route::get('/', function () {
+    return view('inicio.dashboard');
+})->name('dashboard');
+
 
 Route::resources([
     'ligas'=> ligaController::class,

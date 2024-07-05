@@ -11,6 +11,9 @@ use App\Http\Controllers\contribuyenteController;
 use App\Http\Controllers\ejecutivoController;
 use App\Http\Controllers\reporteController;
 use App\Http\Controllers\etapaController;
+use App\Http\Controllers\ComisionLigaController;
+use App\Http\Controllers\CargoOficinaController;
+use App\Http\Controllers\TypeParameterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,9 +36,21 @@ Route::resources([
     'ejecutivos' => ejecutivoController::class,
     'reportes' => reporteController::class,
     'etapas' => etapaController::class,
+    'comisiondeligas' => ComisionLigaController::class,
+    'cargooficinas' => CargoOficinaController::class,
+    'tparametros' => TypeParameterController::class,
 ]
 
 );
+
+Route::delete('/comisiondeligas/force-delete/{id}', [ComisionLigaController::class, 'forceDelete'
+])->name('comisiondeligas.forceDelete');
+
+Route::delete('/cargooficinas/force-delete/{id}', [CargoOficinaController::class, 'forceDelete'
+])->name('cargooficinas.forceDelete');
+
+Route::delete('/tparametros/force-delete/{id}', [TypeParameterController::class, 'forceDelete'
+])->name('tparametros.forceDelete');
 
 Route::get('/login', function () {
     return view('auth.login');

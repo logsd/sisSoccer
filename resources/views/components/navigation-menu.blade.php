@@ -36,7 +36,7 @@
                                             <a class="nav-link" href="register.html">Register</a>
                                             <a class="nav-link" href="password.html">Forgot Password</a>
                                         </nav>
-                                    </div> 
+                                    </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                         Error
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -99,6 +99,20 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
                             </a>
+
+                            <a class="nav-link" href="{{route('comisiondeligas.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Comision de Ligas
+                            </a>
+                            <a class="nav-link"  href="{{route('cargooficinas.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Cargos Empleados
+                            </a>
+                            <a class="nav-link" href="{{route('tparametros.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                               Tipo de Parametros
+                            </a>
+
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

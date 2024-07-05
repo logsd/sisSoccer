@@ -85,7 +85,7 @@
         </div>
 
 
-        
+
         <div class="col-md-6">
                 <label for="direction_web" class="form-label">Dirección Web:</label>
                 <input type="text" name="direction_web" id="direction_web" class="form-control" value="{{old('direction_web')}}">
@@ -94,7 +94,7 @@
                 @enderror
         </div>
 
-        
+
         <div class="col-md-6">
                 <label for="slogan" class="form-label">Slogan:</label>
                 <input type="text" name="slogan" id="slogan" class="form-control" value="{{old('slogan')}}">
@@ -103,7 +103,7 @@
                 @enderror
         </div>
 
-        
+
         <div class="col-md-6">
                 <label for="logo" class="form-label">Logo:</label>
                 <input type="file" name="logo" id="logo" class="form-control" accept="Image/*">

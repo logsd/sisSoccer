@@ -12,4 +12,7 @@ class CommissionLeague extends Model
     public function genOffices(){
         return $this->hasMany(GenOffice::class);
     }
+    protected $guarded = [
+        'id'
+    ];
 }

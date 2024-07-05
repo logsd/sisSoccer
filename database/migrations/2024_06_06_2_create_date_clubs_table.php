@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('date_clubs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('phone_number')->unsigned();
-            $table->string('description');
-            $table->string('operator');
-            $table->tinyInteger('current');
+            $table->string('phone')->nullable();
+            $table->string('operator')->nullable();
+            $table->string('description')->nullable();
+            $table->tinyInteger('state')->default(1);
             $table->foreignId('club_id')->nullable()->constrained('clubs')->onDelete('set null');
 
             $table->timestamps();

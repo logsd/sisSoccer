@@ -13,5 +13,5 @@ class PhoneOperator extends Model
         return $this->hasMany(GeneralParameter::class);
     }
 
-    protected $fillable = ['name', 'vg'];
+    protected $fillable = ['name', 'state'];
 }

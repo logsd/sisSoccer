@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('process')->nullable();
             $table->string('description')->nullable();
-            $table->tinyInteger('vg')->default(1);
             $table->tinyInteger('state')->default(1);
             $table->timestamps();
         });

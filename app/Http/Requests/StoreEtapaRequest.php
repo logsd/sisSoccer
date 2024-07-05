@@ -25,7 +25,6 @@ class StoreEtapaRequest extends FormRequest
 
         return ['name' =>'required|max:60|unique:gen_states,name,' .  $etapaId,
         'description' => 'nullable|max:255',
-        'validity' => 'nullable|boolean',
         'league_executive_id' => 'required|integer|exists:league_executives,id'
          ];
     }

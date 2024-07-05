@@ -17,6 +17,5 @@ class GenReport extends Model
         'name',
         'role',
         'description',
-        'validity',
         'state'];
 }

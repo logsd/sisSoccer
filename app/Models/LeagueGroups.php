@@ -15,4 +15,6 @@ class LeagueGroups extends Model
     public function championship(){
         return $this->belongsTo(Championship::class);
     }
+
+    protected $guarded = ['id'];
 }

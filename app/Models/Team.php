@@ -21,7 +21,13 @@ class Team extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function championship(){
+        return $this->belongsTo(Championship::class);
+    }
+
     public function club(){
         return $this->belongsTo(Club::class);
     }
+
+    protected $guarded = ['id'];    
 }

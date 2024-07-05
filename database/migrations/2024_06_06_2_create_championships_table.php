@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('championships', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('year')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
-            $table->date('dates')->nullable();
-            $table->string('description')->nullable();
-            $table->string('observation')->nullable();
-            $table->tinyInteger('validity')->nullable();
+            $table->string('year');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->date('from');
+            $table->date('until');
+            $table->string('description');
+            $table->string('observation');
+            $table->tinyInteger('state')->default(1);
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
 
             $table->timestamps();

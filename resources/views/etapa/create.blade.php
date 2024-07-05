@@ -42,16 +42,6 @@
                     @enderror
                 </div>
 
-                <div class="col-md-6">
-                    <div class="form-check form-switch">
-                        <label class="form-check-label" for="vg">Validez</label>
-                        <input name="validity" class="form-check-input" type="checkbox" role="switch" id="validity" value="1" {{ old('validity') ? 'checked' : '' }}>
-                        @error('validity')
-                        <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
-                    </div>
-                </div>
-
                 <div class="col-md-6 mb-2">
                         <label class="form-label" for="league_executive_id">Ejecutivo</label>
                       <select data-size="4" title="Seleccione un Ejecutivo" data-live-search="true" name="league_executive_id" id="league_executive_id" class="form-control selectpicker show-tick">

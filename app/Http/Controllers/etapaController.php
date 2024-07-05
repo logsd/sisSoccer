@@ -42,7 +42,6 @@ class etapaController extends Controller
             $etapa->fill([
                 'name' => $request->name,
                 'description' => $request->description,
-                'validity' => $request->has('validity') ? 1 : 0,
                 'league_executive_id' => $request->league_executive_id
             ]);
 
@@ -83,7 +82,6 @@ class etapaController extends Controller
             $etapa->fill([
                 'name' => $request->name,
                 'description' => $request->description,
-                'validity' => $request->validity,
                 'league_executive_id' => $request->league_executive_id
             ]);
 
@@ -101,16 +99,32 @@ class etapaController extends Controller
      */
     public function destroy(string $id)
     {
+        
         $message = '';
-        try {
-            $etapa = GenState::findOrFail($id);
-            $etapa->delete();
-            $message = 'Etapa eliminada';
+        $etapa = GenState::find($id);
 
-            return redirect()->route('etapas.index')->with('success', $message);
-        } catch (Exception $e) {
-            $message = 'Hubo un problema al eliminar el teléfono.';
-            return redirect()->route('etapas.index')->with('success', $message);
+        if ($etapa->state == 1) {
+            $etapa->update([
+                'state' => 0
+            ]);
+            $message = 'Etapa Desabilitada';
+        } else {
+            $etapa->update([
+                'state' => 1
+            ]);
+            $message = 'Etapa restaurada';
         }
+        return redirect()->route('etapas.index')->with('success', $message);
+    }
+
+    public function forceDelete($id)
+    {
+        $etapa = GenState::find($id);
+        if ($etapa) {
+            $etapa->delete();
+            return redirect()->route('etapas.index')->with('success', 'Etapa eliminada definitivamente');
+        }
+
+        return redirect()->route('etapas.index')->with('error', 'La Etapa no fue encontrado');
     }
 }

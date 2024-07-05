@@ -39,8 +39,6 @@ class reporteController extends Controller
         // Validar y obtener los datos validados
         $validatedData = $request->validated();
 
-        // Manejar el valor del checkbox 'vg'
-        $validatedData['validity'] = $request->has('validity') ? 1 : 0;
         // Crear la posición
         GenReport::create($validatedData);
             
@@ -88,7 +86,7 @@ class reporteController extends Controller
             $reporte->update([
                 'state' => 0
             ]);
-            $message = 'Reporte eliminado';
+            $message = 'Reporte desabilitado';
         }else{
             $reporte->update([
                 'state' => 1
@@ -96,5 +94,16 @@ class reporteController extends Controller
             $message = 'Reporte restaurado';
         }
         return redirect()->route('reportes.index')->with('success', $message);
+    }
+
+    public function forceDelete($id)
+    {
+        $reporte = GenReport::find($id);
+        if ($reporte) {
+            $reporte->delete();
+            return redirect()->route('reportes.index')->with('success', 'Reporte eliminado definitivamente');
+        }
+
+        return redirect()->route('reportes.index')->with('error', 'El Reporte no fue encontrado');
     }
 }

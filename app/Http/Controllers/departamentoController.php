@@ -79,7 +79,7 @@ class DepartamentoController extends Controller
             $departamento->update([
                 'state' => 0
             ]);
-            $message = 'Departamento eliminado';
+            $message = 'Departamento eliminado logicamente';
         }else{
             $departamento->update([
                 'state' => 1
@@ -87,5 +87,16 @@ class DepartamentoController extends Controller
             $message = 'Departamento restaurado';
         }
         return redirect()->route('departamentos.index')->with('success', $message);
+    }
+
+    public function forceDelete($id)
+    {
+        $departamento = Department::find($id);
+        if ($departamento) {
+            $departamento->delete();
+            return redirect()->route('departamentos.index')->with('success', 'Departamento eliminado definitivamente');
+        }
+
+        return redirect()->route('departamentos.index')->with('error', 'El departamento no fue encontrado');
     }
 }

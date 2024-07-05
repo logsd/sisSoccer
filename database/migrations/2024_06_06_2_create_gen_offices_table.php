@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('short_name');
             $table->string('address');
+            $table->tinyInteger('state')->default(1);
             $table->foreignId('report_id')->nullable()->constrained('gen_reports')->onDelete('set null');
             $table->foreignId('commission_league_id')->nullable()->constrained('commission_leagues')->onDelete('set null');
             $table->foreignId('charge_id')->nullable()->constrained('gen_charges')->onDelete('set null');

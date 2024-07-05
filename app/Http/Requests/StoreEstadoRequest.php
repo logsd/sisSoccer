@@ -25,8 +25,7 @@ class StoreEstadoRequest extends FormRequest
 
         return ['name' =>'required|max:60|unique:state_parameters,name,' .  $estadoId,
         'process' => 'nullable',
-        'description' => 'nullable|max:255',
-        'vg' => 'nullable|boolean'
+        'description' => 'nullable|max:255'
          ];
     }
 }

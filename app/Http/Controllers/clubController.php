@@ -16,8 +16,6 @@ class clubController extends Controller
      */
     public function index()
     {
-        $clubs = Club::latest()->get();
-        return view('club.index', ['clubs' => $clubs]);
     }
 
     /**
@@ -45,9 +43,6 @@ class clubController extends Controller
             // Validar y obtener los datos validados
             $validatedData = $request->validated();
 
-            // Manejar el valor del checkbox 'current'
-            $validatedData['current'] = $request->has('current') ? 1 : 0;
-
             // Manejar el archivo del logo
             if ($request->hasFile('logo')) {
                 // Asumimos que el método hanbleUploadImage guarda la imagen y devuelve el nombre del archivo
@@ -56,7 +51,6 @@ class clubController extends Controller
             } else {
                 $validatedData['logo'] = null;
             }
-
             // Llenar el modelo con los datos validados
             $club->fill($validatedData);
 
@@ -67,13 +61,13 @@ class clubController extends Controller
             DB::commit();
 
             // Redireccionar con un mensaje de éxito
-            return redirect()->route('clubs.index')->with('success', 'Club registrado!');
+            return redirect()->route('dataClubs.index')->with('success', 'Club registrado!');
         } catch (Exception $e) {
             // Revertir la transacción en caso de error
             DB::rollBack();
 
             // Manejar el error (puedes redireccionar con un mensaje de error o registrar el error)
-            return redirect()->route('clubs.index')->with('error', 'Hubo un problema al registrar el club.');
+            return redirect()->route('dataClubs.index')->with('error', 'Hubo un problema al registrar el club.');
         }
     }
     /**
@@ -89,6 +83,7 @@ class clubController extends Controller
      */
     public function edit(Club $club)
     {
+
         return view('club.edit', compact('club'));
     }
 
@@ -105,8 +100,8 @@ class clubController extends Controller
                 // Asumimos que el método hanbleUploadImage guarda la imagen y devuelve el nombre del archivo
                 $name = $club->hanbleUploadImage($request->file('logo'));
                 //eliminar si existe imagen
-                if (Storage::disk('public')->exists('/clubs/'.$club->logo)){
-                    Storage::disk('public')->delete('/clubs/'.$club->logo);
+                if (Storage::disk('public')->exists('/clubs/' . $club->logo)) {
+                    Storage::disk('public')->delete('/clubs/' . $club->logo);
                 }
             } else {
                 $name = $club->logo;
@@ -124,8 +119,7 @@ class clubController extends Controller
                 'slogan' => $request->slogan,
                 'logo' => $name,
                 'description' => $request->description,
-                'parish' => $request->parish,
-                'current' => $request->current,
+                'parish' => $request->parish
             ]);
 
             $club->save();
@@ -134,7 +128,7 @@ class clubController extends Controller
             DB::commit();
         } catch (Exception $e) {
         }
-        return redirect()->route('clubs.index')->with('success', 'Club actualizado!');
+        return redirect()->route('dataClubs.index')->with('success', 'Club actualizado!');
     }
 
     /**
@@ -149,13 +143,41 @@ class clubController extends Controller
             $club->update([
                 'state' => 0
             ]);
-            $message = 'Club eliminado';
+            $message = 'Club desabilitado';
         } else {
             $club->update([
                 'state' => 1
             ]);
             $message = 'Club restaurado';
         }
-        return redirect()->route('clubs.index')->with('success', $message);
+        return redirect()->route('dataClubs.index')->with('success', $message);
+    }
+
+    public function forceDelete($id)
+    {
+        $club = Club::find($id);
+
+        if ($club) {
+            try {
+                DB::beginTransaction();
+
+                // Eliminar la imagen si existe
+                if (Storage::disk('public')->exists('clubs/' . $club->logo)) {
+                    Storage::disk('public')->delete('clubs/' . $club->logo);
+                }
+
+                // Eliminar el registro del club
+                $club->delete();
+
+                DB::commit();
+
+                return redirect()->route('dataClubs.index')->with('success', 'Club eliminado definitivamente');
+            } catch (Exception $e) {
+                DB::rollBack();
+                return redirect()->route('dataClubs.index')->with('error', 'Hubo un problema al eliminar el club.');
+            }
+        }
+
+        return redirect()->route('dataClubs.index')->with('error', 'El Club no fue encontrado');
     }
 }

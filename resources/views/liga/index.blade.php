@@ -73,10 +73,15 @@ Toast.fire({
                                                     <button type="submit" class="btn btn-warning">Editar</button>
                                                     </form>
                                                     @if ($liga->state == 1)
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$liga->id}}">Eliminar</button>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$liga->id}}">Desabilitar</button>
                                                     @else
                                                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$liga->id}}">Restaurar</button>
                                                     @endif
+                                                    <form action="{{route('ligas.forceDelete',[$liga->id])}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    </form>
                                                 </div>
                                                 </td>
                                             </tr>
@@ -89,7 +94,7 @@ Toast.fire({
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$liga->state ==1 ? 'Seguro que quieres eliminar esta Liga?' : 'Seguro que quieres restaurar esta liga?'}}
+        {{$liga->state ==1 ? 'Seguro que quieres desabilitar esta Liga?' : 'Seguro que quieres restaurar esta liga?'}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

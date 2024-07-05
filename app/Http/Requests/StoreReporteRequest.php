@@ -26,8 +26,7 @@ class StoreReporteRequest extends FormRequest
 
         return ['name' =>'required|max:60|unique:gen_reports,name,' .  $reporteId,
         'role' => 'nullable',
-        'description' => 'nullable',
-        'validity' => 'nullable|boolean'
+        'description' => 'nullable'
          ];
     }
 }

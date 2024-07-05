@@ -39,9 +39,6 @@ class estadoController extends Controller
         // Validar y obtener los datos validados
         $validatedData = $request->validated();
 
-        // Manejar el valor del checkbox 'vg'
-        $validatedData['vg'] = $request->has('vg') ? 1 : 0;
-        // Crear la posición
         StateParameter::create($validatedData);
             
             DB::commit();
@@ -88,7 +85,7 @@ class estadoController extends Controller
             $estado->update([
                 'state' => 0
             ]);
-            $message = 'Estado eliminado';
+            $message = 'Estado Desabilitado';
         }else{
             $estado->update([
                 'state' => 1
@@ -96,5 +93,16 @@ class estadoController extends Controller
             $message = 'Estado restaurado';
         }
         return redirect()->route('estados.index')->with('success', $message);
+    }
+
+    public function forceDelete($id)
+    {
+        $estado = StateParameter::find($id);
+        if ($estado) {
+            $estado->delete();
+            return redirect()->route('estados.index')->with('success', 'Estado eliminado definitivamente');
+        }
+
+        return redirect()->route('estados.index')->with('error', 'El Estado no fue encontrado');
     }
 }

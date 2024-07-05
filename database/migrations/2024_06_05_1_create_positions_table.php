@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->date('f_start');
-            $table->date('f_end')->nullable();
+            $table->date('f_end');
             $table->string('observation')->nullable();
-            $table->tinyInteger('vg')->default(1);
             $table->tinyInteger('state')->default(1);
             $table->timestamps();
         });

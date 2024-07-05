@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('short_name');
             $table->string('role');
-            $table->string('description')->nullable();
+            $table->string('description');
             $table->tinyInteger('state')->default(1);
             $table->timestamps();
         });

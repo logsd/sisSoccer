@@ -42,16 +42,6 @@
                 @enderror
         </div>
 
-        <div class="col-md-6">
-        <div class="form-check form-switch">
-        <input type="hidden" name="validity" value="0">
-            <label class="form-check-label" for="vg">Validez</label>
-             <input  name="validity" class="form-check-input" type="checkbox" role="switch" id="validity" value="1" {{ old('validity', $categoria->validity) ? 'checked' : '' }}>
-                @error('validity')
-                <small class="text-danger">{{'*'.$message}}</small>
-                @enderror
-        </div>
-        </div>
         <div class="col-12 text-center">
             <button type="submit" class="btn btn-success ">Actualizar</button>
             <button type="reset" class="btn btn-secondary">Reiniciar</button>

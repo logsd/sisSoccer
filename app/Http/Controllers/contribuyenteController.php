@@ -45,7 +45,6 @@ class contribuyenteController extends Controller
     
             // Manejar el valor del checkbox 'current'
             $validatedData['a_cont'] = $request->has('a_cont') ? 1 : 0;
-            $validatedData['vg'] = $request->has('vg') ? 1 : 0;
     
             // Llenar el modelo con los datos validados
             $contribuyente->fill($validatedData);
@@ -103,7 +102,7 @@ class contribuyenteController extends Controller
             $contribuyente->update([
                 'state' => 0
             ]);
-            $message = 'Contribuyente eliminado';
+            $message = 'Contribuyente desabilitado';
         }else{
             $contribuyente->update([
                 'state' => 1
@@ -111,5 +110,16 @@ class contribuyenteController extends Controller
             $message = 'Contribuyente restaurado';
         }
         return redirect()->route('contribuyentes.index')->with('success', $message);
+    }
+
+    public function forceDelete($id)
+    {
+        $contribuyente = TaxpayerType::find($id);
+        if ($contribuyente) {
+            $contribuyente->delete();
+            return redirect()->route('contribuyentes.index')->with('success', 'Contribuyente eliminado definitivamente');
+        }
+
+        return redirect()->route('contribuyentes.index')->with('error', 'El Contribuyente no fue encontrado');
     }
 }

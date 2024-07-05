@@ -28,4 +28,6 @@ class Employee extends Model
     public function genTelephones(){
         return $this->hasMany(GenTelephone::class);
     }
+
+    protected $guarded =['id'];
 }

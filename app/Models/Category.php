@@ -21,5 +21,5 @@ class Category extends Model
         return $this->hasMany(Category::class);
     }
 
-    protected $fillable = ['name','description','validity', 'state'];
+    protected $fillable = ['name','description', 'state'];
 }

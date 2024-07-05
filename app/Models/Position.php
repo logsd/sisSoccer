@@ -13,5 +13,5 @@ class Position extends Model
         return $this->hasMany(Employee::class);
     }
 
-    protected $fillable = ['name','f_start','f_end','observation','vg', 'state'];
+    protected $fillable = ['name','f_start','f_end','observation', 'state'];
 }

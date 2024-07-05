@@ -9,6 +9,15 @@ class LeaguePhase extends Model
 {
     use HasFactory;
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($fase) {
+            $fase->leagueGroups()->delete();
+        });
+    }
+
     public function leagueGroups(){
         return $this->hasMany(LeagueGroups::class);
     }
@@ -20,4 +29,6 @@ class LeaguePhase extends Model
     public function championship(){
         return $this->belongsTo(Championship::class);
     }
+
+    protected $guarded = ['id'];
 }

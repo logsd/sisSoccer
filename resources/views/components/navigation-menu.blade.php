@@ -107,6 +107,9 @@
                                     <a class="nav-link" href="{{route('campeonatos.create')}}">
                                         Crear
                                     </a>
+                                    <a class="nav-link" href="{{route('fases.index')}}">
+                                        Crear Fase
+                                    </a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">

@@ -25,8 +25,7 @@ class StoreCategoriaRequest extends FormRequest
         $categoriaId = $this->route('categoria') ? $this->route('categoria')->id : null;
 
         return ['name' =>'required|max:60|unique:categories,name,' .  $categoriaId,
-        'description' => 'nullable',
-        'validity' => 'nullable|boolean'
+        'description' => 'nullable'
          ];
     }
 }

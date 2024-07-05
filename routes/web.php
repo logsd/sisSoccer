@@ -17,6 +17,7 @@ use App\Http\Controllers\equipoController;
 use App\Http\Controllers\periodoController;
 use App\Http\Controllers\empleadoController;
 use App\Http\Controllers\genTelefonoController;
+use App\Http\Controllers\faseController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -45,6 +46,7 @@ Route::resources([
     'periodos' => periodoController::class,
     'empleados' => empleadoController::class,
     'genTelefonos' => genTelefonoController::class,
+    'fases' => faseController::class,
 ]
 
 );
@@ -81,6 +83,8 @@ Route::delete('/periodos/force-delete/{id}', [periodoController::class, 'forceDe
 ])->name('periodos.forceDelete');
 Route::delete('/genTelefonos/force-delete/{id}', [genTelefonoController::class, 'forceDelete'
 ])->name('genTelefonos.forceDelete');
+Route::delete('/fases/force-delete/{id}', [faseController::class, 'forceDelete'
+])->name('fases.forceDelete');
 
 Route::get('/login', function () {
     return view('auth.login');

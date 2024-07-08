@@ -79,10 +79,10 @@ class sancionController extends Controller
             $sancion->update($validatedData);
 
             DB::commit();
-            return redirect()->route('sanciones.index')->with('success', 'Sancion actualizado correctamente!');
+            return redirect()->route('sancion.index')->with('success', 'Sancion actualizado correctamente!');
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->route('sanciones.index')->with('error', 'Hubo un problema al actualizar la Sancion.');
+            return redirect()->route('sancion.index')->with('error', 'Hubo un problema al actualizar la Sancion.');
         }
     }
 
@@ -106,7 +106,7 @@ class sancionController extends Controller
             ]);
             $message = 'Sancion restaurado';
         }
-        return redirect()->route('sanciones.index')->with('success', $message);
+        return redirect()->route('sancion.index')->with('success', $message);
     }
 
     public function forceDelete($id)
@@ -114,10 +114,10 @@ class sancionController extends Controller
         $sancion = TypeSanction::find($id);
         if ($sancion) {
             $sancion->delete();
-            return redirect()->route('sanciones.index')->with('success', 'Sancion eliminado definitivamente');
+            return redirect()->route('sancion.index')->with('success', 'Sancion eliminado definitivamente');
         }
 
-        return redirect()->route('sanciones.index')->with('error', 'La Sancion no fue encontrada');
+        return redirect()->route('sancion.index')->with('error', 'La Sancion no fue encontrada');
     }
 
 }

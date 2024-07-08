@@ -23,12 +23,12 @@
                         <h1 class="mt-4">Editar Tipos de Sanciones</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item "><a href="{{route('sanciones.index')}}">Tipos de Sanciones</a> </li>
+                            <li class="breadcrumb-item "><a href="{{route('sancion.index')}}">Tipos de Sanciones</a> </li>
                             <li class="breadcrumb-item active">Editar Sancion</li>
                         </ol>
 
                         <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
-<form action="{{route('tparametros.update',['sancion'=>$sancion])}}" method="post">
+<form action="{{route('sancion.update',['sancion'=>$sancion])}}" method="post">
     @method('PATCH')
     @csrf
     <div class="row g-3">

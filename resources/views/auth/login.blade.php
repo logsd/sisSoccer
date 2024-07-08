@@ -7,7 +7,7 @@
         <meta name="description" content="Inicio de sesión del sistema " />
         <meta name="author" content="Leonardo" />
         <title>Login - SB Admin</title>
-        <link href="{{ asset('css/template.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/login.css') }}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">

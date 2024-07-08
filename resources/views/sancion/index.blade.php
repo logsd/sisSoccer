@@ -35,7 +35,7 @@ Toast.fire({
                             <li class="breadcrumb-item active">Sancion</li>
                         </ol>
                         <div class="mb-4">
-                        <a href="{{route('sanciones.create')}}">
+                        <a href="{{route('sancion.create')}}">
                             <button type="button" class="btn btn-primary">Añadir nueva Sancion</button>
                         </a>
                         </div>
@@ -64,19 +64,19 @@ Toast.fire({
                                                     {{$sancion->description}}
                                                 </td>
                                                 <td>
-                            @if ($sancion->state == 1)
-                            <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
-                            @else
-                            <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
+                                                    @if ($sancion->state == 1)
+                                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                                                    @else
+                                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
 
-                            @endif
-                        </td>
-                        <td>
-              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <form action="{{route('sanciones.edit',['sancion'=>$sancion])}}" method="get">
+                                                    @endif
+                                                </td>
+                                      <td>
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <form action="{{route('sancion.edit',['sancion'=>$sancion])}}" method="get">
                   <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
-                @if ($tparametro->state == 1)
+                @if ($sancion->state == 1)
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$sancion->id}}">Desabilitar</button>
                 @else
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$sancion->id}}">Restaurar</button>

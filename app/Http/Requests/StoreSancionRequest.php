@@ -29,6 +29,7 @@ class StoreSancionRequest extends FormRequest
 
         return [
             'name' => 'required|unique:type_sanctions,name,' . $sancionId,
+            'description' => 'nullable',
         ];
     }
 }

@@ -17,7 +17,7 @@
                         <h1 class="mt-4">Crear Sancion</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item "><a href="{{route('sanciones.index')}}">Tipos de Sanciones</a> </li>
+                            <li class="breadcrumb-item "><a href="{{route('sancion.index')}}">Tipos de Sanciones</a> </li>
                             <li class="breadcrumb-item active">Crear Sanciones</li>
                         </ol>
 <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">

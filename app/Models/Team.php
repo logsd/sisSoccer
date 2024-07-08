@@ -13,6 +13,10 @@ class Team extends Model
         return $this->hasMany(Player::class);
     }
 
+    public function calendars(){
+        return $this->hasMany(Calendar::class);
+    }
+
     public function periods(){
         return $this->hasMany(Period::class);
     }

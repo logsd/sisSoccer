@@ -77,8 +77,8 @@
                             <div class="row">
 
                                 <div class="col-md-12 mb-2">
-                                    <label class="form-label" for="club_id">Equipo:</label>
-                                    <select data-size="3" title="Seleccione un Club" data-live-search="true" name="team_id" id="team_id" class="form-control selectpicker show-tick">
+                                    <label class="form-label" for="team_id">Equipo:</label>
+                                    <select data-size="3" title="Seleccione un Equipo" data-live-search="true" name="team_id" id="team_id" class="form-control selectpicker show-tick">
                                         @foreach ($equipos as $item)
                                         <option value="{{$item->id}}" {{old('team_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
                                         @endforeach

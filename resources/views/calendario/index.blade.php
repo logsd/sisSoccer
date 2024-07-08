@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Equipo')
+@section('title', 'Fases Campeonatos')
 
 @push('css')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -12,7 +12,7 @@
 <script>
     let message = "{{ session('success') ?? session('error') }}";
     let icon = "{{ session('success') ? 'success' : 'error' }}";
-    
+
     Swal.fire({
         toast: true,
         position: "top-end",
@@ -29,69 +29,74 @@
 </script>
 @endif
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Equipos</h1>
+    <h1 class="mt-4">Candelario</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-        <li class="breadcrumb-item active">Equipos</li>
+        <li class="breadcrumb-item active">Calendario</li>
     </ol>
     <div class="mb-4">
-        <a href="{{route('equipos.create')}}">
-            <button type="button" class="btn btn-primary">Añadir nuevo Equipo</button>
+        <a href="{{route('calendarios.create')}}">
+            <button type="button" class="btn btn-primary">Añadir nueva Partido</button>
         </a>
     </div>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
-            Tabla Equipos
+            Tabla Calendario
         </div>
         <div class="card-body">
             <table id="datatablesSimple" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Equipo</th>
-                        <th>Club</th>
-                        <th>Jugadores</th>
-                        <th>Categoria</th>
-                        <th>Campeonato</th>
+                        <th>Estadio</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Local</th>
+                        <th>Visitante</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($equipos as $item )
+                    @foreach ($calendarios as $item )
                     <tr>
                         <td>
-                            {{$item->name}}
+                        <p class="fw-semibold mb-1"> {{$item->stadium}} </p>
                         </td>
                         <td>
-                            <p class="fw-semibold mb-1"> {{$item->club->name}}</p>
+                            <p class="fw-semibold mb-1"> {{\Carbon\Carbon::parse($item->date)->format('d-m-Y')}}</p>
                         </td>
                         <td>
-                            {{$item->player_number}}
+                            <p class="fw-semibold mb-1"> {{\Carbon\Carbon::parse($item->time)->format('H:i') . ' H'}}</p>
                         </td>
                         <td>
-                            <p class="fw-semibold mb-1"> {{$item->category->name}}</p>
+                            {{$item->teamHome->name}}
                         </td>
                         <td>
-                            @if ($item->championship)
-                            <span>{{ $item->championship->name }}</span>
+                            {{$item->teamAway->name}}
+                        </td>
+                        <td>
+                            @if ($item->status == 'scheduled')
+                            <span class="fw-bolder rounded p-1 bg-secondary text-white d-block mb-1">Programado</span>
+                            @elseif ($item->status == 'in_progress')
+                            <span class="fw-bolder rounded p-1 bg-success text-white d-block mb-1">En progreso</span>
+                            @elseif ($item->status == 'completed')
+                            <span class="fw-bolder rounded p-1 bg-primary text-white d-block mb-1">Completado</span>
                             @else
-                            <span class="fw-bolder rounded p-1 bg-danger text-white">No tiene</span>
+                            <span class="fw-bolder rounded p-1 bg-danger text-white d-block mb-1">Cancelado</span>
                             @endif
-                        </td>
-                        <td>
                             @if ($item->state == 1)
-                            <span class="fw-bolder rounded p-1 bg-success text-white">Activo</span>
+                            <span class="fw-bolder rounded p-1 bg-success text-white d-block">Activo</span>
                             @else
-                            <span class="fw-bolder rounded p-1 bg-danger text-white">Inactivo</span>
+                            <span class="fw-bolder rounded p-1 bg-danger text-white d-block">Inactivo</span>
                             @endif
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <form action="{{route('equipos.edit',['equipo'=>$item])}}" method="get">
+                                <form action="{{route('calendarios.edit',['calendario'=>$item])}}" method="get">
                                     <button type="submit" class="btn btn-warning">Editar</button>
                                 </form>
-                                <form action="{{route('equipos.show',['equipo'=>$item])}}">
+                                <form action="{{route('calendarios.show',['calendario'=>$item])}}">
                                     <button type="submit" class="btn btn-secondary ">Ver</button>
                                 </form>
                                 @if ($item->state == 1)
@@ -99,11 +104,8 @@
                                 @else
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}">Restaurar</button>
                                 @endif
-                                <form action="{{route('equipos.forceDelete',[$item->id])}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                </form>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$item->id}}">Eliminar</button>
+
                             </div>
                         </td>
                     </tr>
@@ -116,14 +118,36 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {{$item->state ==1 ? 'Seguro que quieres eliminar este Equipo?' : 'Seguro que quieres restaurar este Equipo?'}}
+                                    {{$item->state ==1 ? 'Seguro que quieres desabilitar este Partido?' : 'Seguro que quieres restaurar este Partido?'}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    <form action="{{route('equipos.destroy',['equipo'=>$item->id])}}" method="post">
+                                    <form action="{{route('calendarios.destroy',['calendario'=>$item->id])}}" method="post">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Confirmar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Eliminar-->
+                    <div class="modal fade" id="deleteModal-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Seguro que quieres eliminar este Partido?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <form action="{{route('calendarios.forceDelete',[$item->id])}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
                                     </form>
                                 </div>
                             </div>

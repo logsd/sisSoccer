@@ -134,6 +134,10 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-diagram-project"></i></div>
                                 Etapas
                             </a>
+                            <a class="nav-link" href="{{route('calendarios.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-calendar"></i></div>
+                                Calendario
+                            </a>
                             <a class="nav-link" href="{{route('empleados.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
                                 Empleados

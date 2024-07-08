@@ -65,7 +65,11 @@
                             <p class="fw-semibold mb-1"> {{$item->year}}</p>
                         </td>
                         <td>
-                            {{$item->category->name}}
+                            @if ($item->category)
+                            <span>{{ $item->category->name }}</span>
+                            @else
+                            <span class="fw-bolder rounded p-1 bg-danger text-white">No tiene</span>
+                            @endif
                         </td>
                         <td>
                             @if ($item->state == 1)

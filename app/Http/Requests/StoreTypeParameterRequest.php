@@ -3,8 +3,13 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use App\Models\TypeParameter;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
-class StoreCategoriaRequest extends FormRequest
+
+class StoreTypeParameterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,11 +26,10 @@ class StoreCategoriaRequest extends FormRequest
      */
     public function rules(): array
     {
+        $tparametroId = $this->route('tparametro') ? $this->route('tparametro')->id : null;
 
-        $categoriaId = $this->route('categoria') ? $this->route('categoria')->id : null;
-
-        return ['name' =>'required|max:60|unique:categories,name,' .  $categoriaId,
-        'description' => 'nullable'
-         ];
+        return [
+            'name' => 'required|unique:type_parameters,name,' . $tparametroId,
+        ];
     }
 }

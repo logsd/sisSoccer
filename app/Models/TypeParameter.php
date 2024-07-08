@@ -12,4 +12,7 @@ class TypeParameter extends Model
     public function generalParameters(){
         return $this->hasMany(GeneralParameter::class);
     }
+    protected $guarded = [
+        'id'
+    ];
 }

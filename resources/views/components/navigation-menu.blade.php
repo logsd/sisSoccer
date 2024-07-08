@@ -41,7 +41,7 @@
                                             <a class="nav-link" href="register.html">Register</a>
                                             <a class="nav-link" href="password.html">Forgot Password</a>
                                         </nav>
-                                    </div> 
+                                    </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                         Error
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -112,6 +112,9 @@
                                     <a class="nav-link" href="{{route('campeonatos.create')}}">
                                         Crear
                                     </a>
+                                    <a class="nav-link" href="{{route('fases.index')}}">
+                                        Crear Fase
+                                    </a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">
@@ -131,6 +134,10 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-diagram-project"></i></div>
                                 Etapas
                             </a>
+                            <a class="nav-link" href="{{route('calendarios.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-calendar"></i></div>
+                                Calendario
+                            </a>
                             <a class="nav-link" href="{{route('empleados.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
                                 Empleados
@@ -144,10 +151,20 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
                             </a>
-                            <a class="nav-link" href="{{route('sanciones.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-ban"></i></div>
-                                Sanciones
+
+                            <a class="nav-link" href="{{route('comisiondeligas.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Comision de Ligas
                             </a>
+                            <a class="nav-link"  href="{{route('cargooficinas.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Cargos Empleados
+                            </a>
+                            <a class="nav-link" href="{{route('tparametros.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                               Tipo de Parametros
+                            </a>
+
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

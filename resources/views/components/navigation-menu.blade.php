@@ -144,6 +144,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
                             </a>
+                            <a class="nav-link" href="{{route('sanciones.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-ban"></i></div>
+                                Sanciones
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

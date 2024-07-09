@@ -1,6 +1,19 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<style>
+
+    .sb-topnav{
+        background-color: #1A320F;
+        z-index: 5;
+        position: fixed;
+    }
+
+    img{
+        width: 80%;
+    }
+</style>
+
+<nav class="sb-topnav navbar navbar-expand navbar-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{{ route('panel') }}">Soccer Manager</a>
+            <a class="navbar-brand ps-3" href="{{ route('panel') }}"><img src="{{ asset('img/logo2.jpeg') }}" alt="Descripción de la imagen"></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->

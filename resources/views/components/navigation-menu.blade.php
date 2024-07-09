@@ -1,5 +1,30 @@
+<style>
+    #layoutSidenav_nav{
+        background-color: #4EA93B;
+        color: #1A320F;
+    }
+
+    .nav-link{
+        color: white
+    }
+
+    .nav-link:hover{
+        color:#1A320F;
+    }
+
+    .logo img{
+        width: 100%;
+    }
+
+    a.active {
+        background-color: #1A320F;
+        color: white;
+    }
+
+</style>
+
 <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion " id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Inicio</div>
@@ -11,51 +36,116 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Panel
                             </a>
-                            
-                      <!--      <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
+
+
+                            <div class="sb-sidenav-menu-heading">Modulos</div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-futbol"></i></div>
+                                Campeonatos
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Calendario</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Campeonatos</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Categorias</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Equipos - Campeonatos</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Jugadores - Campeonatos</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Partidos</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Vocales - Campeonatos</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                                Consultas
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Campeonatos</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">
+                                        Equipos en Campeonatos
                                     </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
-                                        </nav>
-                                    </div>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="401.html">401 Page</a>
-                                            <a class="nav-link" href="404.html">404 Page</a>
-                                            <a class="nav-link" href="500.html">500 Page</a>
-                                        </nav>
-                                    </div>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Jugadores en Campeonatos</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Tabla Goleadores</a>
                                 </nav>
-                            </div-->
-                            <div class="sb-sidenav-menu-heading">Modulos</div>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                                Clubes
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Club</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Directivos</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Directivos Club</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Equipos</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Jugadores</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-house-laptop"></i></div>
+                                Empresa
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Cargos</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Comisiones</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Directivos Liga</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Empresas y Oficinas</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Listado Reportes</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Periodos</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Vocales</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts5" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-futbol"></i></div>
+                                Equipos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts5" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Ver</a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">
+                                        Crear
+                                    </a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts6" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-futbol"></i></div>
+                                Jugadores y Pestamos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts6" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Cobrar Multas</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Levantar Sancciones</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Multas Generales</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Sanciones Generales</a>
+                                </nav>
+                            </div>
+
+                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts6" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-futbol"></i></div>
+                                Capital Humano
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts6" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Empleado</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Cargos Empleados</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Multas Generales</a>
+                                    <a class="nav-link" href="{{route('equipos.index')}}">Sanciones Generales</a>
+                                </nav>
+                            </div>
                             <a class="nav-link" href="{{route('ligas.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-trophy"></i></div>
                                 Ligas
@@ -142,7 +232,7 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-phone"></i></div>
                                 Telefonos
                             </a>
-                      
+
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
@@ -163,9 +253,6 @@
 
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Bienvenido:</div>
-                        Start Bootstrap
-                    </div>
+
                 </nav>
             </div>

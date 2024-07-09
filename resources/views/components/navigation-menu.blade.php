@@ -164,6 +164,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                Tipo de Parametros
                             </a>
+                            <a class="nav-link" href="{{route('sancion.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-ban"></i></div>
+                                Sanciones
+                            </a>
 
                         </div>
                     </div>

@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    height: 100vh;
+}
+
+.imagen {
+    flex: 1;
+    background-color: #0e290e;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario {
+    flex: 1;
+    background-color: #4EA93B;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-box {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.input-container {
+    display: flex; /* Activar Flexbox para el contenedor */
+    width: 100%; /* Ajustar el ancho del contenedor */
+    max-width: 300px; /* Ancho máximo para dispositivos más pequeños */
+    position: relative; /* Posicionar el contenedor de forma relativa */
+  }
+  
+  .input-field {
+    /* Eliminar estilos de borde, relleno y fondo */
+    border: none;
+    padding: 10px; /* Acolchado dentro del campo de entrada */
+    background-color: transparent; /* Fondo transparente para el campo de entrada */
+    /* Posicionar el campo de entrada de forma absoluta */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Establecer el ancho del campo de entrada */
+    width: 100%;
+    /* Eliminar el contorno por defecto al enfocarse */
+    outline: none;
+  }
+  
+  .input-container::before {
+    /* Mismo estilo que antes para el ícono */
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    /*background-color: #333;  Color de fondo del ícono */
+    color: #fff; /* Color del ícono */
+    line-height: 20px; /* Alinear el texto verticalmente dentro del ícono */
+    text-align: center; /* Centrar el texto horizontalmente dentro del ícono */
+    font-size: 12px; /* Tamaño de fuente para el texto dentro del ícono */
+    margin-right: 10px; /* Espacio a la derecha del ícono */
+    border-radius: 50%; /* Redondear el ícono en forma de círculo */
+  }
+  
+  .input-container::after {
+    /* Eliminar el borde superior */
+    display: none; /* Ocultar el borde superior */
+    content: ""; /* Contenido vacío para el pseudoelemento */
+    display: block; /* Convertir el pseudoelemento en un bloque */
+    width: 150%; /* Ancho del borde inferior */
+    height: 2px; /* Altura del borde inferior */
+    position: absolute; /* Posicionar el borde inferior de forma absoluta */
+    bottom: 0; /* Posicionar el borde inferior en la parte inferior */
+    left: 0; /* Posicionar el borde inferior en la izquierda */
+    background-color: #ccc; /* Color del borde inferior */
+  }
+  

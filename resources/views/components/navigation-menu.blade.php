@@ -224,6 +224,10 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-diagram-project"></i></div>
                                 Etapas
                             </a>
+                            <a class="nav-link" href="{{route('calendarios.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-calendar"></i></div>
+                                Calendario
+                            </a>
                             <a class="nav-link" href="{{route('empleados.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
                                 Empleados
@@ -249,6 +253,10 @@
                             <a class="nav-link" href="{{route('tparametros.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                Tipo de Parametros
+                            </a>
+                            <a class="nav-link" href="{{route('sancion.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-ban"></i></div>
+                                Sanciones
                             </a>
 
                         </div>

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('birthday');
             $table->bigInteger('position');
             $table->string('direction');
-            $table->tinyInteger('eneabled')->default(1);
+            $table->string('img_url');
             $table->tinyInteger('own')->nullable();
             $table->tinyInteger('booster')->nullable();
             $table->tinyInteger('youth')->nullable();
@@ -30,9 +30,9 @@ return new class extends Migration
             $table->date('f_from');
             $table->date('f_until')->nullable();
             $table->foreignId('province_id')->nullable()->constrained('provinces')->onDelete('set null');
+            $table->foreignId('team_id')->nullable()->constrained('teams')->onDelete('set null');
             $table->foreignId('league_id')->nullable()->constrained('leagues')->onDelete('set null');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
-            $table->foreignId('loan_id')->nullable()->constrained('loans')->onDelete('set null');
             $table->timestamps();
         });
     }

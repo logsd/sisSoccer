@@ -4,22 +4,30 @@
 
 @push('css')
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
 
 <style>
+    *{
+        font-family: "Poppins", sans-serif;
+        font-style: italic;
+    }
     .text-center {
         text-align: center;
      }
 
-     .contenedor {
+    .contenedor {
     display: flex;
+    flex-wrap: wrap;
     justify-content: 5px space-between; /* Espacio entre las tarjetas */
-    gap: 20px;
+    gap: 35px;
     margin: 0 auto;
     max-width: 1200px; /* Ajusta el ancho máximo según sea necesario */
     padding: 20px;
 }
 
-     .tarjeta {
+.tarjeta {
+    flex: 1 1 calc(50% - 25px) ;
     width: 500px;
     height: 250px;
     border: 3px solid #4EA93B;
@@ -32,32 +40,35 @@
     flex-direction: row; /* Dirección en fila */
     align-items: center; /* Alinea verticalmente en el centro */
     justify-content: space-between; /* Espacio entre los elementos */
-    padding: 30px;
+    padding: 10px 30px;
 
 }
 
 .imagen {
     height: 90%; /* Asegura que la imagen tome toda la altura del contenedor */
     width: 60%; /* Ajusta el ancho según sea necesario */
-    margin-top: 20px;
-    padding: auto;
+    margin-top: -20px;
     overflow: hidden;
+    position: relative;
 }
 
 .imagen img {
-    width: 75%; /* Ajusta el ancho de la imagen */
-    height: 60%;
+    width:100%; /* Ajusta el ancho de la imagen */
+    height: 100%;
     object-fit: cover;
+    position: absolute;
 }
 
 .contenido {
+    text-align: center;
     width: 55%; /* Ajusta el ancho del contenido */
     box-sizing: border-box; /* Incluye el padding en el ancho y alto del contenedor */
 }
 
 h1 {
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    font-weight: bold;
 }
 
 a {
@@ -66,7 +77,7 @@ a {
     display: block; /* Asegura que el enlace se muestre como bloque */
 }
 
-        
+
 </style>
 @endpush
 
@@ -81,7 +92,7 @@ a {
                         </div>
                             <br>
                         <div class="contenido">
-                            <h1>Campeonatos</h1>
+                            <h1> Campeonatos</h1>
                             <a href="#">Campeonato</a>
                             <br>
                             <a href="{{route('categorias.index')}}">Categoria</a>
@@ -101,7 +112,7 @@ a {
                             <a href="{{route('categorias.index')}}">Jugadores en Campeonatos</a>
                          </div>
                     </div>
-                    
+
                     <div class="tarjeta">
                         <div class="imagen">
                              <img src="{{ asset('img/club.png') }}" alt="Descripción de la imagen">
@@ -116,9 +127,7 @@ a {
                             <a href="{{route('categorias.index')}}">Jugadores</a>
                          </div>
                     </div>
-        </div>
 
-        <div class="contenedor"> 
                     <div class="tarjeta">
                         <div class="imagen">
                              <img src="{{ asset('img/jugadores.png') }}" alt="Descripción de la imagen">
@@ -150,7 +159,8 @@ a {
                             <a href="#">Lista de Calendarios</a>
                          </div>
                     </div>
-        </div>                        
+        </div>
+
 @endsection
 
 @push('js')

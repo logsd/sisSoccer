@@ -259,7 +259,7 @@
                                 Carnets
                             </a>
 
-                            <a class="nav-link" href="{{route('genParametros.index')}}">
+                            <a class="nav-link" href="{{route('gparametros.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                                 Parametros Generales
                             </a>

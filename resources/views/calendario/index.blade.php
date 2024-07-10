@@ -36,7 +36,7 @@
     </ol>
     <div class="mb-4">
         <a href="{{route('calendarios.create')}}">
-            <button type="button" class="btn btn-primary">Añadir nueva Partido</button>
+            <button type="button" class="btn btn-primary">Añadir nuevo Partido</button>
         </a>
     </div>
     <div class="card mb-4">

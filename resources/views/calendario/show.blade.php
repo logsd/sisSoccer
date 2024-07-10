@@ -26,8 +26,10 @@
             <div class="card-body">
                 @if ($calendario->championship)
                 <h5 class="card-title mb-2 text-body-secondary">Campeonato: {{ $calendario->championship->name }}</h5>
-                @else
+                @elseif($calendario->leaguePhase)
                 <h5 class="card-title mb-2 text-body-secondary">Campeonato: {{$calendario->leaguePhase->championship->name}}</h5>
+                @else
+                <h5 class="card-title mb-2 text-body-secondary">Partido Independiente</h5>
                 @endif
                 <div class="row mt-3">
                     <div class="col-md-5">
@@ -48,7 +50,11 @@
                     <strong>Hora:</strong> {{\Carbon\Carbon::parse($calendario->time)->format('H:i') . ' H'}}<br>
 
                     <strong>Estado:</strong> {{ $calendario->status }}<br>
+                    @if ($calendario->leaguePhase)
                     <strong>Fase:</strong> {{ $calendario->leaguePhase->name}}<br>
+                    @else
+                    <strong>Partido independiente</strong><br>
+                    @endif
                     <a href="{{ route('calendarios.index') }}" class="btn btn-primary mt-2">Volver</a>
                 </div>
             </div>

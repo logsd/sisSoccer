@@ -23,6 +23,8 @@ use App\Http\Controllers\genTelefonoController;
 use App\Http\Controllers\faseController;
 use App\Http\Controllers\calendarioController;
 use App\Http\Controllers\sancionController;
+use App\Http\Controllers\carnetController;
+use App\Http\Controllers\parametroGeneralController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -61,6 +63,8 @@ Route::resources([
     'fases' => faseController::class,
     'calendarios' => calendarioController::class,
     'sancion' => sancionController::class,
+    'carnets' => carnetController::class,
+    'genParametros' => parametroGeneralController::class,
 ]
 
 );
@@ -111,6 +115,10 @@ Route::delete('/calendarios/force-delete/{id}', [calendarioController::class, 'f
 ])->name('calendarios.forceDelete');
 Route::delete('/sanciones/force-delete/{id}', [sancionController::class, 'forceDelete'
 ])->name('sanciones.forceDelete');
+Route::delete('/carnets/force-delete/{id}', [carnetController::class, 'forceDelete'
+])->name('carnets.forceDelete');
+Route::delete('/genParametros/force-delete/{id}', [parametroGeneralController::class, 'forceDelete'
+])->name('genParametros.forceDelete');
 
 Route::get('/login', function () {
     return view('auth.login');

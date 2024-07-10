@@ -16,7 +16,7 @@ class GeneralParameter extends Model
     public function stateParameter(){
         return $this->belongsTo(StateParameter::class);
     }
-
+    
     public function phoneOperator(){
         return $this->belongsTo(PhoneOperator::class);
     }
@@ -29,5 +29,6 @@ class GeneralParameter extends Model
     }
     public function typeSanction(){
         return $this->belongsTo(TypeSanction::class);
-}
+    }
+    protected $guarded = ['id'];
 }

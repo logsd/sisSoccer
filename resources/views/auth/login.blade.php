@@ -1,69 +1,151 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Inicio de sesión del sistema " />
-        <meta name="author" content="Leonardo" />
-        <title>Login - SB Admin</title>
-        <link href="{{ asset('css/login.css') }}" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="bg-primary">
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <div class="card-body">
-                                        <form>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Email address</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
-                                                <label for="inputPassword">Password</label>
-                                            </div>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                                <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="index.html">Login</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+
+<head>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+    <STYle>
+        body {
+    margin: 0;
+    font-family: ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    flex-direction: column;
+}
+
+
+.left {
+    background-color: #1A320F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    flex: 1 ;
+}
+
+
+.right {
+    background-color: #4caf50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 5;
+}
+
+form {
+    width: 100%;
+    max-width:500px;
+}
+
+form h2 {
+    margin-bottom: 50px;
+    color: white;
+    text-align: center;
+}
+
+.usuario img{
+    width: 25%;
+    margin: 0 auto;
+    display: block;
+    margin-top:-20%;
+    margin-bottom: 10%;
+
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border-bottom: 1px solid #A8A6A7;
+    border-radius: 5px 5px 0 0;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+
+}
+
+.input-group input::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent; /* Asegúrate de que el fondo no cambie */
+}
+
+
+
+button {
+            width: 30%;
+            padding: 10px;
+            background-color: white;
+            border: none;
+            border-radius: 17PX;
+            color: #4EA93B;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+            margin-bottom: -50px;
+        }
+
+
+button:hover {
+    background-color: #2e7d32;
+}
+
+.login{
+    margin-top: 50px
+}
+
+@media (min-width: 600px) {
+    .container {
+        flex-direction: row;
+    }
+}
+
+    </STYle>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="logo">
+            <img src="{{ asset('img/logo2.jpeg') }}" alt="Descripción de la imagen">
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="{{ asset('js/scripts.js') }}"></script>
-    </body>
+        <div class="right">
+            <form >
+                <div class="usuario">
+                <img src="{{ asset('img/image.png') }}" alt="Descripción de la imagen"></div>
+                <h2>Iniciar Sesión</h2>
+                <div class="input-group">
+                    <input type="text" id="username" name="username" required placeholder="Username">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" required placeholder="Password">
+                </div>
+                <button type="submit"  class="login"> <strong> LOGIN</strong></button>
+            </form>
+        </div>
+    </div>
+</body>
 </html>

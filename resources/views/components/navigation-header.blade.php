@@ -9,6 +9,12 @@
     img{
         width: 80%;
     }
+
+    .date-display{
+        color: white;
+        margin-left:55%;
+        margin-right: 2%
+    }
 </style>
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark">
@@ -16,13 +22,8 @@
             <a class="navbar-brand ps-3" href="{{ route('panel') }}"><img src="{{ asset('img/logo2.jpeg') }}" alt="Descripción de la imagen"></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Buscar..." aria-label="Buscar ..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
+            <!-- Navbar HORARIO-->
+            <div class="date-display" id="currentDateDisplay"></div> <!-- Mostrar la fecha aquí -->
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
@@ -36,3 +37,20 @@
                 </li>
             </ul>
         </nav>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const dateDisplay = document.getElementById('currentDateDisplay');
+            const today = new Date();
+
+            const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+            const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+            const dayName = days[today.getDay()];
+            const day = today.getDate();
+            const monthName = months[today.getMonth()];
+            const year = today.getFullYear();
+
+            dateDisplay.textContent = `${dayName} ${day} de ${monthName} de ${year}`;
+        });
+    </script>

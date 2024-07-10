@@ -35,7 +35,7 @@ Toast.fire({
                             <li class="breadcrumb-item active">Parametro General</li>
                         </ol>
                         <div class="mb-4">
-                        <a href="{{route('genParametros.create')}}">
+                        <a href="{{route('gparametros.create')}}">
                             <button type="button" class="btn btn-primary">Añadir nuevo Parametro General</button>
                         </a>
                         </div>
@@ -59,28 +59,28 @@ Toast.fire({
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($genParametros as $genParametro )
+                                        @foreach ($gparametros as $gparametro )
                                             <tr>
                                                 <td>
-                                                    {{$genParametro->stateParameter->name?? ''}}
+                                                    {{$gparametro->stateParameter->name?? ''}}
                                                 </td>
                                                 <td>
-                                                    {{$genParametro->civilStatus->name?? ''}}
+                                                    {{$gparametro->civilStatus->name?? ''}}
                                                 </td>
                                                 <td>
-                                                    {{$genParametro->phoneOperator->name?? ''}}
+                                                    {{$gparametro->phoneOperator->name?? ''}}
                                                 </td>
                                                 <td>
-                                                    {{$genParametro->taxpayerType->name?? ''}}
+                                                    {{$gparametro->taxpayerType->name?? ''}}
                                                 </td>
                                                 <td>
-                                                    {{$genParametro->typeParameter->name?? ''}}
+                                                    {{$gparametro->typeParameter->name?? ''}}
                                                 </td>
                                                 <td>
-                                                    {{$genParametro->typeSanction->name?? ''}}
+                                                    {{$gparametro->typeSanction->name?? ''}}
                                                 </td>
                                                 <td>
-                                                    @if ($genParametro->state == 1)
+                                                    @if ($carnet->state == 1)
                                                     <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
                                                     @else
                                                     <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
@@ -89,15 +89,15 @@ Toast.fire({
                                                 </td>
                                                 <td>
                                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                    <form action="{{route('genParametros.edit',['genParametro'=>$genParametro])}}" method="get">
+                                                    <form action="{{route('carnets.edit',['carnet'=>$carnet])}}" method="get">
                                                     <button type="submit" class="btn btn-warning">Editar</button>
                                                     </form>
-                                                    @if ($genParametro->state == 1)
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genParametro->id}}">Desabilitar</button>
+                                                    @if ($carnet->state == 1)
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$carnet->id}}">Desabilitar</button>
                                                     @else
-                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genParametro->id}}">Restaurar</button>
+                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$carnet->id}}">Restaurar</button>
                                                     @endif
-                                                    <form action="{{route('genParametros.forceDelete',[$genParametro->id])}}" method="POST">
+                                                    <form action="{{route('carnets.forceDelete',[$carnet->id])}}" method="POST">
                                                      @csrf
                                                          @method('DELETE')
                                                      <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -107,7 +107,7 @@ Toast.fire({
                                                 </td>
                                             </tr>
 <!-- Modal -->
-<div class="modal fade" id="confirmModal-{{$genParametro->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmModal-{{$carnet->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -115,11 +115,11 @@ Toast.fire({
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$genParametro->state ==1 ? 'Seguro que quieres eliminar este Parametro General?' : 'Seguro que quieres restaurar este Parametro General?'}}
+        {{$carnet->state ==1 ? 'Seguro que quieres eliminar este Carnet?' : 'Seguro que quieres restaurar este Carnet?'}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <form action="{{route('genParametros.destroy',['genParametro'=>$genParametro->id])}}" method="post">
+        <form action="{{route('carnets.destroy',['carnet'=>$carnet->id])}}" method="post">
             @method('DELETE')
             @csrf
         <button type="submit" class="btn btn-danger">Confirmar</button>

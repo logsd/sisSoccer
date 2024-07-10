@@ -44,7 +44,7 @@ class sancionController extends Controller
             //return $e;
             DB::rollBack();
         }
-        return redirect()->route('sanciones.index')->with('success', 'Sancion registrado!');
+        return redirect()->route('sancion.index')->with('success', 'Sancion registrado!');
     
     }
 

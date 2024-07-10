@@ -21,7 +21,7 @@
                             <li class="breadcrumb-item active">Crear Sanciones</li>
                         </ol>
 <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
-<form action="{{route('sanciones.store')}}" method="post">
+<form action="{{route('sancion.store')}}" method="post">
     @csrf
     <div class="row g-3">
 

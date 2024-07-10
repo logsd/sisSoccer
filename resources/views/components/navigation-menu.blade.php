@@ -168,6 +168,15 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-ban"></i></div>
                                 Sanciones
                             </a>
+                            <a class="nav-link" href="{{route('carnets.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-id-card"></i></div>
+                                Carnets
+                            </a>
+
+                            <a class="nav-link" href="{{route('genParametros.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                                Parametros Generales
+                            </a>
 
                         </div>
                     </div>

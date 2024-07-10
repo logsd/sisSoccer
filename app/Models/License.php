@@ -16,4 +16,5 @@ class License extends Model
     public function Championship(){
         return $this->belongsTo(Championship::class);
     }
+    protected $guarded = ['id'];
 }

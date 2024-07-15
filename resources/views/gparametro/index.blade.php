@@ -8,24 +8,24 @@
 @endpush
 
 @section('content')
-@if (session('success'))
+@if (session('success') || session('error'))
 <script>
-    let message = "{{session('success')}}";
-    const Toast = Swal.mixin({
-  toast: true,
-  position: "top-end",
-  showConfirmButton: false,
-  timer: 1500,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.onmouseenter = Swal.stopTimer;
-    toast.onmouseleave = Swal.resumeTimer;
-  }
-});
-Toast.fire({
-  icon: "success",
-  title: message
-});
+    let message = "{{ session('success') ?? session('error') }}";
+    let icon = "{{ session('success') ? 'success' : 'error' }}";
+
+    Swal.fire({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        icon: icon,
+        title: message,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
 </script>
 @endif
 <div class="container-fluid px-4">

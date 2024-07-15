@@ -8,24 +8,24 @@
 @endpush
 
 @section('content')
-@if (session('success'))
+@if (session('success') || session('error'))
 <script>
-    let message = "{{session('success')}}";
-    const Toast = Swal.mixin({
-  toast: true,
-  position: "top-end",
-  showConfirmButton: false,
-  timer: 1500,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.onmouseenter = Swal.stopTimer;
-    toast.onmouseleave = Swal.resumeTimer;
-  }
-});
-Toast.fire({
-  icon: "success",
-  title: message
-});
+    let message = "{{ session('success') ?? session('error') }}";
+    let icon = "{{ session('success') ? 'success' : 'error' }}";
+
+    Swal.fire({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        icon: icon,
+        title: message,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
 </script>
 @endif
 <div class="container-fluid px-4">
@@ -92,7 +92,7 @@ Toast.fire({
                                                     @endif
                                                 </td>
                                                 <td>
-                                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                                     <form action="{{route('genOficinas.edit',['genOficina'=>$genOficina])}}" method="get">
                                                     <button type="submit" class="btn btn-warning">Editar</button>
                                                     </form>
@@ -101,13 +101,8 @@ Toast.fire({
                                                     @else
                                                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genOficina->id}}">Restaurar</button>
                                                     @endif
-                                                    <form action="{{route('genOficinas.forceDelete',[$genOficina->id])}}" method="POST">
-                                                     @csrf
-                                                         @method('DELETE')
-                                                     <button type="submit" class="btn btn-danger">Eliminar</button>
-                                                    </form>
-
-                                                </div>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$genOficina->id}}">Eliminar</button>
+                                                   </div>
                                                 </td>
                                             </tr>
 <!-- Modal -->
@@ -132,6 +127,28 @@ Toast.fire({
     </div>
   </div>
 </div>
+<!-- Modal Eliminar-->
+<div class="modal fade" id="deleteModal-{{$genOficina->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Seguro que quieres eliminar esta oficina General?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <form action="{{route('genOficinas.forceDelete',[$genOficina->id])}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                                         @endforeach
                                     </tbody>
                                 </table>

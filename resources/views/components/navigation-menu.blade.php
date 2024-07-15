@@ -270,7 +270,7 @@
                             </a>
 
                             <a class="nav-link" href="{{route('genOficinas.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-building"></i></div>
                                Oficinas Generales
                             </a>
 

@@ -34,11 +34,6 @@ Toast.fire({
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
                             <li class="breadcrumb-item active">Parametro General</li>
                         </ol>
-                        <div class="mb-4">
-                        <a href="{{route('gparametros.create')}}">
-                            <button type="button" class="btn btn-primary">Añadir nuevo Parametro General</button>
-                        </a>
-                        </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -54,80 +49,30 @@ Toast.fire({
                                             <th>Tipo Contribuyente</th>
                                             <th>Tipo Parametro</th>
                                             <th>Tipo Sancion</th>
-                                            <th>Estado</th>
-                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($gparametros as $gparametro )
+                                        @foreach ($gparametro as $gparametro )
                                             <tr>
                                                 <td>
-                                                    {{$gparametro->stateParameter->name?? ''}}
+                                                    {{$gparametro->stateParameter->name}}
                                                 </td>
                                                 <td>
-                                                    {{$gparametro->civilStatus->name?? ''}}
+                                                    {{$gparametro->civilStatus->name}}
                                                 </td>
                                                 <td>
-                                                    {{$gparametro->phoneOperator->name?? ''}}
+                                                    {{$gparametro->phoneOperator->name}}
                                                 </td>
                                                 <td>
-                                                    {{$gparametro->taxpayerType->name?? ''}}
+                                                    {{$gparametro->taxpayerType->name}}
                                                 </td>
                                                 <td>
-                                                    {{$gparametro->typeParameter->name?? ''}}
+                                                    {{$gparametro->typeParameter->name}}
                                                 </td>
                                                 <td>
-                                                    {{$gparametro->typeSanction->name?? ''}}
-                                                </td>
-                                                <td>
-                                                    @if ($carnet->state == 1)
-                                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
-                                                    @else
-                                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
-
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                    <form action="{{route('carnets.edit',['carnet'=>$carnet])}}" method="get">
-                                                    <button type="submit" class="btn btn-warning">Editar</button>
-                                                    </form>
-                                                    @if ($carnet->state == 1)
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$carnet->id}}">Desabilitar</button>
-                                                    @else
-                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$carnet->id}}">Restaurar</button>
-                                                    @endif
-                                                    <form action="{{route('carnets.forceDelete',[$carnet->id])}}" method="POST">
-                                                     @csrf
-                                                         @method('DELETE')
-                                                     <button type="submit" class="btn btn-danger">Eliminar</button>
-                                                    </form>
-
-                                                </div>
+                                                    {{$gparametro->typeSanction->name}}
                                                 </td>
                                             </tr>
-<!-- Modal -->
-<div class="modal fade" id="confirmModal-{{$carnet->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        {{$carnet->state ==1 ? 'Seguro que quieres eliminar este Carnet?' : 'Seguro que quieres restaurar este Carnet?'}}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <form action="{{route('carnets.destroy',['carnet'=>$carnet->id])}}" method="post">
-            @method('DELETE')
-            @csrf
-        <button type="submit" class="btn btn-danger">Confirmar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
                                         @endforeach
                                     </tbody>
                                 </table>

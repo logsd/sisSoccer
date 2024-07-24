@@ -13,6 +13,10 @@ class TaxpayerType extends Model
         return $this->hasMany(GeneralParameter::class);
     }
 
+    public function leagues(){
+        return $this->hasMany(League::class);
+    }
+
     protected $fillable = ['name','description','a_cont', 'state'];
 
 }

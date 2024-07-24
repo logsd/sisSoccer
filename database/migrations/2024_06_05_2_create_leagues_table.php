@@ -14,7 +14,19 @@ return new class extends Migration
         Schema::create('leagues', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('trade_name');
+            $table->string('business_name');
+            $table->bigInteger('ruc')->unique()->unsinged();
+            $table->string('direction');
+            $table->string('email')->unique();
+            $table->date('constitution_date');
+            $table->string('direction_web');
+            $table->string('slogan');
+            $table->string('url_logo');
+            $table->string('description');
+            $table->string('url_sello');
             $table->tinyInteger('state')->default(1);
+            $table->foreignId('taxpayer_id')->nullable()->constrained('taxpayer_types')->onDelete('set null');
             $table->timestamps();
         });
     }

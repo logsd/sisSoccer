@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Tipo de Sancion')
+@section('title', 'EstadoGeneral')
 
 @push('css')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -29,20 +29,20 @@
 </script>
 @endif
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tipos de Sanciones</h1>
+                        <h1 class="mt-4">Estado General</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item active">Sancion</li>
+                            <li class="breadcrumb-item active">Estado General</li>
                         </ol>
                         <div class="mb-4">
-                        <a href="{{route('sancion.create')}}">
-                            <button type="button" class="btn btn-primary">Añadir nueva Sancion</button>
+                        <a href="{{route('genEstados.create')}}">
+                            <button type="button" class="btn btn-primary">Añadir nuevo Estado General</button>
                         </a>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Sanciones
+                                Tabla de Estado General
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple" class="table table-striped">
@@ -50,63 +50,48 @@
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Descripción</th>
+                                            <th>Ejecutivo</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($sancion as $sancion )
+                                        @foreach ($genEstados as $genEstado )
                                             <tr>
                                                 <td>
-                                                    {{$sancion->name}}
+                                                    {{$genEstado->name}}
                                                 </td>
                                                 <td>
-                                                    {{$sancion->description}}
+                                                    {{$genEstado->description}}
                                                 </td>
                                                 <td>
-                                                    @if ($sancion->state == 1)
+                                                    {{$genEstado->leagueExecutive->name?? ''}}
+                                                </td>
+                                                <td>
+                                                    @if ($genEstado->state == 1)
                                                     <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
                                                     @else
                                                     <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
 
                                                     @endif
                                                 </td>
-                                      <td>
-                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <form action="{{route('sancion.edit',['sancion'=>$sancion])}}" method="get">
-                  <button type="submit" class="btn btn-warning">Editar</button>
-                </form>
-                @if ($sancion->state == 1)
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$sancion->id}}">Desabilitar</button>
-                @else
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$sancion->id}}">Restaurar</button>
-                @endif
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$sancion->id}}">Eliminar</button>
-              </div>
-            </td>
+                                                <td>
+                                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                    <form action="{{route('genEstados.edit',['genEstado'=>$genEstado])}}" method="get">
+                                                    <button type="submit" class="btn btn-warning">Editar</button>
+                                                    </form>
+                                                    @if ($genEstado->state == 1)
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genEstado->id}}">Desabilitar</button>
+                                                    @else
+                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genEstado->id}}">Restaurar</button>
+                                                    @endif
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$genEstado->id}}">Eliminar</button>
 
+                                                </div>
+                                                </td>
                                             </tr>
-                                            <!-- Modal Ver-->
-<div class="modal fade" id="verModal-{{$sancion->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Sanciones</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row mb-3">
-          <label> <span class="fw-bolder">Nombre:</span> {{$sancion->name}}</label>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Eliminar -->
-<div class="modal fade" id="confirmModal-{{$sancion->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="confirmModal-{{$genEstado->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -114,11 +99,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$sancion->state ==1 ? 'Seguro que quieres eliminar esta Sancion?' : 'Seguro que quieres restaurar esta Sancion?'}}
+        {{$genEstado->state ==1 ? 'Seguro que quieres eliminar este Estado General?' : 'Seguro que quieres restaurar este Estado General?'}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <form action="{{route('sancion.destroy',['sancion'=>$sancion])}}" method="post">
+        <form action="{{route('genEstados.destroy',['genEstado'=>$genEstado->id])}}" method="post">
             @method('DELETE')
             @csrf
         <button type="submit" class="btn btn-danger">Confirmar</button>
@@ -128,7 +113,7 @@
   </div>
 </div>
 <!-- Modal Eliminar-->
-<div class="modal fade" id="deleteModal-{{$sancion->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal-{{$genEstado->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -136,11 +121,11 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Seguro que quieres eliminar esta Sancion?
+                                    Seguro que quieres eliminar este Estado General?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    <form action="{{route('sanciones.forceDelete',[$sancion->id])}}" method="POST">
+                                    <form action="{{route('genEstados.forceDelete',[$genEstado->id])}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Eliminar</button>

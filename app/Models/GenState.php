@@ -19,4 +19,5 @@ class GenState extends Model
         'league_executive_id',
         'state'
     ];
+    protected $guarded = ['id'];
 }

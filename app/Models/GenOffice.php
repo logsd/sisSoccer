@@ -18,4 +18,8 @@ class GenOffice extends Model
     public function commissionLeague(){
         return $this->belongsTo(CommissionLeague::class);
     }
+    public function club(){
+        return $this->belongsTo(Club::class);
+    }
+    protected $guarded = ['id'];
 }

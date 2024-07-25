@@ -23,13 +23,9 @@ use App\Http\Controllers\genTelefonoController;
 use App\Http\Controllers\faseController;
 use App\Http\Controllers\calendarioController;
 use App\Http\Controllers\sancionController;
-use App\Http\Controllers\carnetController;
-<<<<<<< HEAD
-=======
-use App\Http\Controllers\gparametroController;
 use App\Http\Controllers\genEstadoController;
 use App\Http\Controllers\genOficinaController;
->>>>>>> 8a3f6ce0dff51a1092e3e575c55e31fc426eb619
+
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -68,14 +64,8 @@ Route::resources([
     'fases' => faseController::class,
     'calendarios' => calendarioController::class,
     'sancion' => sancionController::class,
-<<<<<<< HEAD
-    'carnets' => carnetController::class
-=======
-    'carnets' => carnetController::class,
-    'gparametros' => gparametroController::class,
     'genEstados' => genEstadoController::class,
     'genOficinas' => genOficinaController::class,
->>>>>>> 8a3f6ce0dff51a1092e3e575c55e31fc426eb619
 ]
 
 );
@@ -126,18 +116,11 @@ Route::delete('/calendarios/force-delete/{id}', [calendarioController::class, 'f
 ])->name('calendarios.forceDelete');
 Route::delete('/sanciones/force-delete/{id}', [sancionController::class, 'forceDelete'
 ])->name('sanciones.forceDelete');
-Route::delete('/carnets/force-delete/{id}', [carnetController::class, 'forceDelete'
-])->name('carnets.forceDelete');
-<<<<<<< HEAD
-
-=======
-Route::delete('/gparametros/force-delete/{id}', [gparametroController::class, 'forceDelete'
-])->name('gparametros.forceDelete');
 Route::delete('/genEstados/force-delete/{id}', [genEstadoController::class, 'forceDelete'
 ])->name('genEstados.forceDelete');
 Route::delete('/genOficinas/force-delete/{id}', [genOficinaController::class, 'forceDelete'
 ])->name('genOficinas.forceDelete');
->>>>>>> 8a3f6ce0dff51a1092e3e575c55e31fc426eb619
+
 
 Route::get('/login', function () {
     return view('auth.login');

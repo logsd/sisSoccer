@@ -254,17 +254,6 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-ban"></i></div>
                                 Sanciones
                             </a>
-                            <a class="nav-link" href="{{route('carnets.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-id-card"></i></div>
-                                Carnets
-                            </a>
-
-<<<<<<< HEAD
-=======
-                            <a class="nav-link" href="{{route('gparametros.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                                Parametros Generales
-                            </a>
 
                             <a class="nav-link" href="{{route('genEstados.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-diagram-project"></i></div>
@@ -275,8 +264,6 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-building"></i></div>
                                Oficinas Generales
                             </a>
-
->>>>>>> 8a3f6ce0dff51a1092e3e575c55e31fc426eb619
                         </div>
                     </div>
 

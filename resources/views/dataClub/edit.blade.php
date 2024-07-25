@@ -11,6 +11,9 @@
 @endpush
 
 @section('content')
+
+
+
 <div class="container-fluid px-4">
         <h1 class="mt-4">Editar Telefono Club</h1>
         <ol class="breadcrumb mb-4">
@@ -19,7 +22,7 @@
                 <li class="breadcrumb-item active">Editar Telefono Club</li>
         </ol>
 
-        <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
+        <div class="container ">
                 <form action="{{route('dataClubs.update',['dataClub'=>$dataClub])}}" method="post">
                         @method('PATCH')
                         @csrf

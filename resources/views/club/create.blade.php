@@ -3,22 +3,35 @@
 @section('title', 'Crear Club')
 
 @push('css')
+
+@endpush
+
 <style>
         #description {
                 resize: none;
         }
+
+    .container{
+        background-color:  #4EA93B;
+    }
+
+
+    .fa-check, .fa-arrow-left{
+        padding-right:15px;
+    }
 </style>
-@endpush
 
 @section('content')
+
+
 <div class="container-fluid px-4">
-        <h1 class="mt-4">Crear Clubs</h1>
+        <h1 class="mt-4 text-center mb-4">Crear Clubs</h1>
         <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
                 <li class="breadcrumb-item "><a href="{{route('clubs.index')}}">Clubs</a> </li>
                 <li class="breadcrumb-item active">Crear Clubs</li>
         </ol>
-        <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
+        <div class="container w-100 border border-3 border-black rounded p-4 mt-3">
                 <form action="{{route('clubs.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row g-3">
@@ -129,7 +142,9 @@
                                 </div>
 
                                 <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-success ">Guardar</button>
+                                        <button type="submit" class="btn btn-primary mx-3 py-2 border-2 border-white"><i class="fa-solid fa-check"></i>Guardar</button>
+                                        <a href="{{route('dataClubs.index')}}"><button type="button" class="btn btn-secondary border-2 border-white"><i class="fa-solid fa-arrow-left"></i>Regresar</button></a>
+
                                 </div>
                         </div>
                 </form>

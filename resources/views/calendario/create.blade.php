@@ -12,27 +12,69 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
 @endpush
 
+<style>
+
+    .cuerpo{
+        border: solid 3px black;
+        border-radius: 10px;
+        padding: 20px;
+        background:#4EA93B;
+        color: black;
+        margin-bottom: 20px
+    }
+
+    h4{
+        text-align: center;
+        padding: 4px 5px;
+    }
+
+    .buttong{
+        background-color: #4FD034;
+        color: black;
+        padding: 8px 25px 8px 25px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+    }
+
+    .buttonr{
+        background-color:#A5D29A;
+        color: black;
+        padding: 8px 25px 8px 25px;
+        margin-left:10px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+    }
+
+    .buttonr:hover, .buttong:hover{
+        background-color:#337326;
+        color:white;
+    }
+
+</style>
+
+
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Crear Partidos</h1>
+    <h1 class="mt-4 text-center mb-4">Crear Partidos</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('calendarios.index')}}"> Partidos</a> </li>
         <li class="breadcrumb-item active">Crear Partido</li>
     </ol>
-    <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
+    <div class="">
         <form action="{{route('calendarios.store')}}" method="post">
             @csrf
             <div class="container mt-4">
                 <div class="row gy-4">
                     <!--Crear Campeonato--->
                     <div class="col-md-8">
-                        <div class="text-white bg-primary p-1 text-center">
-                            Detalles Partido
-                        </div>
-                        <div class="p-3 border border-3 border-primary">
-
+                        <div class="cuerpo">
                             <div class="col-md-12 mb-2">
+                                <h4>Detalles Partidos</h4>
                                 <label for="stadium" class="form-label">Estadio:</label>
                                 <input type="text" name="stadium" id="stadium" class="form-control" value="{{old('stadium')}}">
                                 @error('stadium')
@@ -94,13 +136,9 @@
                     </div>
                     <!---Fecha y hora-->
                     <div class="col-md-4">
-                        <div class="text-white bg-success p-1 text-center">
-                            Datos Adicionales
-                        </div>
-                        <div class="p-3 border border-3 border-success">
+                        <div class="cuerpo ">
                             <div class="row">
-
-
+                                <h5 class= "text-center">Datos Adicionales</h5>
                                 <div class="col-md-12 mb-2">
                                     <label for="date" class="form-label ">Fecha:</label>
                                     <input type="date" name="date" id="date" class="form-control border-success" value="{{old('date')}}">
@@ -117,9 +155,14 @@
                                     @enderror
                                 </div>
 
-                                <div class="text-white bg-primary p-1 text-center">
-                                    Asignar Fase/Campeonato
-                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="cuerpo">
+                            <div class="row">
+                                <h5 class="text-center"> Asignar Fase/Campeonato</h5>
 
                                 <div class="col-md-12 mb-2">
                                     <label class="form-label" for="league_phase_id">Fase:</label>
@@ -145,13 +188,33 @@
                                     @enderror
                                 </div>
 
+
+
+                            </div>
+                        </div>
+
+
+                            <div class="row text-center">
+                            <div class="col-md-12 mb-2 mt-2" >
+                    <button type="submit" class="buttong">Guardar</button>
+                    <a href="{{route('calendarios.index')}}">
+            <button type="button" class="buttonr">Regresar</button>
+        </a>
+
+
+                                <div class="col-md-12 mb-2">
+
+                                </div>
+
+
+
                             </div>
                         </div>
                     </div>
+
+
                 </div>
-                <div class="col-md-12 mb-2 mt-4 text-center">
-                    <button type="submit" class="btn btn-success">Guardar</button>
-                </div>
+
             </div>
         </form>
     </div>

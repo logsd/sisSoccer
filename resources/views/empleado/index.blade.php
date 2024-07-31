@@ -28,21 +28,52 @@ Toast.fire({
 });
 </script>
 @endif
+
+<style>
+    .button {
+        background-color: #4EA93B;
+        color: black;
+        padding: 8px 15px 8px 15px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+        padding: 6px 15px 6px 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 0 5px 0 0;
+    }
+
+    .button:hover {
+        background-color: #337326;
+        color: white;
+    }
+
+    .fa-plus {
+        padding-right: 10px;
+    }
+
+    .card-header {
+        background-color: #1A320F;
+        color: white;
+    }
+</style>
+
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Empleado</h1>
+                        <h1 class="mt-4 text-center mb-2">Empleados</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item active">Empleado</li>
+                            <li class="breadcrumb-item active">Empleados</li>
                         </ol>
                         <div class="mb-4">
                         <a href="{{route('empleados.create')}}">
-                            <button type="button" class="btn btn-primary">Añadir nuevo Empleado</button>
+                            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Añadir nuevo Empleado</button>
                         </a>
                         </div>
 
                         <div class="card mb-4">
                             <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
                                 Tabla Empleado
                             </div>
                             <div class="card-body">
@@ -59,7 +90,7 @@ Toast.fire({
                                         </tr>
                                     </thead>
 
-                                    
+
                                     <tbody>
                                         @foreach ($empleados as $empleado )
                                             <tr>
@@ -78,7 +109,7 @@ Toast.fire({
                                                 <td>
                                                     {{$empleado->direction}}
                                                 </td>
-                                                
+
                                                 <td>
                                                     @if ($empleado->state == 1)
                                                     <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
@@ -93,17 +124,17 @@ Toast.fire({
                                                     <button type="submit" class="btn btn-warning">Editar</button>
                                                     </form>
                                                     <form action="{{route('empleados.show',['empleado'=>$empleado])}}">
-                                                    <button type="submit" class="btn btn-secondary ">Ver</button>
+                                                    <button type="submit" class="btn btn-secondary rounded">Ver</button>
                                                     </form>
 
                                                     @if ($empleado->state == 1)
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$empleado->id}}">Eliminar</button>
+                                                    <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$empleado->id}}">Eliminar</button>
                                                     @else
                                                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$empleado->id}}">Restaurar</button>
                                                     @endif
                                                 </div>
                                                 </td>
-                                            </tr>                                        
+                                            </tr>
 </div>
 <!-- Modal eliminar -->
 <div class="modal fade" id="confirmModal-{{$empleado->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

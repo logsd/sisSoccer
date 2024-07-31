@@ -63,7 +63,7 @@
 </style>
 
 <div class="container-fluid px-4">
-  <h1 class="mt-4 text-center mb-4">Clubs</h1>
+  <h1 class="mt-4 text-center mb-2">Clubs</h1>
   <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
     <li class="breadcrumb-item active">Clubs</li>
@@ -186,15 +186,14 @@
       </table>
     </div>
   </div>
-  <h1 class="mt-4">Telefonos Clubs</h1>
+  <h1 class="mt-4 mb-4">Telefonos Clubs</h1>
   <div class="mb-4">
     <a href="{{route('dataClubs.create')}}">
-      <button type="button" class="btn btn-primary">Añadir nuevo Telefono al Club</button>
+      <button type="button" class="button"><i class="fa-solid fa-plus"></i>Agregar Telefono al Club</button>
     </a>
   </div>
   <div class="card mb-4">
     <div class="card-header">
-      <i class="fas fa-table me-1"></i>
       Tabla Telefonos Clubs
     </div>
     <div class="card-body">
@@ -238,9 +237,9 @@
                   <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
                 @if ($dataClub->state == 1)
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$dataClub->id}}">Desabilitar</button>
+                <button type="button" class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$dataClub->id}}">Desabilitar</button>
                 @else
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$dataClub->id}}">Restaurar</button>
+                <button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$dataClub->id}}">Restaurar</button>
                 @endif
                 <form action="{{route('dataClubs.forceDelete',[$dataClub->id])}}" method="POST">
                   @csrf

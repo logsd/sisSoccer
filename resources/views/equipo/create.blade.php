@@ -13,7 +13,6 @@
 @endpush
 
 <style>
-
     .cuerpo{
         border: solid 3px black;
         border-radius: 10px;
@@ -131,7 +130,7 @@
                             </div>
                             </div>
                         </div>
-                        <div class="mb-2 mt-4  ">
+                        <div class="mb-2 mt-4">
                         <button type="submit" class="btn btn-success">Guardar</button>
         <a href="{{route('equipos.index')}}">
             <button type="button" class="button">Regresar</button>

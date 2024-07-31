@@ -8,13 +8,13 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Ver Empleado</h1>
+    <h1 class="mt-4 text-center mb-2">Empleado</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-        <li class="breadcrumb-item "><a href="{{route('empleados.index')}}">Empleados</a> </li>
+        <li class="breadcrumb-item "><a href="{{route('empleados.index')}}">Empleado</a> </li>
     </ol>
 </div>
-<div class="container w-100 ">
+<div class="cuerpo">
 
 <div class="card p-2">
 <div class="row mb-2">
@@ -25,10 +25,10 @@
             <input disabled type="text" class="form-control" value="Empleado:">
         </div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-4">
         <input disabled type="text" class="form-control" value="{{$empleado->name}}">
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-4">
         <input disabled type="text" class="form-control" value="{{$empleado->last_name}}">
     </div>
     <div class="col-sm-8">

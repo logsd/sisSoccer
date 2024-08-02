@@ -62,7 +62,7 @@
 
                 <div class="col-md-6 mb-2">
                                 <label for="sex">Género:</label>
-                                <select title="Seleccione una Categoria" name="sex" id="sex" class="form-control selectpicker show-tick">
+                                <select title="Seleccione un Genero" name="sex" id="sex" class="form-control selectpicker show-tick">
                                     <option value="1" {{ old('sex') == '1' ? 'selected' : '' }}>Varonil</option>
                                     <option value="0" {{ old('sex') == '0' ? 'selected' : '' }}>Femenino</option>
                                 </select>

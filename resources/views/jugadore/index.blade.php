@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Calendario')
+@section('title', 'Jugadores')
 
 @push('css')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -29,74 +29,65 @@
 </script>
 @endif
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Candelario</h1>
+    <h1 class="mt-4">Jugadores</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-        <li class="breadcrumb-item active">Calendario</li>
+        <li class="breadcrumb-item active">Jugadores</li>
     </ol>
     <div class="mb-4">
-        <a href="{{route('calendarios.create')}}">
-            <button type="button" class="btn btn-primary">Añadir nuevo Partido</button>
+        <a href="{{route('jugadores.create')}}">
+            <button type="button" class="btn btn-primary">Añadir nuevo Jugador</button>
         </a>
     </div>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
-            Tabla Calendario
+            Tabla Jugadores
         </div>
         <div class="card-body">
             <table id="datatablesSimple" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Estadio</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Local</th>
-                        <th>Visitante</th>
+                        <th>Cedula</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Equipo</th>
+                        <th>Categoria</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($calendarios as $item )
+                    @foreach ($jugadores as $item )
                     <tr>
                         <td>
-                        <p class="fw-semibold mb-1"> {{$item->stadium}} </p>
+                            <p class="fw-semibold mb-1"> {{$item->dni}} </p>
                         </td>
                         <td>
-                            <p class="fw-semibold mb-1"> {{\Carbon\Carbon::parse($item->date)->format('d-m-Y')}}</p>
+                            <p class="fw-semibold mb-1"> {{$item->name}}</p>
                         </td>
                         <td>
-                            <p class="fw-semibold mb-1"> {{\Carbon\Carbon::parse($item->time)->format('H:i') . ' H'}}</p>
+                            <p class="fw-semibold mb-1"> {{$item->last_name}}</p>
                         </td>
                         <td>
-                            {{$item->teamHome->name}}
+                            {{$item->team->name}}
                         </td>
                         <td>
-                            {{$item->teamAway->name}}
+                            {{$item->category->name}}
                         </td>
                         <td>
-                            @if ($item->status == 'scheduled')
-                            <span class="fw-bolder rounded p-1 bg-secondary text-white d-block mb-1">Programado</span>
-                            @elseif ($item->status == 'in_progress')
-                            <span class="fw-bolder rounded p-1 bg-success text-white d-block mb-1">En progreso</span>
-                            @elseif ($item->status == 'completed')
-                            <span class="fw-bolder rounded p-1 bg-primary text-white d-block mb-1">Completado</span>
-                            @else
-                            <span class="fw-bolder rounded p-1 bg-danger text-white d-block mb-1">Cancelado</span>
-                            @endif
                             @if ($item->state == 1)
-                            <span class="fw-bolder rounded p-1 bg-success text-white d-block">Activo</span>
+                            <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
                             @else
-                            <span class="fw-bolder rounded p-1 bg-danger text-white d-block">Inactivo</span>
+                            <span class="fw-bolder p-1 rounded bg-danger text-white">Desabilitado</span>
                             @endif
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <form action="{{route('calendarios.edit',['calendario'=>$item])}}" method="get">
+                                <form action="{{route('jugadores.edit',['jugadore'=>$item])}}" method="get">
                                     <button type="submit" class="btn btn-warning">Editar</button>
                                 </form>
-                                <form action="{{route('calendarios.show',['calendario'=>$item])}}">
+                                <form action="{{route('jugadores.show',['jugadore'=>$item])}}">
                                     <button type="submit" class="btn btn-secondary ">Ver</button>
                                 </form>
                                 @if ($item->state == 1)
@@ -118,11 +109,11 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {{$item->state ==1 ? 'Seguro que quieres desabilitar este Partido?' : 'Seguro que quieres restaurar este Partido?'}}
+                                    {{$item->state ==1 ? 'Seguro que quieres desabilitar este Jugador?' : 'Seguro que quieres restaurar este Jugador?'}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    <form action="{{route('calendarios.destroy',['calendario'=>$item->id])}}" method="post">
+                                    <form action="{{route('jugadores.destroy',['jugadore'=>$item->id])}}" method="post">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Confirmar</button>
@@ -140,11 +131,11 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Seguro que quieres eliminar este Partido?
+                                    Seguro que quieres eliminar este Jugador?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    <form action="{{route('calendarios.forceDelete',[$item->id])}}" method="POST">
+                                    <form action="{{route('jugadores.forceDelete',[$item->id])}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Eliminar</button>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->tinyInteger('state')->default(1);
             $table->string('cluster');
             $table->bigInteger('points')->nullable();
-            $table->bigInteger('player_number')->nullable();
+            $table->bigInteger('player_number')->nullable()->default(0);
             $table->string('gol_afa')->nullable();
             $table->string('gol_enc')->nullable();
             $table->string('description');

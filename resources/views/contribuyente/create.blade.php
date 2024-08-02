@@ -41,8 +41,8 @@
 
         <div class="col-md-6">
         <div class="form-check form-switch">
-            <label class="form-check-label" for="vg">A Cont</label>
-             <input  name="a_cont" class="form-check-input" type="checkbox" role="switch" id="vg" value="1" {{ old('a_cont') ? 'checked' : '' }}>
+            <label class="form-check-label" for="a_cont">A Cont</label>
+             <input  name="a_cont" class="form-check-input" type="checkbox" role="switch" id="a_cont" value="1" {{ old('a_cont') ? 'checked' : '' }}>
                 @error('a_cont')
                 <small class="text-danger">{{'*'.$message}}</small>
                 @enderror

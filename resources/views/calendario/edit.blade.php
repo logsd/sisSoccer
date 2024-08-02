@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Editar Fase Campeonato')
+@section('title', 'Editar Partido')
 
 @push('css')
 <style>
@@ -153,7 +153,7 @@
 
                                     <div class="col-md-12 mb-2">
                                         <label class="form-label" for="championship_id">Campeonato:</label>
-                                        <select data-size="3" title="Seleccione una Fase" data-live-search="true" name="championship_id" id="championship_id" class="form-control selectpicker show-tick">
+                                        <select data-size="3" title="Seleccione un Campeonato" data-live-search="true" name="championship_id" id="championship_id" class="form-control selectpicker show-tick">
                                             @foreach ($campeonatos as $item)
                                             @if ($calendario->championship_id == $item->id)
                                             <option selected value="{{$item->id}}" {{old('championship_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>

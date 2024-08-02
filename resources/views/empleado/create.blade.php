@@ -181,37 +181,6 @@
 
 
                 <div class="col-md-6 mb-2">
-<<<<<<< HEAD
-                                <label for="sex">Género:</label>
-                                <select title="Seleccione un Genero" name="sex" id="sex" class="form-control selectpicker show-tick">
-                                    <option value="1" {{ old('sex') == '1' ? 'selected' : '' }}>Varonil</option>
-                                    <option value="0" {{ old('sex') == '0' ? 'selected' : '' }}>Femenino</option>
-                                </select>
-                                @error('sex')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                </div>
-
-                <div class="col-md-12">
-                    <label for="birth_date" class="form-label">Fecha de Nacimiento:</label>
-                    <input type="date" name="birth_date" id="birth_date" class="form-control" value="{{old('birth_date')}}">
-                    @error('birth_date')
-                    <small class="text-danger">{{'*'.$message}}</small>
-                    @enderror
-                </div>
-
-                <div class="col-md-12">
-                    <label for="direction" class="form-label">Dirección:</label>
-                    <input type="text" name="direction" id="direction" class="form-control" value="{{old('direction')}}">
-                    @error('direction')
-                    <small class="text-danger">{{'*'.$message}}</small>
-                    @enderror
-                </div>
-                
-
-                <div class="col-md-12">
-=======
->>>>>>> 90b7595c7272dd63a34f72ab37a566ae98faca77
                     <label for="f_income" class="form-label">Fecha de Inicio:</label>
                     <input type="date" name="f_income" id="f_income" class="form-control" value="{{old('f_income')}}">
                     @error('f_income')

@@ -141,4 +141,17 @@ class empleadoController extends Controller
         }
         return redirect()->route('empleados.index')->with('success', $message);
     }
+
+    public function forceDelete($id)
+    {
+        $empleado = Employee::find($id);
+        if ($empleado ) {
+            $empleado ->delete();
+            return redirect()->route('empleados.index')->with('success', 'Empleado eliminada definitivamente');
+        }
+
+        return redirect()->route('categorias.index')->with('error', 'El Empleado  no fue encontrado');
+    }
 }
+
+

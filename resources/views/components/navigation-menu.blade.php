@@ -43,9 +43,9 @@
                             </a>
                             <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{route('equipos.index')}}">Calendario</a>
-                                    <a class="nav-link" href="{{route('equipos.create')}}">Campeonatos</a>
-                                    <a class="nav-link" href="{{route('equipos.create')}}">Categorias</a>
+                                    <a class="nav-link" href="{{route('calendarios.index')}}">Calendario</a>
+                                    <a class="nav-link" href="{{route('campeonatos.index')}}">Campeonatos</a>
+                                    <a class="nav-link" href="{{route('categorias.index')}}">Categorias</a>
                                     <a class="nav-link" href="{{route('equipos.create')}}">Equipos - Campeonatos</a>
                                     <a class="nav-link" href="{{route('equipos.create')}}">Jugadores - Campeonatos</a>
                                     <a class="nav-link" href="{{route('equipos.create')}}">Partidos</a>
@@ -61,9 +61,7 @@
                             <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{route('equipos.index')}}">Campeonatos</a>
-                                    <a class="nav-link" href="{{route('equipos.create')}}">
-                                        Equipos en Campeonatos
-                                    </a>
+                                    <a class="nav-link" href="{{route('equipos.create')}}">Equipos en Campeonatos</a>
                                     <a class="nav-link" href="{{route('equipos.index')}}">Jugadores en Campeonatos</a>
                                     <a class="nav-link" href="{{route('equipos.index')}}">Tabla Goleadores</a>
                                 </nav>
@@ -76,8 +74,8 @@
                             </a>
                             <div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{route('equipos.index')}}">Club</a>
-                                    <a class="nav-link" href="{{route('equipos.index')}}">Directivos</a>
+                                    <a class="nav-link" href="{{route('dataClubs.index')}}">Club</a>
+                                    <a class="nav-link" href="{{route('calendarios.index')}}">Directivos</a>
                                     <a class="nav-link" href="{{route('equipos.index')}}">Directivos Club</a>
                                     <a class="nav-link" href="{{route('equipos.index')}}">Equipos</a>
                                     <a class="nav-link" href="{{route('equipos.index')}}">Jugadores</a>

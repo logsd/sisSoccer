@@ -1,19 +1,20 @@
 @extends('template')
 
-@section('title', 'Editar Categoria')
+@section('title', 'Editar Comisionde de Ligas')
 
 @push('css')
 <style>
-    #description{
+    #observation{
         resize: none;
     }
-</style>
-@endpush
+    .img-container {
+            width: 300px; /* Establece el ancho del contenedor */
+            height: 200px; /* Establece la altura del contenedor */
+            overflow: hidden; /* Esconde cualquier contenido que se desborde */
+            position: relative;
+        }
 
-@section('content')
-
-<style>
-    .cuerpo {
+        .cuerpo {
         border: solid 3px black;
         border-radius: 10px;
         padding: 20px;
@@ -38,7 +39,7 @@
     }
 
     .buttonr {
-        background-color:#A5D29A;
+        background-color: #d11500;
         color: black;
         padding: 8px 15px 8px 15px;
         margin-left: 10px;
@@ -61,42 +62,61 @@
         padding-right: 10px;
     }
 </style>
+@endpush
 
+@section('content')
 <div class="container-fluid px-4">
-                        <ol class="breadcrumb my-4">
+                        <h1 class="mt-4 text-center mb-3">Comision de Liga</h1>
+                        <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item "><a href="{{route('categorias.index')}}">Categorias</a> </li>
-                            <li class="breadcrumb-item active">Actualizar Categoria</li>
+                            <li class="breadcrumb-item "><a href="{{route('comisiondeligas.index')}}">Comision de Liga</a> </li>
+                            <li class="breadcrumb-item active">Editar Comision de Liga</li>
                         </ol>
-                        <h1 class="my-4 text-center">Actualizar Categoria</h1>
+
                         <div class="cuerpo">
-<form action="{{route('categorias.update',['categoria'=>$categoria])}}" method="post">
+<form action="{{route('comisiondeligas.update',['comisiondeliga'=>$comisiondeliga])}}" method="post">
     @method('PATCH')
     @csrf
     <div class="row g-3">
 
     <div class="col-md-6">
                 <label for="name" class="form-label">Nombre:</label>
-                <input type="text" name="name" id="name" class="form-control" value="{{old('name',$categoria->name)}}">
+                <input type="text" name="name" id="name" class="form-control" value="{{old('name',$comisiondeliga->name)}}">
                 @error('name')
+                <small class="text-danger">{{'*'.$message}}</small>
+                @enderror
+        </div>
+        <div class="col-md-6">
+                <label for="short_name" class="form-label">Nombre Corto:</label>
+                <input type="text" name="short_name" id="short_name" class="form-control" value="{{old('short_name',$comisiondeliga->short_name)}}">
+                @error('short_name')
                 <small class="text-danger">{{'*'.$message}}</small>
                 @enderror
         </div>
 
 
+        <div class="col-md-6">
+                <label for="role" class="form-label">Rol:</label>
+                <input type="text" name="role" id="role" class="form-control" value="{{old('role',$comisiondeliga->role)}}">
+                @error('role')
+                <small class="text-danger">{{'*'.$message}}</small>
+                @enderror
+        </div>
+
         <div class="col-md-12">
                 <label for="description" class="form-label">Descripción:</label>
-                <textarea name="description" id="description" rows="3" class="form-control">{{old('description',$categoria->description)}}</textarea>
+                <textarea name="description" id="description" rows="3" class="form-control">{{old('description',$comisiondeliga->description)}}</textarea>
                 @error('description')
                 <small class="text-danger">{{'*'.$message}}</small>
                 @enderror
         </div>
 
+
         <div class="col-12 text-center">
                     <div class="row text-center">
                         <div class="col-md-12 mb-2 mt-2">
                             <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
-                            <a href="{{route('categorias.index')}}">
+                            <a href="{{route('comisiondeligas.index')}}">
                                 <button type="button" class="buttonr"><i
                                         class="fa-solid fa-arrow-left"></i>Cancelar</button>
                             </a>

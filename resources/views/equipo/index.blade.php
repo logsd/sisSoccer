@@ -5,6 +5,7 @@
 @push('css')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+
 @endpush
 
 @section('content')
@@ -12,7 +13,7 @@
 <script>
     let message = "{{ session('success') ?? session('error') }}";
     let icon = "{{ session('success') ? 'success' : 'error' }}";
-    
+
     Swal.fire({
         toast: true,
         position: "top-end",
@@ -27,21 +28,59 @@
         }
     });
 </script>
+
 @endif
+
+<style>
+
+*{
+        font-family: "Poppins", sans-serif;
+        font-style: italic;
+    }
+
+    .button{
+        background-color: #4EA93B;
+        color: black;
+        padding: 8px 15px 8px 15px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .button:hover{
+        background-color:#337326;
+        color:white;
+    }
+
+    .fa-plus{
+        padding-right: 10px;
+    }
+
+    .card-header{
+        background-color:#1A320F;
+        color: white;
+    }
+
+
+    .breadcrumb-item active{
+        color: white;
+    }
+</style>
+
+
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Equipos</h1>
+    <h1 class="mt-4 text-center mb-4">Equipos</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
+        <li class="breadcrumb-item"><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item active">Equipos</li>
     </ol>
     <div class="mb-4">
         <a href="{{route('equipos.create')}}">
-            <button type="button" class="btn btn-primary">Añadir nuevo Equipo</button>
+            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Añadir nuevo Equipo</button>
         </a>
     </div>
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-table me-1"></i>
             Tabla Equipos
         </div>
         <div class="card-body">

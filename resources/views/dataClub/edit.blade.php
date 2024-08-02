@@ -4,22 +4,74 @@
 
 @push('css')
 <style>
-        #description {
-                resize: none;
+    #description{
+        resize: none;
+    }
+
+    .cuerpo {
+            border: solid 3px black;
+            border-radius: 10px;
+            padding: 20px;
+            background: #4EA93B;
+            color: black;
+            margin-bottom: 20px
         }
+
+        h4 {
+            text-align: center;
+            padding: 4px 5px;
+        }
+
+        .buttong {
+            background-color: #32fc08;
+            color: black;
+            padding: 8px 15px 8px 15px;
+            border: solid 2px black;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            font-size: 17px;
+        }
+
+        .buttonr {
+            background-color: #d11500;
+            color: black;
+            padding: 8px 15px 8px 15px;
+            margin-left: 10px;
+            border: solid 2px black;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            font-size: 17px;
+        }
+
+        .buttonr:hover,
+        .buttong:hover {
+            background-color: #337326;
+            color: white;
+
+        }
+
+
+        .fa-check,
+        .fa-arrow-left {
+            padding-right: 10px;
+        }
+
 </style>
 @endpush
 
 @section('content')
+
+
+
 <div class="container-fluid px-4">
-        <h1 class="mt-4">Editar Telefono Club</h1>
+        <h1 class="mt-4 text-center mb-3">Editar Telefono Club</h1>
         <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
                 <li class="breadcrumb-item "><a href="{{route('dataClubs.index')}}">Telefono Club</a> </li>
                 <li class="breadcrumb-item active">Editar Telefono Club</li>
         </ol>
 
-        <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
+        <div class="cuerpo">
                 <form action="{{route('dataClubs.update',['dataClub'=>$dataClub])}}" method="post">
                         @method('PATCH')
                         @csrf
@@ -71,9 +123,19 @@
                                 </div>
 
                                 <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-success ">Actualizar</button>
-                                        <button type="reset" class="btn btn-secondary">Reiniciar</button>
-                                </div>
+                    <div class="row text-center">
+                        <div class="col-md-12 mb-2 mt-2">
+                            <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
+                            <a href="{{route('dataClubs.index')}}">
+                                <button type="button" class="buttonr"><i
+                                        class="fa-solid fa-arrow-left"></i>Cancelar</button>
+                            </a>
+                            <div class="col-md-12 mb-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
                         </div>
                 </form>
         </div>

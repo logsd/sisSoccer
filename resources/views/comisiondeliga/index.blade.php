@@ -28,20 +28,59 @@ Toast.fire({
 });
 </script>
 @endif
-<div class="container-fluid px-4">
-                        <h1 class="mt-4">Comision de Ligas</h1>
-                        <ol class="breadcrumb mb-4">
+
+<style>
+    .button {
+        background-color: #4EA93B;
+        color: black;
+        padding: 8px 15px 8px 15px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .button:hover {
+        background-color: #337326;
+        color: white;
+    }
+
+    .fa-plus {
+        padding-right: 10px;
+    }
+
+    .card-header {
+        background-color: #1A320F;
+        color: white;
+    }
+
+    .btn {
+        padding: 6px 15px 6px 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 0 5px 0 0;
+    }
+
+    .modal-header,
+    .buttonc {
+        background-color: #4EA93B;
+        color: white;
+        font-size: 110%;
+        border: none;
+    }
+</style>
+
+<div class="container-fluid px-4 ">
+                        <ol class="breadcrumb mt-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item active">Clubs</li>
+                            <li class="breadcrumb-item active">Comision de Ligas</li>
                         </ol>
+                        <h1 class="text-center mb-4">Comision de Ligas</h1>
                         <div class="mb-4">
                         <a href="{{route('comisiondeligas.create')}}">
-                            <button type="button" class="btn btn-primary">Añadir nueva Comision de Ligas</button>
+                            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nueva Comision de Ligas</button>
                         </a>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
                                 Tabla Comisiones
                             </div>
                             <div class="card-body">
@@ -76,15 +115,15 @@ Toast.fire({
                             @endif
                         </td>
                         <td>
-              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#verModal-{{$comisiondeliga->id}}">Visualizar</button>
                 <form action="{{route('comisiondeligas.edit',['comisiondeliga'=>$comisiondeliga])}}" method="get">
-                  <button type="submit" class="btn btn-warning">Editar</button>
+                  <button type="submit" class="btn btn-primary">Editar</button>
                 </form>
-                <button type="button" class="btn btn-secondary " data-bs-toggle="modal" data-bs-target="#verModal-{{$comisiondeliga->id}}">Ver</button>
                 @if ($comisiondeliga->state == 1)
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$comisiondeliga->id}}">Desabilitar</button>
+                <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$comisiondeliga->id}}">Deshabilitar</button>
                 @else
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$comisiondeliga->id}}">Restaurar</button>
+                <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$comisiondeliga->id}}">Restaurar</button>
                 @endif
                 <form action="{{route('comisiondeligas.forceDelete',[$comisiondeliga->id])}}" method="POST">
                   @csrf
@@ -96,12 +135,56 @@ Toast.fire({
 
                                             </tr>
                                             <!-- Modal Ver-->
-<div class="modal fade" id="verModal-{{$comisiondeliga->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
+                                            <div class="modal fade" id="verModal-{{$comisiondeliga->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-4 border-white">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Comision de ligas Detalles</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="buttonc shadow-none" data-bs-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body">
+      <div class="col-sm-12">
+      <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-people-group"></i></span>
+            <input disabled type="text" class="form-control" value="Nombre:">
+            <input disabled type="text" class="form-control  bg-white" value="{{$comisiondeliga->name}}">
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-brands fa-dribbble"></i></span>
+            <input disabled type="text" class="form-control" value="Nombre Corto:">
+            <input disabled type="text" class="form-control  bg-white" value="{{$comisiondeliga->short_name}}">
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-pen"></i></span>
+            <input disabled type="text" class="form-control" value="Rol:">
+            <input disabled type="text" class="form-control  bg-white" value="{{$comisiondeliga->role}}">
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
+            <input disabled type="text" class="form-control" value="Descripcion:">
+            <input disabled type="text" class="form-control  bg-white" value="{{$comisiondeliga->description}}">
+        </div>
+    </div>
+
+
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Eliminar -->
+<div class="modal fade" id="verModal-{{$comisiondeliga->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Comision de ligas Detalles</h1>
+        <button type="button" class="buttonc shadow-none" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body">
         <div class="row mb-3">
@@ -125,13 +208,13 @@ Toast.fire({
 </div>
 <!-- Modal Eliminar -->
 <div class="modal fade" id="confirmModal-{{$comisiondeliga->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <div class="modal-dialog ">
+    <div class="modal-content bg-white">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="buttonc" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body bg-white">
         {{$comisiondeliga->state ==1 ? 'Seguro que quieres eliminar esta Comision de Liga?' : 'Seguro que quieres restaurar esta Comision de Liga?'}}
       </div>
       <div class="modal-footer">
@@ -139,7 +222,10 @@ Toast.fire({
         <form action="{{route('comisiondeligas.destroy',['comisiondeliga'=>$comisiondeliga])}}" method="post">
             @method('DELETE')
             @csrf
-        <button type="submit" class="btn btn-danger">Confirmar</button>
+            <button type="submit"
+                class="btn {{$comisiondeliga->state == 1 ? 'btn-danger' : 'btn-info'}}">
+                {{$comisiondeliga->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+            </button>
         </form>
       </div>
     </div>

@@ -7,29 +7,42 @@
 @endpush
 
 @section('content')
+
+<style>
+    .card-header {
+        background-color: #1A320F;
+        color: white;
+    }
+
+    .header {
+        background-color: #4EA93B;
+    }
+</style>
+
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Ver Partido</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('calendarios.index')}}"> Calendario</a> </li>
     </ol>
 </div>
+<h1 class="my-4 text-center">Partido</h1>
 <div class="container-fluid mt-4">
-    <div class="container mt-5 text-center bg-success">
+    <div class="container mt-5 text-center">
         <div class="card">
-            <div class="card-header text-bg-dark">
+            <div class="card-header ">
                 Detalles del Partido
             </div>
-            <div class="card-header">
+            <div class="header">
                 Partido ID: {{ $calendario->id }}
             </div>
             <div class="card-body">
                 @if ($calendario->championship)
-                <h5 class="card-title mb-2 text-body-secondary">Campeonato: {{ $calendario->championship->name }}</h5>
+                    <h5 class="card-title mb-2 text-body-secondary">Campeonato: {{ $calendario->championship->name }}</h5>
                 @elseif($calendario->leaguePhase)
-                <h5 class="card-title mb-2 text-body-secondary">Campeonato: {{$calendario->leaguePhase->championship->name}}</h5>
+                    <h5 class="card-title mb-2 text-body-secondary">Campeonato:
+                        {{$calendario->leaguePhase->championship->name}}</h5>
                 @else
-                <h5 class="card-title mb-2 text-body-secondary">Partido Independiente</h5>
+                    <h5 class="card-title mb-2 text-body-secondary">Partido Independiente</h5>
                 @endif
                 <div class="row mt-3">
                     <div class="col-md-5">
@@ -51,11 +64,11 @@
 
                     <strong>Estado:</strong> {{ $calendario->status }}<br>
                     @if ($calendario->leaguePhase)
-                    <strong>Fase:</strong> {{ $calendario->leaguePhase->name}}<br>
+                        <strong>Fase:</strong> {{ $calendario->leaguePhase->name}}<br>
                     @else
-                    <strong>Partido independiente</strong><br>
+                        <strong>Partido independiente</strong><br>
                     @endif
-                    <a href="{{ route('calendarios.index') }}" class="btn btn-primary mt-2">Volver</a>
+                    <a href="{{ route('calendarios.index') }}" class="btn btn-success mt-2">Volver</a>
                 </div>
             </div>
         </div>

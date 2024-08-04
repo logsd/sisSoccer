@@ -29,7 +29,7 @@
     }
 
     .buttonr {
-        background-color:#A5D29A;
+        background-color: #A5D29A;
         color: black;
         padding: 8px 15px 8px 15px;
         margin-left: 10px;
@@ -65,13 +65,13 @@
     </ol>
     <h1 class="my-4 text-center">Actualizar Empleado</h1>
     <div class="cuerpo">
-    <form action="{{route('empleados.update',['empleado'=>$empleado])}}" method="post">
+        <form action="{{route('empleados.update',['empleado'=>$empleado])}}" method="post">
 
             @method('PATCH')
             @csrf
 
-                <div class="row ">
-                    <!--Actualizar Empleado--->
+            <div class="row ">
+                <!--Actualizar Empleado--->
 
                 <div class="col-md-4 mb-2">
                     <label for="ci" class="form-label">Cedula:</label>
@@ -98,14 +98,11 @@
                 </div>
 
                 <div class="col-md-6 mb-2">
-                                <label for="sex" class="form-label">Género:</label>
-                                <select title="Seleccione una Categoria" name="sex" id="sex" class="form-control selectpicker show-tick">
-                                    <option value="1" {{ old('sex') == '1' ? 'selected' : '' }}>Varonil</option>
-                                    <option value="0" {{ old('sex') == '0' ? 'selected' : '' }}>Femenino</option>
-                                </select>
-                                @error('sex')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                    <label for="sex" class="form-label">Género:</label>
+                    <select title="Seleccione una Categoria" name="sex" id="sex" class="form-control selectpicker show-tick">
+                        <option value="1" @if (old('sex', $empleado->sex) === 1) selected @endif>Masculino</option>
+                        <option value="0" @if (old('sex', $empleado->sex) === 0) selected @endif>Femenino</option>
+                    </select>
                 </div>
 
                 <div class="col-md-6 mb-2">
@@ -117,15 +114,19 @@
                 </div>
 
                 <div class="col-md-6 mb-2">
-                        <label class="form-label" for="civil_status_id">Estado Civil</label>
-                      <select data-size="4" title="Seleccione un estado civil" data-live-search="true" name="civil_status_id" id="civil_status_id" class="form-control selectpicker show-tick">
+                    <label class="form-label" for="civil_status_id">Estado Civil</label>
+                    <select data-size="4" title="Seleccione un estado civil" data-live-search="true" name="civil_status_id" id="civil_status_id" class="form-control selectpicker show-tick">
                         @foreach ($estadosCiviles as $item)
-                            <option value="{{$item->id}}" {{old('civil_status_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @if ($empleado->civil_status_id == $item->id)
+                        <option selected value="{{$item->id}}" {{old('civil_status_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @else
+                        <option value="{{$item->id}}" {{old('civil_status_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @endif
                         @endforeach
-                      </select>
-                        @error('civil_status_id')
-                        <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
+                    </select>
+                    @error('civil_status_id')
+                    <small class="text-danger">{{'*'.$message}}</small>
+                    @enderror
                 </div>
 
                 <div class="col-md-6 mb-2">
@@ -146,15 +147,19 @@
 
 
                 <div class="col-md-6 mb-2">
-                        <label class="form-label" for="province_id">Provincia</label>
-                      <select data-size="4" title="Seleccione una Provincia" data-live-search="true" name="province_id" id="province_id" class="form-control selectpicker show-tick">
+                    <label class="form-label" for="province_id">Provincia</label>
+                    <select data-size="4" title="Seleccione una Provincia" data-live-search="true" name="province_id" id="province_id" class="form-control selectpicker show-tick">
                         @foreach ($provincias as $item)
-                            <option value="{{$item->id}}" {{old('province_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @if ($empleado->province_id == $item->id)
+                        <option selected value="{{$item->id}}" {{old('province_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @else
+                        <option value="{{$item->id}}" {{old('province_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @endif
                         @endforeach
-                      </select>
-                        @error('province_id')
-                        <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
+                    </select>
+                    @error('province_id')
+                    <small class="text-danger">{{'*'.$message}}</small>
+                    @enderror
                 </div>
 
 
@@ -175,27 +180,35 @@
                 </div>
 
                 <div class="col-md-6 mb-2">
-                        <label class="form-label" for="department_id">Departamento</label>
-                      <select data-size="4" title="Seleccione un Departamento" data-live-search="true" name="department_id" id="department_id" class="form-control selectpicker show-tick">
+                    <label class="form-label" for="department_id">Departamento</label>
+                    <select data-size="4" title="Seleccione un Departamento" data-live-search="true" name="department_id" id="department_id" class="form-control selectpicker show-tick">
                         @foreach ($departamentos as $item)
-                            <option value="{{$item->id}}" {{old('department_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @if ($empleado->department_id == $item->id)
+                        <option selected value="{{$item->id}}" {{old('department_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @else
+                        <option value="{{$item->id}}" {{old('department_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @endif
                         @endforeach
-                      </select>
-                        @error('department_id')
-                        <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
+                    </select>
+                    @error('department_id')
+                    <small class="text-danger">{{'*'.$message}}</small>
+                    @enderror
                 </div>
 
                 <div class="col-md-6 mb-2">
-                        <label class="form-label" for="position_id">Posicion</label>
-                      <select data-size="4" title="Seleccione una Posicion" data-live-search="true" name="position_id" id="position_id" class="form-control selectpicker show-tick">
+                    <label class="form-label" for="position_id">Posicion</label>
+                    <select data-size="4" title="Seleccione una Posicion" data-live-search="true" name="position_id" id="position_id" class="form-control selectpicker show-tick">
                         @foreach ($posiciones as $item)
-                            <option value="{{$item->id}}" {{old('position_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @if ($empleado->position_id == $item->id)
+                        <option selected value="{{$item->id}}" {{old('position_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @else
+                        <option value="{{$item->id}}" {{old('position_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                        @endif
                         @endforeach
-                      </select>
-                        @error('position_id')
-                        <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
+                    </select>
+                    @error('position_id')
+                    <small class="text-danger">{{'*'.$message}}</small>
+                    @enderror
                 </div>
 
                 <div class="col-12 text-center">
@@ -203,8 +216,7 @@
                         <div class="col-md-12 my-4">
                             <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
                             <a href="{{route('empleados.index')}}">
-                                <button type="button" class="buttonr"><i
-                                        class="fa-solid fa-arrow-left"></i>Regresar</button>
+                                <button type="button" class="buttonr"><i class="fa-solid fa-arrow-left"></i>Regresar</button>
                             </a>
                             <div class="col-md-12 mb-2">
                             </div>

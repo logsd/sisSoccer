@@ -26,6 +26,7 @@ use App\Http\Controllers\sancionController;
 use App\Http\Controllers\genEstadoController;
 use App\Http\Controllers\genOficinaController;
 use App\Http\Controllers\jugadorController;
+use App\Http\Controllers\directClubController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -67,6 +68,7 @@ Route::resources([
     'genEstados' => genEstadoController::class,
     'genOficinas' => genOficinaController::class,
     'jugadores' => jugadorController::class,
+    'directClubs' => directClubController::class,
 ]
 
 );
@@ -123,6 +125,8 @@ Route::delete('/genOficinas/force-delete/{id}', [genOficinaController::class, 'f
 ])->name('genOficinas.forceDelete');
 Route::delete('/jugadores/force-delete/{id}', [jugadorController::class, 'forceDelete'
 ])->name('jugadores.forceDelete');
+Route::delete('/directClubs/force-delete/{id}', [directClubController::class, 'forceDelete'
+])->name('directClubs.forceDelete');
 
 
 Route::get('/login', function () {

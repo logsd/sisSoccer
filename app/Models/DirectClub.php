@@ -13,4 +13,10 @@ class DirectClub extends Model
     public function club(){
         return $this->belongsTo(Club::class);
     }
+
+    public function championship(){
+        return $this->belongsTo(Championship::class);
+    }
+
+    protected $guarded = ['id'];
 }

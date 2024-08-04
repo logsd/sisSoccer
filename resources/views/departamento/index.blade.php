@@ -28,8 +28,9 @@ Toast.fire({
 });
 </script>
 @endif
+
 <style>
-    .button{
+    .button {
         background-color: #4EA93B;
         color: black;
         padding: 8px 15px 8px 15px;
@@ -38,27 +39,33 @@ Toast.fire({
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
-    .btn{
+    .button:hover {
+        background-color: #337326;
+        color: white;
+    }
+
+    .fa-plus {
+        padding-right: 10px;
+    }
+
+    .card-header {
+        background-color: #1A320F;
+        color: white;
+    }
+
+    .btn {
         padding: 6px 15px 6px 15px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         margin: 0 5px 0 0;
     }
 
-    .button:hover{
-        background-color:#337326;
-        color:white;
-    }
-
-    .fa-plus{
-        padding-right: 10px;
-    }
-
-    .card-header{
-        background-color:#1A320F;
+    .modal-header,
+    .buttonc {
+        background-color: #4EA93B;
         color: white;
+        font-size: 110%;
+        border: none;
     }
-
-
 </style>
 
 <div class="container-fluid px-4">
@@ -69,7 +76,7 @@ Toast.fire({
                         </ol>
                         <div class="mb-4">
                         <a href="{{route('departamentos.create')}}">
-                            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Añadir nuevo Departamento</button>
+                            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Departamento</button>
                         </a>
                         </div>
                         <div class="card mb-4">
@@ -102,12 +109,12 @@ Toast.fire({
                                                 <td>
                                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                                     <form action="{{route('departamentos.edit',['departamento'=>$departamento])}}" method="get">
-                                                    <button type="submit" class="btn btn-warning rounded">Editar</button>
+                                                    <button type="submit" class="btn btn-primary rounded">Editar</button>
                                                     </form>
                                                     @if ($departamento->state == 1)
-                                                    <button type="button" class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}">Desabilitar</button>
+                                                    <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}">Deshabilitar</button>
                                                     @else
-                                                    <button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}">Restaurar</button>
+                                                    <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}">Restaurar</button>
                                                     @endif
                                                     <form action="{{route('departamentos.forceDelete',[$departamento->id])}}" method="POST">
                                                     @csrf
@@ -133,7 +140,9 @@ Toast.fire({
         <form action="{{route('departamentos.destroy',['departamento'=>$departamento->id])}}" method="post">
             @method('DELETE')
             @csrf
-        <button type="submit" class="btn btn-danger">Confirmar</button>
+            <button type="submit"   class="btn {{$departamento->state == 1 ? 'btn-danger' : 'btn-info'}}">
+                                                {{$departamento->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+                                            </button>
         </form>
       </div>
     </div>

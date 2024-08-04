@@ -39,12 +39,6 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
-    .btn {
-        padding: 6px 15px 6px 15px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        margin: 0 5px 0 0;
-    }
-
     .button:hover {
         background-color: #337326;
         color: white;
@@ -58,17 +52,31 @@
         background-color: #1A320F;
         color: white;
     }
+
+    .btn {
+        padding: 6px 15px 6px 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 0 5px 0 0;
+    }
+
+    .modal-header,
+    .buttonc {
+        background-color: #4EA93B;
+        color: white;
+        font-size: 110%;
+        border: none;
+    }
 </style>
 
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center mb-2">Ejecutivos</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item active">Ejecutivos</li>
     </ol>
+    <h1 class="my-4 text-center ">Ejecutivos</h1>
     <div class="mb-4">
         <a href="{{route('ejecutivos.create')}}">
-            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Añadir nuevo Ejecutivo</button>
+            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Ejecutivo</button>
         </a>
     </div>
     <div class="card mb-4">
@@ -116,16 +124,16 @@
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button type="button" class="btn btn-success rounded" data-bs-toggle="modal"
+                                data-bs-target="#verModal-{{$ejecutivo->id}}">Visualizar</button>
                                     <form action="{{route('ejecutivos.edit', ['ejecutivo' => $ejecutivo])}}" method="get">
-                                        <button type="submit" class="btn btn-warning">Editar</button>
+                                        <button type="submit" class="btn btn-primary">Editar</button>
                                     </form>
-                                    <button type="button" class="btn btn-secondary rounded" data-bs-toggle="modal"
-                                        data-bs-target="#verModal-{{$ejecutivo->id}}">Ver</button>
                                     @if ($ejecutivo->state == 1)
-                                        <button type="button" class="btn btn-primary rounded" data-bs-toggle="modal"
-                                            data-bs-target="#confirmModal-{{$ejecutivo->id}}">Desabilitar</button>
+                                        <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal"
+                                            data-bs-target="#confirmModal-{{$ejecutivo->id}}">Deshabilitar</button>
                                     @else
-                                        <button type="button" class="btn btn-success rounded" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-info rounded" data-bs-toggle="modal"
                                             data-bs-target="#confirmModal-{{$ejecutivo->id}}">Restaurar</button>
                                     @endif
                                     <form action="{{route('ejecutivos.forceDelete', [$ejecutivo->id])}}" method="POST">
@@ -194,7 +202,9 @@
                                             method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger">Confirmar</button>
+                                            <button type="submit"   class="btn {{$ejecutivo->state == 1 ? 'btn-danger' : 'btn-info'}}">
+                                                {{$ejecutivo->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+                                            </button>
                                         </form>
                                     </div>
                                 </div>

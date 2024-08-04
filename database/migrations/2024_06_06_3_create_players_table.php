@@ -19,7 +19,7 @@ return new class extends Migration
             $table->tinyInteger('sexo')->nullable();
             $table->tinyInteger('state')->default(1);
             $table->date('birthday');
-            $table->bigInteger('position');
+            $table->string('position');
             $table->string('direction');
             $table->string('img_url');
             $table->tinyInteger('own')->nullable();

@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Fases Campeonatos')
+@section('title', 'Calendario')
 
 @push('css')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

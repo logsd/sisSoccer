@@ -28,13 +28,13 @@ class StoreEmpleadoRequest extends FormRequest
         'email'=> 'nullable|unique:employees,email,' . $empleadoId,
         'sex' => 'nullable|boolean',
         'birth_date'=> 'nullable|date',
-        'direction'=> 'nullable',
+        'direction'=> 'required',
         'f_income'=> 'required|date',
         'f_exit'=> 'nullable|date',
-        'province_id' => 'nullable|integer|exists:provinces,id', 
+        'province_id' => 'required|integer|exists:provinces,id', 
         'department_id' => 'nullable|integer|exists:departments,id',
-        'civil_status_id' => 'nullable|integer|exists:civil_statuses,id',
-        'position_id' => 'nullable|integer|exists:positions,id'
+        'civil_status_id' => 'required|integer|exists:civil_statuses,id',
+        'position_id' => 'required|integer|exists:positions,id'
          ];
     }
     public function attributes(){

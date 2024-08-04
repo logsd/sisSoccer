@@ -127,7 +127,8 @@ Route::delete('/jugadores/force-delete/{id}', [jugadorController::class, 'forceD
 ])->name('jugadores.forceDelete');
 Route::delete('/directClubs/force-delete/{id}', [directClubController::class, 'forceDelete'
 ])->name('directClubs.forceDelete');
-
+Route::delete('/empleados/force-delete/{id}', [empleadoController::class, 'forceDelete'
+])->name('empleados.forceDelete');
 
 Route::get('/login', function () {
     return view('auth.login');

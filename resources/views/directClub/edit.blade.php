@@ -138,7 +138,7 @@
 
                                     <div class="col-md-12 mb-2">
                                         <label class="form-label" for="club_id">Club:</label>
-                                        <select data-size="3" title="Seleccione una Fase" data-live-search="true" name="club_id" id="club_id" class="form-control selectpicker show-tick">
+                                        <select data-size="3" title="Seleccione un Club" data-live-search="true" name="club_id" id="club_id" class="form-control selectpicker show-tick">
                                             @foreach ($clubs as $item)
                                             @if ($directClub->club_id == $item->id)
                                             <option selected value="{{$item->id}}" {{old('club_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
@@ -156,7 +156,7 @@
 
                                     <div class="col-md-12 mb-2">
                                         <label class="form-label" for="championship_id">Campeonato:</label>
-                                            <select data-size="3" title="Seleccione una Fase" data-live-search="true" name="championship_id" id="championship_id" class="form-control selectpicker show-tick">
+                                            <select data-size="3" title="Seleccione un Campeonato" data-live-search="true" name="championship_id" id="championship_id" class="form-control selectpicker show-tick">
                                                 @foreach ($campeonatos as $item)
                                                 @if ($directClub->championship_id == $item->id)
                                                 <option selected value="{{$item->id}}" {{old('championship_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>

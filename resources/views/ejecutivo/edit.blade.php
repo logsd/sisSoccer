@@ -8,10 +8,6 @@
 @section('content')
 
 <style>
-    #description {
-        resize: none;
-    }
-
     .cuerpo {
         border: solid 3px black;
         border-radius: 10px;
@@ -29,7 +25,7 @@
     .buttong {
         background-color: #32fc08;
         color: black;
-        padding: 8px 15px 8px 15px;
+        padding: 8px 20px 8px 20px;
         border: solid 2px black;
         border-radius: 20px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -37,7 +33,7 @@
     }
 
     .buttonr {
-        background-color: #d11500;
+        background-color:#A5D29A;
         color: black;
         padding: 8px 15px 8px 15px;
         margin-left: 10px;
@@ -60,13 +56,12 @@
         padding-right: 10px;
     }
 </style>
-
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center mb-3">Editar Ejecutivos</h1>
+    <h1 class="mt-4 text-center mb-3">Actualizar Ejecutivo</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('ejecutivos.index')}}">Ejecutivos</a> </li>
-        <li class="breadcrumb-item active">Editar Ejecutivo</li>
+        <li class="breadcrumb-item active">Actualizar Ejecutivo</li>
     </ol>
 
     <div class="cuerpo">
@@ -144,7 +139,7 @@
                             <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
                             <a href="{{route('ejecutivos.index')}}">
                                 <button type="button" class="buttonr"><i
-                                        class="fa-solid fa-arrow-left"></i>Cancelar</button>
+                                        class="fa-solid fa-arrow-left"></i>Regresar</button>
                             </a>
                             <div class="col-md-12 mb-2">
                             </div>

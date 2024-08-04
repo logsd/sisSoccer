@@ -115,7 +115,7 @@
                 </form>
                 <button type="button" class="btn btn-secondary rounded" data-bs-toggle="modal" data-bs-target="#verModal-{{$club->id}}">Ver</button>
                 @if ($club->state == 1)
-                <button type="button" class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$club->id}}">Desabilitar</button>
+                <button type="button" class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$club->id}}">Deshabilitar</button>
                 @else
                 <button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$club->id}}">Restaurar</button>
                 @endif
@@ -189,7 +189,7 @@
   <h1 class="mt-4 mb-4">Telefonos Clubs</h1>
   <div class="mb-4">
     <a href="{{route('dataClubs.create')}}">
-      <button type="button" class="button"><i class="fa-solid fa-plus"></i>Agregar Telefono al Club</button>
+      <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Telefono de Club</button>
     </a>
   </div>
   <div class="card mb-4">
@@ -237,7 +237,7 @@
                   <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
                 @if ($dataClub->state == 1)
-                <button type="button" class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$dataClub->id}}">Desabilitar</button>
+                <button type="button" class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$dataClub->id}}">Deshabilitar</button>
                 @else
                 <button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$dataClub->id}}">Restaurar</button>
                 @endif

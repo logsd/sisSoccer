@@ -61,14 +61,15 @@ Toast.fire({
 </style>
 
 <div class="container-fluid px-4">
-                        <h1 class="mt-4 text-center mb-2">Empleados</h1>
-                        <ol class="breadcrumb mb-4">
+                        <ol class="breadcrumb my-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
                             <li class="breadcrumb-item active">Empleados</li>
                         </ol>
+
+                        <h1 class="my-4 text-center">Empleados</h1>
                         <div class="mb-4">
                         <a href="{{route('empleados.create')}}">
-                            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Añadir nuevo Empleado</button>
+                            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Empleado</button>
                         </a>
                         </div>
 
@@ -120,17 +121,17 @@ Toast.fire({
                                                 </td>
                                                 <td>
                                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                    <form action="{{route('empleados.edit',['empleado'=>$empleado])}}" method="get">
-                                                    <button type="submit" class="btn btn-warning">Editar</button>
+                                                <form action="{{route('empleados.show',['empleado'=>$empleado])}}">
+                                                    <button type="submit" class="btn btn-success rounded">Ver</button>
                                                     </form>
-                                                    <form action="{{route('empleados.show',['empleado'=>$empleado])}}">
-                                                    <button type="submit" class="btn btn-secondary rounded">Ver</button>
+                                                    <form action="{{route('empleados.edit',['empleado'=>$empleado])}}" method="get">
+                                                    <button type="submit" class="btn btn-primary">Editar</button>
                                                     </form>
 
                                                     @if ($empleado->state == 1)
                                                     <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$empleado->id}}">Eliminar</button>
                                                     @else
-                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$empleado->id}}">Restaurar</button>
+                                                    <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$empleado->id}}">Restaurar</button>
                                                     @endif
                                                 </div>
                                                 </td>
@@ -152,7 +153,9 @@ Toast.fire({
         <form action="{{route('empleados.destroy',['empleado'=>$empleado->id])}}" method="post">
             @method('DELETE')
             @csrf
-        <button type="submit" class="btn btn-danger">Confirmar</button>
+            <button type="submit"   class="btn {{$empleado->state == 1 ? 'btn-danger' : 'btn-info'}}">
+                                                {{$empleado->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+                                            </button>
         </form>
       </div>
     </div>

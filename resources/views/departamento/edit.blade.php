@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Editar Departamento')
+@section('title', 'Actualizar Departamento')
 
 @push('css')
 
@@ -9,10 +9,6 @@
 @section('content')
 
 <style>
-    #description {
-        resize: none;
-    }
-
     .cuerpo {
         border: solid 3px black;
         border-radius: 10px;
@@ -30,7 +26,7 @@
     .buttong {
         background-color: #32fc08;
         color: black;
-        padding: 8px 15px 8px 15px;
+        padding: 8px 20px 8px 20px;
         border: solid 2px black;
         border-radius: 20px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -38,7 +34,7 @@
     }
 
     .buttonr {
-        background-color: #d11500;
+        background-color:#A5D29A;
         color: black;
         padding: 8px 15px 8px 15px;
         margin-left: 10px;
@@ -61,14 +57,14 @@
         padding-right: 10px;
     }
 </style>
+
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center mb-3">Editar Departamentos</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('departamentos.index')}}">Departamentos</a> </li>
-        <li class="breadcrumb-item active">Editar Departamento</li>
+        <li class="breadcrumb-item active">Actualizar Departamento</li>
     </ol>
-
+    <h1 class="my-4 text-center">Actualizar Departamentos</h1>
     <div class="cuerpo">
         <form action="{{route('departamentos.update', ['departamento' => $departamento])}}" method="post">
             @method('PATCH')

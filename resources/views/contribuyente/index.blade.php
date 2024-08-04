@@ -30,8 +30,7 @@
 @endif
 
 <style>
-    .button,
-    .buttonc {
+    .button {
         background-color: #4EA93B;
         color: black;
         padding: 8px 15px 8px 15px;
@@ -40,18 +39,7 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
-    .buttonc {
-        background-color: #4EA93B;
-        color: black;
-        padding: 8px 15px 8px 15px;
-        border-radius: 10px;
-        border: none;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        text-align: center;
-    }
-
-    .button,
-    .buttonc:hover {
+    .button:hover {
         background-color: #337326;
         color: white;
     }
@@ -71,32 +59,24 @@
         margin: 0 5px 0 0;
     }
 
-    .btn-group {
-        justify-content: end;
-        text-align: right;
-    }
-
-    .modal-body {
-        background-color: #4EA93B;
-    }
-
     .modal-header,
     .buttonc {
-        background-color: #1A320F;
+        background-color: #4EA93B;
         color: white;
         font-size: 110%;
+        border: none;
     }
 </style>
 
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center mb-4">Contribuyentes</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item active">Contribuyentes</li>
     </ol>
+    <h1 class="my-4 text-center">Contribuyentes</h1>
     <div class="mb-4">
         <a href="{{route('contribuyentes.create')}}">
-            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Añadir nuevo Contribuyente</button>
+            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Contribuyente</button>
         </a>
     </div>
     <div class="card mb-4">
@@ -143,13 +123,13 @@
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                     <form action="{{route('contribuyentes.edit', ['contribuyente' => $contribuyente])}}"
                                         method="get">
-                                        <button type="submit" class="btn btn-warning rounded">Editar</button>
+                                        <button type="submit" class="btn btn-primary rounded">Editar</button>
                                     </form>
                                     @if ($contribuyente->state == 1)
-                                        <button type="button" class="btn btn-primary rounded" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal"
                                             data-bs-target="#confirmModal-{{$contribuyente->id}}">Deshabilitar</button>
                                     @else
-                                        <button type="button" class="btn btn-success rounded" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-info rounded" data-bs-toggle="modal"
                                             data-bs-target="#confirmModal-{{$contribuyente->id}}">Restaurar</button>
                                     @endif
                                     <form action="{{route('contribuyentes.forceDelete', [$contribuyente->id])}}"
@@ -183,7 +163,7 @@
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit"
-                                                class="btn {{$contribuyente->state == 1 ? 'btn-danger' : 'btn-success'}}">
+                                                class="btn {{$contribuyente->state == 1 ? 'btn-danger' : 'btn-info'}}">
                                                 {{$contribuyente->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
                                             </button>
                                         </form>

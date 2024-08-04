@@ -23,7 +23,7 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar HORARIO-->
-            <div class="date-display" id="currentDateDisplay"></div> <!-- Mostrar la fecha aquí -->
+            <div class="date-display " id="currentDateDisplay"></div>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">

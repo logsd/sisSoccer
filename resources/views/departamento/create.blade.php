@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Crear Departamento')
+@section('title', 'Nuevo Departamento')
 
 @push('css')
 
@@ -9,68 +9,66 @@
 @section('content')
 
 <style>
-        #description {
-            resize: none;
-        }
-        #description {
-            resize: none;
-        }
+    #description{
+        resize: none;
+    }
 
-        .cuerpo {
-            border: solid 3px black;
-            border-radius: 10px;
-            padding: 20px;
-            background: #4EA93B;
-            color: black;
-            margin-bottom: 20px
-        }
+    .cuerpo {
+        border: solid 3px black;
+        border-radius: 10px;
+        padding: 20px;
+        background: #4EA93B;
+        color: black;
+        margin-bottom: 20px
+    }
 
-        h4 {
-            text-align: center;
-            padding: 4px 5px;
-        }
+    h4 {
+        text-align: center;
+        padding: 4px 5px;
+    }
 
-        .buttong {
-            background-color: #32fc08;
-            color: black;
-            padding: 8px 15px 8px 15px;
-            border: solid 2px black;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            font-size: 17px;
-        }
+    .buttong {
+        background-color: #32fc08;
+        color: black;
+        padding: 8px 20px 8px 20px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+    }
 
-        .buttonr {
-            background-color: #A5D29A;
-            color: black;
-            padding: 8px 15px 8px 15px;
-            margin-left: 10px;
-            border: solid 2px black;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            font-size: 17px;
-        }
+    .buttonr {
+        background-color: #A5D29A;
+        color: black;
+        padding: 8px 15px 8px 15px;
+        margin-left: 10px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+    }
 
-        .buttonr:hover,
-        .buttong:hover {
-            background-color: #337326;
-            color: white;
+    .buttonr:hover,
+    .buttong:hover {
+        background-color: #337326;
+        color: white;
 
-        }
+    }
 
-        .fa-check,
-        .fa-arrow-left {
-            padding-right: 10px;
-        }
+    .fa-check,
+    .fa-arrow-left {
+        padding-right: 10px;
+    }
+
 </style>
 
 <div class="container-fluid px-4">
-                        <h1 class="mt-4 text-center mb-4">Crear Departamentos</h1>
-                        <ol class="breadcrumb mb-4">
+                        <ol class="breadcrumb my-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
                             <li class="breadcrumb-item "><a href="{{route('departamentos.index')}}">Departamentos</a> </li>
-                            <li class="breadcrumb-item active">Crear Departamentos</li>
+                            <li class="breadcrumb-item active">Nuevo Departamento</li>
                         </ol>
+                        <h1 class="my-4 text-center">Nuevo Departamento</h1>
 <div class="cuerpo">
 <form action="{{route('departamentos.store')}}" method="post">
     @csrf

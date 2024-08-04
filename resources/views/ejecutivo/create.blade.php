@@ -33,7 +33,7 @@
     .buttong {
         background-color: #32fc08;
         color: black;
-        padding: 8px 15px 8px 15px;
+        padding: 8px 20px 8px 20px;
         border: solid 2px black;
         border-radius: 20px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -64,11 +64,11 @@
     }
 </style>
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center mb-4">Crear Ejecutivos</h1>
+    <h1 class="mt-4 text-center mb-4">Nuevo Ejecutivo</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('ejecutivos.index')}}">Ejecutivos</a> </li>
-        <li class="breadcrumb-item active">Crear Ejecutivos</li>
+        <li class="breadcrumb-item active">Nuevo Ejecutivo</li>
     </ol>
     <div class="cuerpo">
         <form action="{{route('ejecutivos.store')}}" method="post" enctype="multipart/form-data">

@@ -1,21 +1,9 @@
 @extends('template')
 
-@section('title', 'Editar Empleado')
+@section('title', 'Actualizar Empleado')
 
 @push('css')
 <style>
-    #observation {
-        resize: none;
-    }
-
-    #description {
-        resize: none;
-    }
-
-    #description {
-        resize: none;
-    }
-
     .cuerpo {
         border: solid 3px black;
         border-radius: 10px;
@@ -33,7 +21,7 @@
     .buttong {
         background-color: #32fc08;
         color: black;
-        padding: 8px 15px 8px 15px;
+        padding: 8px 20px 8px 20px;
         border: solid 2px black;
         border-radius: 20px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -41,7 +29,7 @@
     }
 
     .buttonr {
-        background-color: #d11500;
+        background-color:#A5D29A;
         color: black;
         padding: 8px 15px 8px 15px;
         margin-left: 10px;
@@ -70,12 +58,12 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center mb-3">Actualizar Empleado</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('empleados.index')}}">Empleados</a> </li>
-        <li class="breadcrumb-item active">Editar Empleado</li>
+        <li class="breadcrumb-item active">Actualizar Empleado</li>
     </ol>
+    <h1 class="my-4 text-center">Actualizar Empleado</h1>
     <div class="cuerpo">
     <form action="{{route('empleados.update',['empleado'=>$empleado])}}" method="post">
 
@@ -83,7 +71,7 @@
             @csrf
 
                 <div class="row ">
-                    <!--Editar Empleado--->
+                    <!--Actualizar Empleado--->
 
                 <div class="col-md-4 mb-2">
                     <label for="ci" class="form-label">Cedula:</label>
@@ -212,11 +200,11 @@
 
                 <div class="col-12 text-center">
                     <div class="row text-center">
-                        <div class="col-md-12 mb-2 mt-2">
+                        <div class="col-md-12 my-4">
                             <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
                             <a href="{{route('empleados.index')}}">
                                 <button type="button" class="buttonr"><i
-                                        class="fa-solid fa-arrow-left"></i>Cancelar</button>
+                                        class="fa-solid fa-arrow-left"></i>Regresar</button>
                             </a>
                             <div class="col-md-12 mb-2">
                             </div>

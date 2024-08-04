@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Crear Contribuyente')
+@section('title', 'Nuevo Contribuyente')
 
 @push('css')
 <style>
@@ -25,7 +25,7 @@
     .buttong {
         background-color: #32fc08;
         color: black;
-        padding: 8px 15px 8px 15px;
+        padding: 8px 20px 8px 20px;
         border: solid 2px black;
         border-radius: 20px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -60,12 +60,13 @@
 
 @section('content')
 <div class="container-fluid px-4">
-                        <h1 class="mt-4 text-center mb-4">Crear Contribuyentes</h1>
-                        <ol class="breadcrumb mb-4">
+                        <ol class="breadcrumb my-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
                             <li class="breadcrumb-item "><a href="{{route('contribuyentes.index')}}">Contribuyentes</a> </li>
-                            <li class="breadcrumb-item active">Crear Contribuyentes</li>
+                            <li class="breadcrumb-item active">Nuevo Contribuyente</li>
                         </ol>
+
+                        <h1 class="my-4 text-center">Nuevo Contribuyente</h1>
 <div class="cuerpo">
 <form action="{{route('contribuyentes.store')}}" method="post">
     @csrf

@@ -14,6 +14,11 @@ class Championship extends Model
         return $this->hasMany(License::class);
     }
 
+    public function directClubs()
+    {
+        return $this->hasMany(DirectClub::class);
+    }
+
     public function teams()
     {
         return $this->hasMany(Team::class);

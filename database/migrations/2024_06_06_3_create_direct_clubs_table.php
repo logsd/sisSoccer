@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('position')->unique()->nullable(); // Posición en el club (e.g., Presidente, Vicepresidente)
             $table->string('observation');
             $table->foreignId('club_id')->nullable()->constrained('clubs')->onDelete('set null');
+            $table->foreignId('championship_id')->nullable()->constrained('championships')->onDelete('set null');
             $table->tinyInteger('state')->default(1);
 
             $table->timestamps();

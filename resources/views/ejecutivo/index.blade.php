@@ -124,8 +124,8 @@
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <button type="button" class="btn btn-success rounded" data-bs-toggle="modal"
-                                data-bs-target="#verModal-{{$ejecutivo->id}}">Visualizar</button>
+                                    <button type="button" class="btn btn-success rounded" data-bs-toggle="modal"
+                                        data-bs-target="#verModal-{{$ejecutivo->id}}">Visualizar</button>
                                     <form action="{{route('ejecutivos.edit', ['ejecutivo' => $ejecutivo])}}" method="get">
                                         <button type="submit" class="btn btn-primary">Editar</button>
                                     </form>
@@ -151,17 +151,26 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Ejecutivo Detalles</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <button type="button" class="buttonc" data-bs-dismiss="modal"
+                                            aria-label="Close">X</button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="row mb-3">
-                                            <label> <span class="fw-bolder">Nombre:</span> {{$ejecutivo->name}}</label>
+
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa-solid fa-people-group"></i></span>
+                                            <input disabled type="text" class="form-control" value="Nombre:">
+                                            <input disabled type="text" class="form-control  bg-white"
+                                                value="{{$ejecutivo->name}}">
                                         </div>
-                                        <div class="row mb-3">
-                                            <label> <span class="fw-bolder">Apellido:</span>
-                                                {{$ejecutivo->lastname}}</label>
+                                        <div class="col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text"><i class="fa-brands fa-dribbble"></i></span>
+                                                <input disabled type="text" class="form-control" value="Apellido:">
+                                                <input disabled type="text" class="form-control  bg-white"
+                                                    value="{{$ejecutivo->lastname}}">
+                                            </div>
                                         </div>
+
                                         <div class="row mb-3">
                                             <label class="fw-bolder mb-3">Imagen:</label>
                                             <div>
@@ -202,7 +211,8 @@
                                             method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <button type="submit"   class="btn {{$ejecutivo->state == 1 ? 'btn-danger' : 'btn-info'}}">
+                                            <button type="submit"
+                                                class="btn {{$ejecutivo->state == 1 ? 'btn-danger' : 'btn-info'}}">
                                                 {{$ejecutivo->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
                                             </button>
                                         </form>

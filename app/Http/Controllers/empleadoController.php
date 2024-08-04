@@ -116,7 +116,7 @@ class empleadoController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('empleados.index')->with('success', 'Empleado actualizada!');
+        return redirect()->route('empleados.index')->with('success', 'Empleado actualizado!');
     }
 
     /**
@@ -147,10 +147,10 @@ class empleadoController extends Controller
         $empleado = Employee::find($id);
         if ($empleado ) {
             $empleado ->delete();
-            return redirect()->route('empleados.index')->with('success', 'Empleado eliminada definitivamente');
+            return redirect()->route('empleados.index')->with('success', 'Empleado eliminado definitivamente');
         }
 
-        return redirect()->route('categorias.index')->with('error', 'El Empleado  no fue encontrado');
+        return redirect()->route('empleados.index')->with('error', 'El Empleado  no fue encontrado');
     }
 }
 

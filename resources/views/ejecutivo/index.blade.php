@@ -162,14 +162,14 @@
 
                                         <div class="input-group mb-3">
                                             <span class="input-group-text"><i class="fa-solid fa-people-group"></i></span>
-                                            <input disabled type="text" class="form-control" value="Nombre:">
+                                            <input disabled type="text" class="form-control" value="DNI:">
                                             <input disabled type="text" class="form-control  bg-white"
                                                 value="{{$ejecutivo->dni}}">
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text"><i class="fa-brands fa-dribbble"></i></span>
-                                                <input disabled type="text" class="form-control" value="Apellido:">
+                                                <input disabled type="text" class="form-control" value="Nombre:">
                                                 <input disabled type="text" class="form-control  bg-white"
                                                     value="{{$ejecutivo->name}}">
                                             </div>
@@ -187,19 +187,20 @@
                                         <div class="col-sm-12">
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text"><i class="fa-brands fa-dribbble"></i></span>
-                                                <input disabled type="text" class="form-control" value="Apellido:">
+                                                <input disabled type="text" class="form-control" value="Direccion:">
                                                 <input disabled type="text" class="form-control  bg-white"
                                                     value="{{$ejecutivo->address}}">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-12">
-                                            <div class="input-group mb-3">
+                                            <div class="input-group">
                                                 <span class="input-group-text"><i class="fa-brands fa-dribbble"></i></span>
-                                                <input disabled type="text" class="form-control" value="Apellido:">
-                                                <input disabled type="text" class="form-control  bg-white"
-                                                    value="{{$ejecutivo->email}}">
+                                                <input disabled type="text" class="form-control" value="Email:">
+
                                             </div>
+                                            <input disabled type="text" class="form-control mb-3 bg-white"
+                                                    value="{{$ejecutivo->email}}">
                                         </div>
 
                                         <div class="row mb-3">

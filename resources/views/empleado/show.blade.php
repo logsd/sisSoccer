@@ -7,60 +7,71 @@
 @endpush
 
 @section('content')
+
+
+<style>
+    .card{
+        background-color: #4EA93B;
+    }
+
+
+    .buttonr {
+        background-color: #A5D29A;
+        color: black;
+        padding: 7px 15px 7px 15px;
+        border: solid 2px black;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+        margin-left: 2%;
+    }
+</style>
+
 <div class="container-fluid px-4">
-    <h1 class="mt-4 ">Ver Empleado</h1>
-    <ol class="breadcrumb mb-4">
+
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('empleados.index')}}">Empleado</a> </li>
     </ol>
+
 </div>
-<div class="container w-100">
+<div class="container">
+<h1 class="mt-2 text-center mb-4">Campeonato</h1>
+<div class="card m-4 p-3">
+<div class="row px-10">
 
-    <div class="card p-2">
-        <div class="row mb-2">
-
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa-solid fa-file-signature"></i></span>
                     <input disabled type="text" class="form-control" value="Nombre">
+                    <input disabled type="text" class="form-control bg-white" value="{{$empleado->name}}">
                 </div>
             </div>
-            <div class="col-sm-8">
-                <input disabled type="text" class="form-control" value="{{$empleado->name}}">
-            </div>
 
-
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa-solid fa-file-signature"></i></span>
                     <input disabled type="text" class="form-control" value="Apellido">
+                    <input disabled type="text" class="form-control bg-white" value="{{$empleado->last_name}}">
                 </div>
             </div>
-            <div class="col-sm-8">
-                <input disabled type="text" class="form-control" value="{{$empleado->last_name}}">
-            </div>
 
-
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
-                    <input disabled type="text" class="form-control" value="Email">
+                    <input disabled type="text" class="form-control w-6" value="Email">
+                    <input disabled type="text" class="form-control bg-white" value="{{$empleado->email}}">
                 </div>
             </div>
-            <div class="col-sm-8">
-                <input disabled type="text" class="form-control" value="{{$empleado->email}}">
-            </div>
 
-            <div class="col-sm-4">
+
+            <div class="col-sm-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa-regular fa-calendar-days"></i></span>
                     <input disabled type="text" class="form-control" value="Fecha N.">
+                    <input disabled type="text" class="form-control " value="{{$empleado->birth_date}}">
                 </div>
             </div>
-            <div class="col-sm-8">
-                <input disabled type="text" class="form-control" value="{{$empleado->birth_date}}">
-            </div>
-            
 
             <div class="col-sm-4">
                 <div class="input-group mb-3">

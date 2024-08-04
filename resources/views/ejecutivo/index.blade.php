@@ -116,30 +116,34 @@
                             </td>
                             <td>
                                 @if ($ejecutivo->state == 1)
-                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                                    <span class="fw-bolder p-1 rounded bg-info text-black">Habilitado</span>
                                 @else
-                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
+                                    <span class="fw-bolder p-1 rounded bg-warning text-black">Deshabilitado</span>
 
                                 @endif
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                     <button type="button" class="btn btn-success rounded" data-bs-toggle="modal"
-                                        data-bs-target="#verModal-{{$ejecutivo->id}}">Visualizar</button>
+                                        data-bs-target="#verModal-{{$ejecutivo->id}}"><i class="fa-solid fa-eye"></i></button>
                                     <form action="{{route('ejecutivos.edit', ['ejecutivo' => $ejecutivo])}}" method="get">
-                                        <button type="submit" class="btn btn-primary">Editar</button>
+                                        <button type="submit" class="btn btn-primary"><i
+                                        class="fa-solid fa-pencil"></i></button>
                                     </form>
                                     @if ($ejecutivo->state == 1)
                                         <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal"
-                                            data-bs-target="#confirmModal-{{$ejecutivo->id}}">Deshabilitar</button>
+                                            data-bs-target="#confirmModal-{{$ejecutivo->id}}"><i
+                                            class="fa-solid fa-toggle-off fa-xl"></i></button>
                                     @else
                                         <button type="button" class="btn btn-info rounded" data-bs-toggle="modal"
-                                            data-bs-target="#confirmModal-{{$ejecutivo->id}}">Restaurar</button>
+                                            data-bs-target="#confirmModal-{{$ejecutivo->id}}"><i
+                                            class="fa-solid fa-toggle-on fa-xl"></i></button>
                                     @endif
                                     <form action="{{route('ejecutivos.forceDelete', [$ejecutivo->id])}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        <button type="submit" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </div>
                             </td>
@@ -160,14 +164,41 @@
                                             <span class="input-group-text"><i class="fa-solid fa-people-group"></i></span>
                                             <input disabled type="text" class="form-control" value="Nombre:">
                                             <input disabled type="text" class="form-control  bg-white"
-                                                value="{{$ejecutivo->name}}">
+                                                value="{{$ejecutivo->dni}}">
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text"><i class="fa-brands fa-dribbble"></i></span>
                                                 <input disabled type="text" class="form-control" value="Apellido:">
                                                 <input disabled type="text" class="form-control  bg-white"
+                                                    value="{{$ejecutivo->name}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text"><i class="fa-brands fa-dribbble"></i></span>
+                                                <input disabled type="text" class="form-control" value="Apellido:">
+                                                <input disabled type="text" class="form-control  bg-white"
                                                     value="{{$ejecutivo->lastname}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text"><i class="fa-brands fa-dribbble"></i></span>
+                                                <input disabled type="text" class="form-control" value="Apellido:">
+                                                <input disabled type="text" class="form-control  bg-white"
+                                                    value="{{$ejecutivo->address}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text"><i class="fa-brands fa-dribbble"></i></span>
+                                                <input disabled type="text" class="form-control" value="Apellido:">
+                                                <input disabled type="text" class="form-control  bg-white"
+                                                    value="{{$ejecutivo->email}}">
                                             </div>
                                         </div>
 
@@ -202,8 +233,9 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        {{$ejecutivo->state == 1 ? 'Seguro que quieres desabilitar este Ejecutivo?' : 'Seguro que quieres restaurar este Ejecutivo?'}}
-                                    </div>
+                                    {!! $ejecutivo->state == 1
+                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Ejecutivo?'
+                        : '¿Seguro que quieres <strong>Habilitar</strong> este Ejecutivo?' !!}</div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cerrar</button>
@@ -212,8 +244,8 @@
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit"
-                                                class="btn {{$ejecutivo->state == 1 ? 'btn-danger' : 'btn-info'}}">
-                                                {{$ejecutivo->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+                                                class="btn {{$ejecutivo->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                                                {{$ejecutivo->state == 1 ? 'Deshabilitar' : 'Habilitado'}}
                                             </button>
                                         </form>
                                     </div>

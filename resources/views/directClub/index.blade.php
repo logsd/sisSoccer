@@ -81,7 +81,7 @@
     <h1 class="my-4 text-center">Directivos Club</h1>
     <div class="mb-4">
         <a href="{{route('directClubs.create')}}">
-            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Directivo</button>
+            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Directivo Club</button>
         </a>
     </div>
     <div class="card mb-4">
@@ -94,6 +94,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Email</th>
+                        <th>Telefono</th>
                         <th>Posición</th>
                         <th>Estado</th>
                         <th>Acciones</th>
@@ -101,133 +102,176 @@
                 </thead>
                 <tbody>
                     @foreach ($directivos as $item)
-                        <tr>
-                            <td>
-                                <p class="fw-semibold mb-1"> {{$item->name}} </p>
-                            </td>
-                            <td>
-                                {{$item->email}}
-                            </td>
-                            <td>
-                                {{$item->position}}
-                            </td>
-                            <td>
-                                @if ($item->state == 1)
-                                    <span class="fw-bolder rounded p-1 bg-success text-white d-block">Activo</span>
-                                @else
-                                    <span class="fw-bolder rounded p-1 bg-danger text-white d-block">Inactivo</span>
-                                @endif
-                            </td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <form action="{{route('directClubs.edit', ['directClub' => $item])}}" method="get">
-                                        <button type="submit" class="btn btn-primary">Editar</button>
-                                    </form>
-                                    <button type="button" class="btn btn-secondary rounded" data-bs-toggle="modal" data-bs-target="#verModal-{{$item->id}}">Ver</button>
-                                    @if ($item->state == 1)
-                                        <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal"
-                                            data-bs-target="#confirmModal-{{$item->id}}">Deshabilitar</button>
-                                    @else
-                                        <button type="button" class="btn btn-info rounded" data-bs-toggle="modal"
-                                            data-bs-target="#confirmModal-{{$item->id}}">Restaurar</button>
-                                    @endif
-                                    <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal-{{$item->id}}">Eliminar</button>
+                                    <tr>
+                                        <td>
+                                            <p class="fw-semibold mb-1"> {{$item->name}} </p>
+                                        </td>
+                                        <td>
+                                            {{$item->email}}
+                                        </td>
+                                        <td>
+                                            {{$item->phone}}
+                                        </td>
+                                        <td>
+                                            {{$item->position}}
+                                        </td>
+                                        <td>
+                                            @if ($item->state == 1)
+                                                <span class="fw-bolder rounded p-1 bg-info text-black d-block">Habilitado</span>
+                                            @else
+                                                <span class="fw-bolder rounded p-1 bg-warning text-black d-block">Deshabilitado</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                <button type="button" class="btn btn-success rounded" data-bs-toggle="modal"
+                                                    data-bs-target="#verModal-{{$item->id}}"><i class="fa-solid fa-eye"></i></button>
 
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Modal Ver-->
-          <div class="modal fade" id="verModal-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Directivo Detalles</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="row mb-3">
-                    <label> <span class="fw-bolder">Nombre:</span> {{$item->name}}</label>
-                  </div>
-                  <div class="row mb-3">
-                    <label> <span class="fw-bolder">Email:</span> {{$item->email}}</label>
-                  </div>
-                  <div class="row mb-3">
-                    <label> <span class="fw-bolder">Posición:</span> {{$item->position}}</label>
-                  </div>
-                  <div class="row mb-3">
-                    <label> <span class="fw-bolder">Telefono:</span> {{$item->phone}}</label>
-                  </div>
-                  <div class="row mb-3">
-                    <label> <span class="fw-bolder">Observación:</span> {{$item->observation}}</label>
-                  </div>
-                  <div class="row mb-3">
-                    <label> <span class="fw-bolder">Club:</span> {{$item->club->name}}</label>
-                  </div>
-                  <div class="row mb-3">
-                    <label> <span class="fw-bolder">Campeonato:</span> {{$item->championship->name}}</label>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-                        <!-- Desabilitar Modal -->
-                        <div class="modal fade" id="confirmModal-{{$item->id}}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        {{$item->state == 1 ? 'Seguro que quieres deshabilitar este Directivo?' : 'Seguro que quieres restaurar este Directivo?'}}
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                        <form action="{{route('directClubs.destroy', ['directClub' => $item->id])}}"
-                                            method="post">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit"
-                                                class="btn {{$item->state == 1 ? 'btn-danger' : 'btn-info'}}">
-                                                {{$item->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal Eliminar-->
-                        <div class="modal fade" id="deleteModal-{{$item->id}}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Seguro que quieres eliminar este Directivo?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                        <form action="{{route('directClubs.forceDelete', [$item->id])}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                                <form action="{{route('directClubs.edit', ['directClub' => $item])}}" method="get">
+                                                    <button type="submit" class="btn btn-primary"><i
+                                                            class="fa-solid fa-pencil"></i></button>
+                                                </form>
+                                                @if ($item->state == 1)
+                                                    <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal"
+                                                        data-bs-target="#confirmModal-{{$item->id}}"><i
+                                                            class="fa-solid fa-toggle-off fa-xl"></i></button>
+                                                @else
+                                                    <button type="button" class="btn btn-info rounded" data-bs-toggle="modal"
+                                                        data-bs-target="#confirmModal-{{$item->id}}"><i
+                                                            class="fa-solid fa-toggle-on fa-xl"></i></button>
+                                                @endif
+                                                <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteModal-{{$item->id}}"><i
+                                                        class="fa-solid fa-trash"></i></button>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- Modal Ver-->
+                                    <div class="modal fade" id="verModal-{{$item->id}}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Directivo Detalles</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row mb-3">
+                                                        <div class="col-sm-12">
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text"><i class="fa-solid fa-street-view"></i></span>
+                                                                <input disabled type="text" class="form-control" value="Nombre:">
+                                                                <input disabled type="text" class="form-control  bg-white"
+                                                                    value="{{$item->name}}">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                                                                <input disabled type="text" class="form-control" value="Email:">
+                                                                <input disabled type="text" class="form-control  bg-white"
+                                                                    value="{{$item->email}}">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                                                                <input disabled type="text" class="form-control" value="Telefono:">
+                                                                <input disabled type="text" class="form-control  bg-white"
+                                                                    value="{{$item->phone}}">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text"><i class="fa-solid fa-location-pin"></i></span>
+                                                                <input disabled type="text" class="form-control" value="Position:">
+                                                                <input disabled type="text" class="form-control  bg-white"
+                                                                    value="{{$item->position}}">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text"><i
+                                                                        class="fa-brands fa-dribbble"></i></span>
+                                                                <input disabled type="text" class="form-control" value="Club:">
+                                                                <input disabled type="text" class="form-control  bg-white"
+                                                                    value="{{$item->club->name}}">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text"><i class="fa-brands fa-dribbble"></i></span>
+                                                                <input disabled type="text" class="form-control" value="Campeonato:">
+                                                                <input disabled type="text" class="form-control  bg-white"
+                                                                    value="{{$item->championship->name}}">
+                                                            </div>
+                                                            <div class="input-group ">
+                                                                <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
+                                                                <input disabled type="text" class="form-control" value="Description:">
+                                                            </div>
+                                                            <input disabled type="text" class="form-control mb-3  bg-white"
+                                                                    value="{{$item->observation}}">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+</div>
+                                        </div>
+                                            <!-- Desabilitar Modal -->
+                                            <div class="modal fade" id="confirmModal-{{$item->id}}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación
+                                                            </h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            {!! $item->state == 1
+                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Directivo?'
+                        : '¿Seguro que quieres <strong>Habilitar</strong> este Directivo?' !!}
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                            <form action="{{route('directClubs.destroy', ['directClub' => $item->id])}}"
+                                                                method="post">
+                                                                @method('DELETE')
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="btn {{$item->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                                                                    {{$item->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Modal Eliminar-->
+                                            <div class="modal fade" id="deleteModal-{{$item->id}}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación
+                                                            </h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Seguro que quieres eliminar este Directivo?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                            <form action="{{route('directClubs.forceDelete', [$item->id])}}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                     @endforeach
                 </tbody>
             </table>

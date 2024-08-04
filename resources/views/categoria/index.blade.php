@@ -99,70 +99,76 @@
                 </thead>
                 <tbody>
                     @foreach ($categorias as $categoria)
-                        <tr>
-                            <td>
-                                {{$categoria->name}}
-                            </td>
-                            <td>
-                                {{$categoria->description}}
-                            </td>
-                            <td>
-                                @if ($categoria->state == 1)
-                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
-                                @else
-                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
+                                    <tr>
+                                        <td>
+                                            {{$categoria->name}}
+                                        </td>
+                                        <td>
+                                            {{$categoria->description}}
+                                        </td>
+                                        <td>
+                                            @if ($categoria->state == 1)
+                                                <span class="fw-bolder p-1 rounded bg-info text-black">Habilitado</span>
+                                            @else
+                                                <span class="fw-bolder p-1 rounded bg-warning text-black">Deshabilitado</span>
 
-                                @endif
-                            </td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <form action="{{route('categorias.edit', ['categoria' => $categoria])}}" method="get">
-                                        <button type="submit" class="btn btn-primary rounded">Editar</button>
-                                    </form>
-                                    @if ($categoria->state == 1)
-                                        <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal"
-                                            data-bs-target="#confirmModal-{{$categoria->id}}">Deshabilitar</button>
-                                    @else
-                                        <button type="button" class="btn btn-info rounded" data-bs-toggle="modal"
-                                            data-bs-target="#confirmModal-{{$categoria->id}}">Restaurar</button>
-                                    @endif
-                                    <form action="{{route('categorias.forceDelete', [$categoria->id])}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger rounded">Eliminar</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Modal -->
-                        <div class="modal fade" id="confirmModal-{{$categoria->id}}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                <form action="{{route('categorias.edit', ['categoria' => $categoria])}}" method="get">
+                                                    <button type="submit" class="btn btn-primary rounded"><i
+                                                            class="fa-solid fa-pencil"></i></button>
+                                                </form>
+                                                @if ($categoria->state == 1)
+                                                    <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal"
+                                                        data-bs-target="#confirmModal-{{$categoria->id}}"><i
+                                                            class="fa-solid fa-toggle-off fa-xl"></i></button>
+                                                @else
+                                                    <button type="button" class="btn btn-info rounded" data-bs-toggle="modal"
+                                                        data-bs-target="#confirmModal-{{$categoria->id}}"><i
+                                                            class="fa-solid fa-toggle-on fa-xl"></i></button>
+                                                @endif
+                                                <form action="{{route('categorias.forceDelete', [$categoria->id])}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger rounded"><i
+                                                            class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="confirmModal-{{$categoria->id}}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {!! $categoria->state == 1
+                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> esta Categoria?'
+                        : '¿Seguro que quieres <strong>Habilitar</strong> esta Categoria?' !!}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                    <form action="{{route('categorias.destroy', ['categoria' => $categoria->id])}}"
+                                                        method="post">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit"
+                                                            class="btn {{$categoria->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                                                            {{$categoria->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="modal-body">
-                                        {{$categoria->state == 1 ? 'Seguro que quieres deshablitar esta Categoria?' : 'Seguro que quieres restaurar esta Categoria?'}}
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                        <form action="{{route('categorias.destroy', ['categoria' => $categoria->id])}}"
-                                            method="post">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit"
-                                                class="btn {{$categoria->state == 1 ? 'btn-danger' : 'btn-info'}}">
-                                                {{$categoria->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     @endforeach
                 </tbody>
             </table>

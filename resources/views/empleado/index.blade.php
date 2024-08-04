@@ -113,19 +113,20 @@ Toast.fire({
 
                                                 <td>
                                                     @if ($empleado->state == 1)
-                                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                                                    <span class="fw-bolder p-1 rounded bg-info text-black">Habilitado</span>
                                                     @else
-                                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
+                                                    <span class="fw-bolder p-1 rounded bg-warning text-black">?Deshabilitado</span>
 
                                                     @endif
                                                 </td>
                                                 <td>
                                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                                 <form action="{{route('empleados.show',['empleado'=>$empleado])}}">
-                                                    <button type="submit" class="btn btn-success rounded">Ver</button>
+                                                    <button type="submit" class="btn btn-success rounded"><i class="fa-solid fa-eye"></i></button>
                                                     </form>
                                                     <form action="{{route('empleados.edit',['empleado'=>$empleado])}}" method="get">
-                                                    <button type="submit" class="btn btn-primary">Editar</button>
+                                                    <button type="submit" class="btn btn-primary"><i
+                                                    class="fa-solid fa-pencil"></i></button>
                                                     </form>
 
                                                     @if ($empleado->state == 1)

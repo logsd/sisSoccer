@@ -117,26 +117,28 @@ Toast.fire({
                                                 </td>
                                                 <td>
                                                     @if ($cargo->state == 1)
-                                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                                                    <span class="fw-bolder p-1 rounded bg-info text-black">Habilitado</span>
                                                     @else
-                                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
+                                                    <span class="fw-bolder p-1 rounded bg-warning text-black">Deshabilitado</span>
 
                                                     @endif
                                                 </td>
                                                 <td>
                                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                                     <form action="{{route('cargos.edit',['cargo'=>$cargo])}}" method="get">
-                                                    <button type="submit" class="btn btn-primary rounded">Editar</button>
+                                                    <button type="submit" class="btn btn-primary rounded"><i
+                                                    class="fa-solid fa-pencil"></i></button>
                                                     </form>
                                                     @if ($cargo->state == 1)
-                                                    <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargo->id}}">Deshabilitar</button>
+                                                    <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargo->id}}"><i class="fa-solid fa-toggle-off fa-xl"></i></button>
                                                     @else
-                                                    <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargo->id}}">Restaurar</button>
+                                                    <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargo->id}}"><i class="fa-solid fa-toggle-on fa-xl"></i></button>
                                                     @endif
                                                     <form action="{{route('cargos.forceDelete',[$cargo->id])}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger"><i
+                                                    class="fa-solid fa-trash"></i></button>
                                                     </form>
                                                 </div>
                                                 </td>
@@ -150,15 +152,17 @@ Toast.fire({
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$cargo->state ==1 ? 'Seguro que quieres deshabilitar  este Cargo?' : 'Seguro que quieres restaurar este Cargo?'}}
+      {!! $cargo->state == 1
+                                                            ? 'Seguro que quieres <strong>Deshabilitar</strong> este Cargo de Oficinas?'
+                                                            : 'Seguro que quieres <strong>Habilitar</strong> este Cargo de Oficinas?' !!}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <form action="{{route('cargos.destroy',['cargo'=>$cargo->id])}}" method="post">
             @method('DELETE')
             @csrf
-            <button type="submit" class="btn {{$cargo->state == 1 ? 'btn-danger' : 'btn-info'}}">
-                {{$cargo->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+            <button type="submit" class="btn {{$cargo->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                {{$cargo->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
             </button>
         </form>
       </div>

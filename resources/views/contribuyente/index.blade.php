@@ -108,35 +108,37 @@
                                     <span class="badge rounded-pill text-bg-success d-inline">Activo</span>
                                 @else
                                     <span class="badge rounded-pill text-bg-danger d-inline">Inactivo</span>
-
                                 @endif
+
+        </div>
                             </td>
                             <td>
                                 @if ($contribuyente->state == 1)
-                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                                    <span class="fw-bolder p-1 rounded bg-info text-black">Habilitado</span>
                                 @else
-                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
-
+                                    <span class="fw-bolder p-1 rounded bg-warning text-black">Deshabilitado</span>
                                 @endif
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                     <form action="{{route('contribuyentes.edit', ['contribuyente' => $contribuyente])}}"
                                         method="get">
-                                        <button type="submit" class="btn btn-primary rounded">Editar</button>
+                                        <button type="submit" class="btn btn-primary rounded"><i
+                                        class="fa-solid fa-pencil"></i></button>
                                     </form>
                                     @if ($contribuyente->state == 1)
                                         <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal"
-                                            data-bs-target="#confirmModal-{{$contribuyente->id}}">Deshabilitar</button>
+                                            data-bs-target="#confirmModal-{{$contribuyente->id}}"><i class="fa-solid fa-toggle-off fa-xl"></i></button>
                                     @else
                                         <button type="button" class="btn btn-info rounded" data-bs-toggle="modal"
-                                            data-bs-target="#confirmModal-{{$contribuyente->id}}">Restaurar</button>
+                                            data-bs-target="#confirmModal-{{$contribuyente->id}}"> <i class="fa-solid fa-toggle-on fa-xl"></i></button>
                                     @endif
                                     <form action="{{route('contribuyentes.forceDelete', [$contribuyente->id])}}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        <button type="submit" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </div>
                             </td>
@@ -152,8 +154,9 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body bg-white">
-                                        {{$contribuyente->state == 1 ? 'Seguro que quieres deshabilitar este Contribuyente?' : 'Seguro que quieres restaurar este Contribuyente?'}}
-                                    </div>
+                                    {!! $contribuyente->state == 1
+                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> esta Contribuyente?'
+                        : '¿Seguro que quieres <strong>Habilitar</strong> esta Contribuyente?' !!}</div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cerrar</button>
@@ -163,8 +166,8 @@
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit"
-                                                class="btn {{$contribuyente->state == 1 ? 'btn-danger' : 'btn-info'}}">
-                                                {{$contribuyente->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+                                                class="btn {{$contribuyente->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                                                {{$contribuyente->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
                                             </button>
                                         </form>
                                     </div>

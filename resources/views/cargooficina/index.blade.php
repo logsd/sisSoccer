@@ -114,25 +114,27 @@ Toast.fire({
                                                 </td>
                                                 <td>
                             @if ($cargooficina->state == 1)
-                            <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                            <span class="fw-bolder p-1 rounded bg-info text-black">Habilitado</span>
                             @else
-                            <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
+                            <span class="fw-bolder p-1 rounded bg-warning text-black">Deshabilitado</span>
                             @endif
                         </td>
                         <td>
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                 <form action="{{route('cargooficinas.edit',['cargooficina'=>$cargooficina])}}" method="get">
-                  <button type="submit" class="btn btn-primary rounded">Editar</button>
+                  <button type="submit" class="btn btn-primary rounded"><i
+                  class="fa-solid fa-pencil"></i></button>
                 </form>
                 @if ($cargooficina->state == 1)
-                <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargooficina->id}}">Deshabilitar</button>
+                <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargooficina->id}}"><i class="fa-solid fa-toggle-off fa-xl"></i></button>
                 @else
-                <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargooficina->id}}">Restaurar</button>
+                <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$cargooficina->id}}"><i class="fa-solid fa-toggle-on fa-xl"></i></button>
                 @endif
                 <form action="{{route('cargooficinas.forceDelete',[$cargooficina->id])}}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-danger">Eliminar</button>
+                  <button type="submit" class="btn btn-danger"><i
+                  class="fa-solid fa-trash"></i></button>
                 </form>
               </div>
             </td>
@@ -172,15 +174,17 @@ Toast.fire({
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$cargooficina->state ==1 ? 'Seguro que quieres deshabilitar este Cargo de Oficinas?' : 'Seguro que quieres restaurar este Cargo de Oficinas?'}}
+      {!! $cargooficina->state == 1
+        ? '¿Seguro que quieres <strong>deshabilitar</strong> este Cargo de Oficina?'
+        : '¿Seguro que quieres <strong>habilitar</strong> este Cargo de Oficina?' !!}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <form action="{{route('cargooficinas.destroy',['cargooficina'=>$cargooficina])}}" method="post">
             @method('DELETE')
             @csrf
-            <button type="submit" class="btn {{$cargooficina->state == 1 ? 'btn-danger' : 'btn-info'}}">
-                {{$cargooficina->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+            <button type="submit" class="btn {{$cargooficina->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                {{$cargooficina->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
             </button>
         </form>
       </div>

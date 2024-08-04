@@ -108,27 +108,30 @@ Toast.fire({
                                                 </td>
                                                 <td>
                             @if ($comisiondeliga->state == 1)
-                            <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                            <span class="fw-bolder p-1 rounded bg-info text-black">Habilitado</span>
                             @else
-                            <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
+                            <span class="fw-bolder p-1 rounded bg-warning text-black">Deshabilitado</span>
 
                             @endif
                         </td>
                         <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#verModal-{{$comisiondeliga->id}}">Visualizar</button>
+                        <button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#verModal-{{$comisiondeliga->id}}"><i
+                        class="fa-solid fa-eye"></i></button>
                 <form action="{{route('comisiondeligas.edit',['comisiondeliga'=>$comisiondeliga])}}" method="get">
-                  <button type="submit" class="btn btn-primary">Editar</button>
+                  <button type="submit" class="btn btn-primary"><i
+                  class="fa-solid fa-pencil"></i></button>
                 </form>
                 @if ($comisiondeliga->state == 1)
-                <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$comisiondeliga->id}}">Deshabilitar</button>
+                <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$comisiondeliga->id}}"><i class="fa-solid fa-toggle-off fa-xl"></i></button>
                 @else
-                <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$comisiondeliga->id}}">Restaurar</button>
+                <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$comisiondeliga->id}}"><i class="fa-solid fa-toggle-on fa-xl"></i></button>
                 @endif
                 <form action="{{route('comisiondeligas.forceDelete',[$comisiondeliga->id])}}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-danger">Eliminar</button>
+                  <button type="submit" class="btn btn-danger"><i
+                  class="fa-solid fa-trash"></i></button>
                 </form>
               </div>
             </td>
@@ -215,16 +218,18 @@ Toast.fire({
         <button type="button" class="buttonc" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body bg-white">
-        {{$comisiondeliga->state ==1 ? 'Seguro que quieres eliminar esta Comision de Liga?' : 'Seguro que quieres restaurar esta Comision de Liga?'}}
-      </div>
+      {!! $comisiondeliga->state == 1
+                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> esta Comision de Liga?'
+                        : '¿Seguro que quieres <strong>Habilitar</strong> esta Comision de Liga?' !!}
+                         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <form action="{{route('comisiondeligas.destroy',['comisiondeliga'=>$comisiondeliga])}}" method="post">
             @method('DELETE')
             @csrf
             <button type="submit"
-                class="btn {{$comisiondeliga->state == 1 ? 'btn-danger' : 'btn-info'}}">
-                {{$comisiondeliga->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+                class="btn {{$comisiondeliga->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                {{$comisiondeliga->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
             </button>
         </form>
       </div>

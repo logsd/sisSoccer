@@ -100,26 +100,30 @@ Toast.fire({
                                                 </td>
                                                 <td>
                                                     @if ($departamento->state == 1)
-                                                    <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                                                    <span class="fw-bolder p-1 rounded bg-info text-black">Habilitado</span>
                                                     @else
-                                                    <span class="fw-bolder p-1 rounded bg-danger text-white">Eliminado</span>
+                                                    <span class="fw-bolder p-1 rounded bg-warning text-black">Deshabilitado</span>
 
                                                     @endif
                                                 </td>
                                                 <td>
                                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                                     <form action="{{route('departamentos.edit',['departamento'=>$departamento])}}" method="get">
-                                                    <button type="submit" class="btn btn-primary rounded">Editar</button>
+                                                    <button type="submit" class="btn btn-primary rounded"><i
+                                                    class="fa-solid fa-pencil"></i></button>
                                                     </form>
                                                     @if ($departamento->state == 1)
-                                                    <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}">Deshabilitar</button>
+                                                    <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}"><i
+                                                    class="fa-solid fa-toggle-off fa-xl"></i></button>
                                                     @else
-                                                    <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}">Restaurar</button>
+                                                    <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}"><i
+                                                    class="fa-solid fa-toggle-on fa-xl"></i></button>
                                                     @endif
                                                     <form action="{{route('departamentos.forceDelete',[$departamento->id])}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger"><i
+                                                    class="fa-solid fa-trash"></i></button>
                                                     </form>
                                                 </div>
                                                 </td>
@@ -133,15 +137,16 @@ Toast.fire({
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$departamento->state ==1 ? 'Seguro que quieres eliminar este Departamento?' : 'Seguro que quieres restaurar este Departamento?'}}
-      </div>
+      {!! $departamento->state == 1
+                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Departamento?'
+                        : '¿Seguro que quieres <strong>Habilitar</strong> este Departamento?' !!} </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <form action="{{route('departamentos.destroy',['departamento'=>$departamento->id])}}" method="post">
             @method('DELETE')
             @csrf
-            <button type="submit"   class="btn {{$departamento->state == 1 ? 'btn-danger' : 'btn-info'}}">
-                                                {{$departamento->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+            <button type="submit"   class="btn {{$departamento->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                                                {{$departamento->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
                                             </button>
         </form>
       </div>

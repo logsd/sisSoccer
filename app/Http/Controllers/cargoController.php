@@ -34,12 +34,12 @@ class cargoController extends Controller
     {
         try{
             DB::beginTransaction();
-   
+
         // Validar y obtener los datos validados
         $validatedData = $request->validated();
 
         Position::create($validatedData);
-            
+
             DB::commit();
         }catch(Exception $e){
             DB::rollBack();
@@ -85,12 +85,12 @@ class cargoController extends Controller
             $cargo->update([
                 'state' => 0
             ]);
-            $message = 'Cargo desabilitado';
+            $message = 'Cargo Deshabilitado';
         }else{
             $cargo->update([
                 'state' => 1
             ]);
-            $message = 'Cargo restaurado';
+            $message = 'Cargo Habilitado';
         }
         return redirect()->route('cargos.index')->with('success', $message);
     }

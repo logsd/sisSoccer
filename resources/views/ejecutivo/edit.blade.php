@@ -57,13 +57,13 @@
     }
 </style>
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center mb-3">Actualizar Ejecutivo</h1>
-    <ol class="breadcrumb mb-4">
+
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('ejecutivos.index')}}">Ejecutivos</a> </li>
         <li class="breadcrumb-item active">Actualizar Ejecutivo</li>
     </ol>
-
+    <h1 class="my-4 text-center">Actualizar Ejecutivo</h1>
     <div class="cuerpo">
         <form action="{{route('ejecutivos.update', ['ejecutivo' => $ejecutivo])}}" method="post"
             enctype="multipart/form-data">

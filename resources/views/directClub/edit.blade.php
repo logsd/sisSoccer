@@ -174,7 +174,9 @@
 
                                 </div>
                             </div>
-                            <div class="row text-center">
+
+                        </div>
+                        <div class="row text-center">
                                 <div class="col-md-12 mb-2 mt-4">
                                     <button type="submit" class="buttong"><i class="fa-solid fa-check"></i>Guardar</button>
                                     <a href="{{route('directClubs.index')}}">
@@ -184,7 +186,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
 
         </form>

@@ -44,7 +44,7 @@ class telefonoController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('telefonos.index')->with('success', 'Telefono registrado!');
+        return redirect()->route('telefonos.index')->with('success', 'Teléfono registrado!');
     }
 
     /**
@@ -69,7 +69,7 @@ class telefonoController extends Controller
     public function update(StoreTelefonoRequest $request, PhoneOperator $telefono)
     {
         $telefono->update($request->validated());
-        return redirect()->route('telefonos.index')->with('success', 'Telefono actualizado!');
+        return redirect()->route('telefonos.index')->with('success', 'Teléfono actualizado!');
     }
 
     /**
@@ -86,12 +86,12 @@ class telefonoController extends Controller
             $telefono->update([
                 'state' => 0
             ]);
-            $message = 'Operadora Desabilitada';
+            $message = 'Operadora Deshabilitada';
         } else {
             $telefono->update([
                 'state' => 1
             ]);
-            $message = 'Operadora restaurada';
+            $message = 'Operadora Habilitada';
         }
         return redirect()->route('telefonos.index')->with('success', $message);
     }

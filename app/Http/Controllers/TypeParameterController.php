@@ -43,7 +43,7 @@ class TypeParameterController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('tparametros.index')->with('success', 'Tipo de Parametro registrado!');
+        return redirect()->route('tparametros.index')->with('success', 'Tipo de Parámetro registrado!');
     }
 
     /**
@@ -76,10 +76,10 @@ class TypeParameterController extends Controller
             $tparametro->update($validatedData);
 
             DB::commit();
-            return redirect()->route('tparametros.index')->with('success', 'Tipo de Parametro actualizado correctamente!');
+            return redirect()->route('tparametros.index')->with('success', 'Tipo de Parámetro actualizado correctamente!');
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->route('tparametros.index')->with('error', 'Hubo un problema al actualizar el Tipo de Parametro.');
+            return redirect()->route('tparametros.index')->with('error', 'Hubo un problema al actualizar el Tipo de Parámetro.');
         }
     }
     /**
@@ -94,12 +94,12 @@ class TypeParameterController extends Controller
             $tparametro->update([
                 'state' => 0
             ]);
-            $message = 'Tipo de Parametro eliminado';
+            $message = 'Tipo de Parámetro Deshabilitado';
         } else {
             $tparametro->update([
                 'state' => 1
             ]);
-            $message = 'Tipo de Parametro restaurada';
+            $message = 'Tipo de Parámetro Habilitado';
         }
         return redirect()->route('tparametros.index')->with('success', $message);
     }
@@ -110,9 +110,9 @@ class TypeParameterController extends Controller
         $tparametro = TypeParameter::find($id);
         if ($tparametro) {
             $tparametro->delete();
-            return redirect()->route('tparametros.index')->with('success', 'Equipo eliminado definitivamente');
+            return redirect()->route('tparametros.index')->with('success', 'Tipo de parámetro eliminado definitivamente');
         }
 
-        return redirect()->route('tparametros.index')->with('error', 'El Equipo no fue encontrado');
+        return redirect()->route('tparametros.index')->with('error', 'El Tipo de Parámetro no fue encontrado');
     }
 }

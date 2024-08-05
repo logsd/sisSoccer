@@ -51,7 +51,7 @@ class faseController extends Controller
             DB::commit();
         }catch(Exception $e){
             DB::rollBack();
-            return redirect()->route('fases.index')->with('error', 'Hubo un problema al asignar la fase y el grupo');
+            return redirect()->route('fases.index')->with('error', 'Hubo un problema al asignar la Fase y el Grupo');
 
         }
         return redirect()->route('fases.index')->with('success', 'Fase registrada!');
@@ -138,15 +138,15 @@ class faseController extends Controller
 
             // Configurar el mensaje adecuado
             if($newState == 0){
-                $message = 'Fase y sus grupos deshabilitados';
+                $message = 'Fase y sus grupos Deshabilitados';
             } else {
-                $message = 'Fase y sus grupos restaurados';
+                $message = 'Fase y sus grupos Habilitados';
             }
 
             return redirect()->route('fases.index')->with('success', $message);
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->route('fases.index')->with('error', 'Hubo un problema al actualizar el estado de la fase y sus grupos');
+            return redirect()->route('fases.index')->with('error', 'Hubo un problema al actualizar el estado de la Fase y sus Grupos');
         }
     }
 
@@ -158,7 +158,7 @@ class faseController extends Controller
         $fase = LeaguePhase::find($id);
         if ($fase) {
             $fase->delete();
-            return redirect()->route('fases.index')->with('success', 'Fase eliminado definitivamente');
+            return redirect()->route('fases.index')->with('success', 'Fase eliminada definitivamente');
         }
 
         return redirect()->route('fases.index')->with('error', 'La Fase no fue encontrada');

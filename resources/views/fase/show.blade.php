@@ -82,7 +82,7 @@
                 <input disabled type="text" class="form-control" value="{{$grupo->name}}">
                 @endforeach
             </div>
-            
+
             <div class="col-sm-4">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>

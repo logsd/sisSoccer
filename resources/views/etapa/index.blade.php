@@ -28,8 +28,6 @@
         });
     </script>
 @endif
-
-
 <style>
     .button {
         background-color: #4EA93B;

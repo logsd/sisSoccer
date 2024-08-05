@@ -112,7 +112,7 @@
                             <div class="col-md-12 mb-2"></div>
                                 <label for="gender" class="mb-2">Género:</label>
                                 <select title="Seleccione un Genero" name="gender" id="gender" class="form-control selectpicker show-tick mb-2">
-                                    <option value="1" {{ old('gender', $equipo->gender) == '1' ? 'selected' : '' }}>Varonil</option>
+                                    <option value="1" {{ old('gender', $equipo->gender) == '1' ? 'selected' : '' }}>Masculino</option>
                                     <option value="0" {{ old('gender', $equipo->gender) == '0' ? 'selected' : '' }}>Femenino</option>
                                 </select>
                                 @error('gender')

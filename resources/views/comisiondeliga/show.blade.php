@@ -66,11 +66,11 @@
 
 @section('content')
 <div class="container-fluid px-4">
-                        <h1 class="mt-4 text-center mb-3">Comision de Liga</h1>
+                        <h1 class="mt-4 text-center mb-3">Comisión de Liga</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item "><a href="{{route('comisiondeligas.index')}}">Comision de Liga</a> </li>
-                            <li class="breadcrumb-item active">Editar Comision de Liga</li>
+                            <li class="breadcrumb-item "><a href="{{route('comisiondeligas.index')}}">Comisión de Liga</a> </li>
+                            <li class="breadcrumb-item active">Editar Comisión de Liga</li>
                         </ol>
 
                         <div class="cuerpo">

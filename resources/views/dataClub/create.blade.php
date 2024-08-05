@@ -62,11 +62,11 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center mb-4">Nuevo Telefono Club</h1>
+    <h1 class="mt-4 text-center mb-4">Nuevo Teléfono Club</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-        <li class="breadcrumb-item "><a href="{{route('dataClubs.index')}}">Telefono Club</a> </li>
-        <li class="breadcrumb-item active">Nuevo Telefono Club</li>
+        <li class="breadcrumb-item "><a href="{{route('dataClubs.index')}}">Teléfono Club</a> </li>
+        <li class="breadcrumb-item active">Nuevo Teléfono Club</li>
     </ol>
     <div class="cuerpo">
         <form action="{{route('dataClubs.store')}}" method="post">
@@ -74,7 +74,7 @@
             <div class="row g-3">
 
                 <div class="col-md-6">
-                    <label for="phone" class="form-label">Telefono:</label>
+                    <label for="phone" class="form-label">Teléfono:</label>
                     <input type="text" name="phone" id="phone" class="form-control" value="{{old('phone')}}">
                     @error('phone')
                         <small class="text-danger">{{'*' . $message}}</small>

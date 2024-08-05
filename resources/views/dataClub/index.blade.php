@@ -278,18 +278,18 @@
     <h1 class="mt-4 mb-4">Telefonos Clubs</h1>
     <div class="mb-4">
         <a href="{{route('dataClubs.create')}}">
-            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Telefono de Club</button>
+            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Teléfono de Club</button>
         </a>
     </div>
     <div class="card mb-4">
         <div class="card-header">
-            Tabla Telefonos Clubs
+            Tabla Teléfonos Clubs
         </div>
         <div class="card-body">
             <table id="datatablesSimple1" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Telefono</th>
+                        <th>Teléfono</th>
                         <th>Operadora</th>
                         <th>Descripción</th>
                         <th>Club</th>
@@ -357,8 +357,8 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     {!! $dataClub->state == 1
-                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Telefono del Club?'
-                        : '¿Seguro que quieres <strong>Habilitar</strong> esta Telefono del Club?' !!}
+                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Teléfono del Club?'
+                        : '¿Seguro que quieres <strong>Habilitar</strong> esta Teléfono del Club?' !!}
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"

@@ -162,7 +162,7 @@
                                                         @csrf
                                                         <button type="submit"
                                                             class="btn {{$categoria->state == 1 ? 'btn-warning' : 'btn-info'}}">
-                                                            {{$categoria->state == 1 ? 'Deshabilitar' : 'Restaurar'}}
+                                                            {{$categoria->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
                                                         </button>
                                                     </form>
                                                 </div>

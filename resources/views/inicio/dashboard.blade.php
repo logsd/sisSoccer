@@ -123,8 +123,6 @@ a {
                             <a href="#">Clubs</a>
                             <a href="{{route('categorias.index')}}">Directivos</a>
                             <a href="{{route('categorias.index')}}">Directivos Clubes</a>
-                            <a href="{{route('categorias.index')}}">Equipos</a>
-                            <a href="{{route('categorias.index')}}">Jugadores</a>
                          </div>
                     </div>
 
@@ -140,12 +138,13 @@ a {
                     </div>
                     <div class="tarjeta">
                         <div class="imagen">
-                             <img src="{{ asset('img/parametros.png') }}" alt="Descripción de la imagen">
+                             <img src="{{ asset('img/equipos.png') }}" alt="Descripción de la imagen">
                         </div>
                             <br>
                         <div class="contenido">
-                            <h1>Parámetros del Sistema</h1>
-                            <a href="#">Parámetros Generales</a>
+                            <h1>Equipos</h1>
+                            <a href="{{route('categorias.index')}}">Equipos</a>
+                            <a href="{{route('categorias.index')}}">Jugadores</a>
                          </div>
                     </div>
 

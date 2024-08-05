@@ -74,7 +74,7 @@
                 <!--Actualizar Empleado--->
 
                 <div class="col-md-4 mb-2">
-                    <label for="ci" class="form-label">Cedula:</label>
+                    <label for="ci" class="form-label">CI:</label>
                     <input type="number" name="ci" id="ci" class="form-control" value="{{old('ci',$empleado->ci)}}">
                     @error('ci')
                     <small class="text-danger">{{'*'.$message}}</small>
@@ -196,7 +196,7 @@
                 </div>
 
                 <div class="col-md-6 mb-2">
-                    <label class="form-label" for="position_id">Posicion</label>
+                    <label class="form-label" for="position_id">Posición</label>
                     <select data-size="4" title="Seleccione una Posicion" data-live-search="true" name="position_id" id="position_id" class="form-control selectpicker show-tick">
                         @foreach ($posiciones as $item)
                         @if ($empleado->position_id == $item->id)

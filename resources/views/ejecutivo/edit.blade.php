@@ -72,7 +72,7 @@
             <div class="row g-3">
 
                 <div class="col-md-6">
-                    <label for="dni" class="form-label">DNI:</label>
+                    <label for="dni" class="form-label">CI:</label>
                     <input type="number" name="dni" id="dni" class="form-control"
                         value="{{old('dni', $ejecutivo->dni)}}">
                     @error('dni')
@@ -101,7 +101,7 @@
 
 
                 <div class="col-md-6">
-                    <label for="address" class="form-label">Address:</label>
+                    <label for="address" class="form-label">Dirección:</label>
                     <input type="text" name="address" id="address" class="form-control"
                         value="{{old('address', $ejecutivo->address)}}">
                     @error('address')

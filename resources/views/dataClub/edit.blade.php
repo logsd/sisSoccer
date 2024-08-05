@@ -59,11 +59,11 @@
 
 
 <div class="container-fluid px-4">
-        <h1 class="mt-4 text-center mb-3">Actualizar Telefono Club</h1>
+        <h1 class="mt-4 text-center mb-3">Actualizar Teléfono Club</h1>
         <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                <li class="breadcrumb-item "><a href="{{route('dataClubs.index')}}">Telefono Club</a> </li>
-                <li class="breadcrumb-item active">Actualizar Telefono Club</li>
+                <li class="breadcrumb-item "><a href="{{route('dataClubs.index')}}">Teléfono Club</a> </li>
+                <li class="breadcrumb-item active">Actualizar Teléfono Club</li>
         </ol>
 
         <div class="cuerpo">
@@ -73,7 +73,7 @@
                         <div class="row g-3">
 
                                 <div class="col-md-6">
-                                        <label for="phone" class="form-label">Telefono:</label>
+                                        <label for="phone" class="form-label">Teléfono:</label>
                                         <input type="text" name="phone" id="phone" class="form-control" value="{{old('phone',$dataClub->phone)}}">
                                         @error('phone')
                                         <small class="text-danger">{{'*'.$message}}</small>

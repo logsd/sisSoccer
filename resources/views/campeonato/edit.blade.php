@@ -203,8 +203,7 @@
                                     <button type="button" class="buttonr"><i
                                             class="fa-solid fa-arrow-left"></i>Cancelar</button>
                                 </a>
-                                <div class="col-md-12 mb-2">
-                                </div>
+                               
                             </div>
                         </div>
                     </div>

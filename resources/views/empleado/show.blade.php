@@ -35,7 +35,8 @@
 
     <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-        <li class="breadcrumb-item "><a href="{{route('empleados.index')}}">Empleado</a> </li>
+        <li class="breadcrumb-item "><a href="{{route('empleados.index')}}">Empleados</a> </li>
+        <li class="breadcrumb-item ">Empleado</li>
     </ol>
 
 </div>

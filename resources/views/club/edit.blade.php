@@ -75,7 +75,7 @@
 <div class="container-fluid px-4">
         <ol class="breadcrumb my-4">
                 <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                <li class="breadcrumb-item "><a href="{{route('clubs.index')}}">Clubs</a> </li>
+                <li class="breadcrumb-item "><a href="{{route('dataClubs.index')}}">Clubs</a> </li>
                 <li class="breadcrumb-item active">Actualizar Club</li>
         </ol>
         <h1 class="my-4 text-center">Actualizar Club</h1>

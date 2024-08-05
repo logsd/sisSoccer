@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreJugadorRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -89,6 +90,18 @@ class jugadorController extends Controller
             // Manejar el error (puedes redireccionar con un mensaje de error o registrar el error)
             return redirect()->route('jugadores.index')->with('error', 'Hubo un problema al registrar el Jugador.');
         }
+    }
+
+    public function carnet()
+    {
+        // Obtener todos los jugadores
+        $jugadores = Player::with(['province', 'team', 'league', 'category'])->latest()->get();
+
+        // Generar el PDF
+        $pdf = Pdf::loadView('jugadore.carnet', compact('jugadores'));
+
+        // Retornar el PDF
+        return $pdf->stream('carnets.pdf');
     }
 
     /**
@@ -215,4 +228,6 @@ class jugadorController extends Controller
 
         return redirect()->route('jugadores.index')->with('error', 'El Jugador no fue encontrado');
     }
+
+
 }

@@ -40,6 +40,7 @@ Route::get('/', function () {
     return view('inicio.dashboard');
 })->name('dashboard');
 
+Route::get('/jugadores/carnetsPDF', [jugadorController::class, 'carnet'])->name('jugadores.carnet');
 
 Route::resources([
     'ligas'=> ligaController::class,
@@ -72,6 +73,7 @@ Route::resources([
 ]
 
 );
+
 
 Route::delete('/comisiondeligas/force-delete/{id}', [ComisionLigaController::class, 'forceDelete'
 ])->name('comisiondeligas.forceDelete');
@@ -129,6 +131,8 @@ Route::delete('/directClubs/force-delete/{id}', [directClubController::class, 'f
 ])->name('directClubs.forceDelete');
 Route::delete('/empleados/force-delete/{id}', [empleadoController::class, 'forceDelete'
 ])->name('empleados.forceDelete');
+
+
 
 Route::get('/login', function () {
     return view('auth.login');

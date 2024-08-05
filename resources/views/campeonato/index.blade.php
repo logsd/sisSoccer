@@ -93,7 +93,7 @@
                     <tr>
                         <th>Campeonato</th>
                         <th>Año</th>
-                        <th>Categoria</th>
+                        <th>Categoría</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>

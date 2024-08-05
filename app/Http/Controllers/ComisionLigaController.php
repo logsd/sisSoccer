@@ -94,12 +94,12 @@ class ComisionLigaController extends Controller
             $comisionliga->update([
                 'state' => 0
             ]);
-            $message = 'Comision de Liga eliminada';
+            $message = 'Comisión de Liga eliminada';
         } else {
             $comisionliga->update([
                 'state' => 1
             ]);
-            $message = 'Comision de Liga restaurada';
+            $message = 'Comisión de Liga restaurada';
         }
         return redirect()->route('comisiondeligas.index')->with('success', $message);
     }

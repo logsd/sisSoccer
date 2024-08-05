@@ -95,7 +95,7 @@ a {
                             <h1> Campeonatos</h1>
                             <a href="#">Campeonato</a>
                             <br>
-                            <a href="{{route('categorias.index')}}">Categoria</a>
+                            <a href="{{route('categorias.index')}}">Categoría</a>
                          </div>
                     </div>
 
@@ -122,7 +122,7 @@ a {
                             <h1>Clubes</h1>
                             <a href="#">Clubs</a>
                             <a href="{{route('categorias.index')}}">Directivos</a>
-                            <a href="{{route('categorias.index')}}">Directivos Club</a>
+                            <a href="{{route('categorias.index')}}">Directivos Clubes</a>
                             <a href="{{route('categorias.index')}}">Equipos</a>
                             <a href="{{route('categorias.index')}}">Jugadores</a>
                          </div>
@@ -144,8 +144,8 @@ a {
                         </div>
                             <br>
                         <div class="contenido">
-                            <h1>Parametros del Sistema</h1>
-                            <a href="#">Parametros Generales</a>
+                            <h1>Parámetros del Sistema</h1>
+                            <a href="#">Parámetros Generales</a>
                          </div>
                     </div>
 

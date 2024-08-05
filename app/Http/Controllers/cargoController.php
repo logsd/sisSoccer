@@ -44,7 +44,7 @@ class cargoController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('cargos.index')->with('success', 'Cargo registrado!');
+        return redirect()->route('cargos.index')->with('success', '¡Cargo registrado!');
     }
 
     /**
@@ -70,7 +70,7 @@ class cargoController extends Controller
     public function update(StoreCargoRequest $request, Position $cargo)
     {
         $cargo->update($request->validated());
-        return redirect()->route('cargos.index')->with('success', 'Cargo actualizado!');
+        return redirect()->route('cargos.index')->with('success', '¡Cargo actualizado!');
     }
 
     /**

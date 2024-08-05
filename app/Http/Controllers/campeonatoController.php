@@ -52,7 +52,7 @@ class campeonatoController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('campeonatos.index')->with('success', 'Datos registrados!');
+        return redirect()->route('campeonatos.index')->with('success', '¡Datos registrados!');
     }
 
     /**
@@ -98,7 +98,7 @@ class campeonatoController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('campeonatos.index')->with('success', 'Campeonato actualizado!');
+        return redirect()->route('campeonatos.index')->with('success', '¡Campeonato actualizado!');
     }
 
     /**
@@ -113,12 +113,12 @@ class campeonatoController extends Controller
             $campeonato->update([
                 'state' => 0
             ]);
-            $message = 'Campeonato desabilitado';
+            $message = 'Campeonato Deshabilitado';
         }else{
             $campeonato->update([
                 'state' => 1
             ]);
-            $message = 'Campeonato restaurado';
+            $message = 'Campeonato Habilitado';
         }
         return redirect()->route('campeonatos.index')->with('success', $message);
     }

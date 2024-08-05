@@ -39,7 +39,7 @@ class DepartamentoController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('departamentos.index')->with('success', 'Departamento registrado!');
+        return redirect()->route('departamentos.index')->with('success', '¡Departamento registrado!');
     }
 
     /**
@@ -64,7 +64,7 @@ class DepartamentoController extends Controller
     public function update(StoreDepartamentoRequest $request, Department $departamento)
     {
         $departamento->update($request->validated());
-        return redirect()->route('departamentos.index')->with('success', 'Departamento actualizado!');
+        return redirect()->route('departamentos.index')->with('success', '¡Departamento actualizado!');
     }
 
     /**
@@ -79,12 +79,12 @@ class DepartamentoController extends Controller
             $departamento->update([
                 'state' => 0
             ]);
-            $message = 'Departamento eliminado logicamente';
+            $message = 'Departamento Deshabilitado ';
         }else{
             $departamento->update([
                 'state' => 1
             ]);
-            $message = 'Departamento restaurado';
+            $message = 'Departamento Habilitado';
         }
         return redirect()->route('departamentos.index')->with('success', $message);
     }

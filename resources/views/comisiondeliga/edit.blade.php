@@ -58,10 +58,10 @@
 <div class="container-fluid px-4">
     <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-        <li class="breadcrumb-item "><a href="{{route('comisiondeligas.index')}}">Comision de Liga</a> </li>
-        <li class="breadcrumb-item active">Actulizar Comision de Liga</li>
+        <li class="breadcrumb-item "><a href="{{route('comisiondeligas.index')}}">Comisión de Liga</a> </li>
+        <li class="breadcrumb-item active">Actualizar Comisión de Liga</li>
     </ol>
-    <h1 class="my-4 text-center">Actulizar Comision de Liga</h1>
+    <h1 class="my-4 text-center">Actualizar Comisión de Liga</h1>
     <div class="cuerpo">
         <form action="{{route('comisiondeligas.update', ['comisiondeliga' => $comisiondeliga])}}" method="post">
             @method('PATCH')

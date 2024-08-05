@@ -56,7 +56,7 @@ class contribuyenteController extends Controller
             DB::commit();
     
             // Redireccionar con un mensaje de éxito
-            return redirect()->route('contribuyentes.index')->with('success', 'Contribuyente registrado!');
+            return redirect()->route('contribuyentes.index')->with('success', '¡Contribuyente registrado!');
         } catch (Exception $e) {
             // Revertir la transacción en caso de error
             DB::rollBack();
@@ -87,7 +87,7 @@ class contribuyenteController extends Controller
     public function update(StoreContribuyenteRequest $request,TaxpayerType $contribuyente)
     {
         $contribuyente->update($request->validated());
-        return redirect()->route('contribuyentes.index')->with('success', 'Contribuyente actualizado!');
+        return redirect()->route('contribuyentes.index')->with('success', '¡Contribuyente actualizado!');
     }
 
     /**
@@ -102,12 +102,12 @@ class contribuyenteController extends Controller
             $contribuyente->update([
                 'state' => 0
             ]);
-            $message = 'Contribuyente desabilitado';
+            $message = 'Contribuyente Deshabilitado';
         }else{
             $contribuyente->update([
                 'state' => 1
             ]);
-            $message = 'Contribuyente restaurado';
+            $message = 'Contribuyente Habilitado';
         }
         return redirect()->route('contribuyentes.index')->with('success', $message);
     }

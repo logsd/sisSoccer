@@ -61,7 +61,7 @@ class clubController extends Controller
             DB::commit();
 
             // Redireccionar con un mensaje de éxito
-            return redirect()->route('dataClubs.index')->with('success', 'Club registrado!');
+            return redirect()->route('dataClubs.index')->with('success', '¡Club registrado!');
         } catch (Exception $e) {
             // Revertir la transacción en caso de error
             DB::rollBack();
@@ -143,12 +143,12 @@ class clubController extends Controller
             $club->update([
                 'state' => 0
             ]);
-            $message = 'Club desabilitado';
+            $message = 'Club Deshabilitado';
         } else {
             $club->update([
                 'state' => 1
             ]);
-            $message = 'Club restaurado';
+            $message = 'Club Habilitado';
         }
         return redirect()->route('dataClubs.index')->with('success', $message);
     }

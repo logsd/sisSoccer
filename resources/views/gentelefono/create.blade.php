@@ -14,11 +14,11 @@
 
 @section('content')
 <div class="container-fluid px-4">
-  <h1 class="mt-4">Crear Telefono General</h1>
+  <h1 class="mt-4">Crear Teléfono General</h1>
   <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-    <li class="breadcrumb-item "><a href="{{route('genTelefonos.index')}}">Telefono</a> </li>
-    <li class="breadcrumb-item active">Crear Telefono</li>
+    <li class="breadcrumb-item "><a href="{{route('genTelefonos.index')}}">Teléfono</a> </li>
+    <li class="breadcrumb-item active">Crear Teléfono</li>
   </ol>
   <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
     <form action="{{route('genTelefonos.store')}}" method="post">
@@ -26,7 +26,7 @@
       <div class="row g-3">
 
         <div class="col-md-6">
-          <label for="number" class="form-label">Numero:</label>
+          <label for="number" class="form-label">Número:</label>
           <input type="text" name="number" id="number" class="form-control" value="{{old('number')}}">
           @error('number')
           <small class="text-danger">{{'*'.$message}}</small>

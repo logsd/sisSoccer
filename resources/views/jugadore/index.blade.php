@@ -53,11 +53,11 @@
             <table id="datatablesSimple" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Cedula</th>
+                        <th>Cédula</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Equipo</th>
-                        <th>Categoria</th>
+                        <th>Categoría</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
@@ -114,7 +114,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {{$item->state ==1 ? 'Seguro que quieres desabilitar este Jugador?' : 'Seguro que quieres restaurar este Jugador?'}}
+                                    {{$item->state ==1 ? '¿Seguro que quieres desabilitar este Jugador?' : '¿Seguro que quieres restaurar este Jugador?'}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

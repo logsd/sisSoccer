@@ -50,7 +50,7 @@
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Nombre Corto</th>
-                                            <th>Direccion</th>
+                                            <th>Dirección</th>
                                             <th>Reporte</th>
                                             <th>Comision</th>
                                             <th>Cargo</th>
@@ -114,7 +114,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$genOficina->state ==1 ? 'Seguro que quieres eliminar esta oficina general?' : 'Seguro que quieres restaurar esta oficina general?'}}
+        {{$genOficina->state ==1 ? '¿Seguro que quieres eliminar esta oficina general?' : '¿Seguro que quieres restaurar esta oficina general?'}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -136,7 +136,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Seguro que quieres eliminar esta oficina General?
+                                    ¿Seguro que quieres eliminar esta oficina General?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

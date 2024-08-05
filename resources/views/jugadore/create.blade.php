@@ -33,7 +33,7 @@
                         <div class="p-3 border border-3 border-primary">
 
                             <div class="col-md-12 mb-2">
-                                <label for="dni" class="form-label">Cedula:</label>
+                                <label for="dni" class="form-label">Cédula:</label>
                                 <input type="number" name="dni" id="dni" class="form-control" value="{{old('dni')}}">
                                 @error('dni')
                                 <small class="text-danger">{{'*'.$message}}</small>
@@ -129,7 +129,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="img_url" class="form-label">Imagén:</label>
+                                <label for="img_url" class="form-label">Imagen:</label>
                                 <input type="file" name="img_url" id="img_url" class="form-control" accept="Image/*">
                                 @error('img_url')
                                 <small class="text-danger">{{'*'.$message}}</small>
@@ -191,8 +191,8 @@
                                 </div>
 
                                 <div class="col-md-12 mb-2">
-                                    <label class="form-label" for="category_id">Categoria:</label>
-                                    <select data-size="3" title="Seleccione una Categoria" data-live-search="true" name="category_id" id="category_id" class="form-control selectpicker show-tick">
+                                    <label class="form-label" for="category_id">Categoría:</label>
+                                    <select data-size="3" title="Seleccione una Categoría" data-live-search="true" name="category_id" id="category_id" class="form-control selectpicker show-tick">
                                         @foreach ($categorias as $item)
                                         <option value="{{$item->id}}" {{old('category_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
                                         @endforeach

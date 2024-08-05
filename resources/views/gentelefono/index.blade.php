@@ -29,20 +29,20 @@
 </script>
 @endif
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Telefono General</h1>
+                        <h1 class="mt-4">Teléfono General</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item active">Telefono General</li>
+                            <li class="breadcrumb-item active">Teléfono General</li>
                         </ol>
                         <div class="mb-4">
                         <a href="{{route('genTelefonos.create')}}">
-                            <button type="button" class="btn btn-primary">Añadir nuevo Telefono</button>
+                            <button type="button" class="btn btn-primary">Añadir nuevo Teléfono</button>
                         </a>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Tabla telefonos
+                                Tabla Teléfono
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple" class="table table-striped">
@@ -103,7 +103,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$genTelefono->state ==1 ? 'Seguro que quieres eliminar este Telefono?' : 'Seguro que quieres restaurar este Telefono?'}}
+        {{$genTelefono->state ==1 ? '¿Seguro que quieres eliminar este Telefono?' : '¿Seguro que quieres restaurar este Telefono?'}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

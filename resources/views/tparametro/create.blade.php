@@ -12,11 +12,11 @@
 
 @section('content')
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Crear Tipo de Parametros</h1>
+                        <h1 class="mt-4">Crear Tipo de Parámetros </h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item "><a href="{{route('tparametros.index')}}">Tipo de Parametros</a> </li>
-                            <li class="breadcrumb-item active">Crear Tipo de Parametros</li>
+                            <li class="breadcrumb-item "><a href="{{route('tparametros.index')}}">Tipo de Parámetros</a> </li>
+                            <li class="breadcrumb-item active">Crear Tipo de Parámetros</li>
                         </ol>
 <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
 <form action="{{route('tparametros.store')}}" method="post">

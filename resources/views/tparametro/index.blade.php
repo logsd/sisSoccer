@@ -29,20 +29,20 @@ Toast.fire({
 </script>
 @endif
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tipo de Parametro</h1>
+                        <h1 class="mt-4">Tipo de Parámetros</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item active">Parametros</li>
+                            <li class="breadcrumb-item active">Parámetros</li>
                         </ol>
                         <div class="mb-4">
                         <a href="{{route('tparametros.create')}}">
-                            <button type="button" class="btn btn-primary">Añadir nuevo Tipo de Parametro</button>
+                            <button type="button" class="btn btn-primary">Añadir nuevo Tipo de Parámetros</button>
                         </a>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Tabla Parametros
+                                Tabla Parámetros
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple" class="table table-striped">
@@ -91,7 +91,7 @@ Toast.fire({
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Comision de ligas Detalles</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Comisión de ligas Detalles</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -114,7 +114,7 @@ Toast.fire({
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$tparametro->state ==1 ? 'Seguro que quieres eliminar esta Comision de Liga?' : 'Seguro que quieres restaurar esta Comision de Liga?'}}
+        {{$tparametro->state ==1 ? '¿Seguro que quieres eliminar esta Comision de Liga?' : '¿Seguro que quieres restaurar esta Comision de Liga?'}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

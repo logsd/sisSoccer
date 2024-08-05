@@ -9,7 +9,7 @@
 @section('content')
 
 <style>
-    .card{
+    .card {
         background-color: #4EA93B;
     }
 
@@ -34,141 +34,118 @@
     </ol>
 </div>
 <div class="container">
-<h1 class="mt-2 text-center mb-4">Club</h1>
-<div class="card m-4 p-3">
-<div class="row px-10">
+    <h1 class="mt-2 text-center mb-4">Club</h1>
+    <div class="card m-4 p-3">
+        <div class="row px-10">
 
-<h4 class="my-3 text-center">Detalles</h4>
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-people-group"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->name}}">
-                                                    </div>
+            <h4 class="my-3 text-center">Detalles</h4>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-file-signature"></i></span>
+                    <input disabled type="text" class="form-control" value="Nombre:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->name}}">
+                </div>
 
-    </div>
+            </div>
 
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->trade_name}}">
-                                                    </div>
-    </div>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-file-signature"></i></span>
+                    <input disabled type="text" class="form-control" value="Nombre Comercial:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->trade_name}}">
+                </div>
+            </div>
 
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->reason_social}}">
-                                                    </div>
-    </div>
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->ruc}}">
-                                                    </div>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-people-arrows"></i></span>
+                    <input disabled type="text" class="form-control" value="Razón Social:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->reason_social}}">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-regular fa-id-badge"></i></span>
+                    <input disabled type="text" class="form-control" value="Ruc:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->ruc}}">
+                </div>
 
-    </div>
+            </div>
 
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->direction}}">
-                                                    </div>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
+                    <input disabled type="text" class="form-control" value="Dirección:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->direction}}">
+                </div>
 
-    </div>
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->email}}">
-                                                    </div>
-    </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                    <input disabled type="text" class="form-control" value="Email:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->email}}">
+                </div>
+            </div>
 
 
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->date_constion}}">
-                                                    </div>
-    </div>
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->direction_web}}">
-                                                    </div>
-    </div>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-regular fa-calendar-days"></i></span>
+                    <input disabled type="text" class="form-control" value="Fecha Elaborado:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->date_constion}}">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
+                    <input disabled type="text" class="form-control" value="Dirección Web:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->direction_web}}">
+                </div>
+            </div>
 
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->slogan}}">
-                                                    </div>
-    </div>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-brands fa-cotton-bureau"></i></span>
+                    <input disabled type="text" class="form-control" value="Slogan:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->slogan}}">
+                </div>
+            </div>
 
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->description}}">
-                                                    </div>
-    </div>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
+                    <input disabled type="text" class="form-control" value="Descripción:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->description}}">
+                </div>
+            </div>
 
-    <div class="col-sm-6">
-    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="fa-solid fa-pencil"></i></span>
-                                                        <input disabled type="text" class="form-control" value="Nombre:">
-                                                        <input disabled type="text" class="form-control  bg-white"
-                                                            value="{{$club->parish}}">
-                                                    </div>
-    </div>
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-city"></i></span>
+                    <input disabled type="text" class="form-control" value="Parroquia:">
+                    <input disabled type="text" class="form-control  bg-white" value="{{$club->parish}}">
+                </div>
+            </div>
 
-    <div class="col-sm-12">
-    <div class="row mb-3">
-                                                        <label class="fw-bolder mb-3">Imagen:</label>
-                                                        <div>
-                                                            @if ($club->logo != null)
-                                                                <img src="{{ Storage::url('public/clubs/' . $club->logo)}}"
-                                                                    alt="{{$club->name}}"
-                                                                    class="img-fluid img-thumbnail border border-4 rounded">
-                                                            @else
-                                                                <img src="" alt="{{$club->name}}">
-                                                            @endif
-                                                        </div>
-                                                    </div>
-    </div>
+            <div class="col-sm-12">
+                <div class="row mb-3">
+                    <label class="fw-bolder mb-3">Imagen:</label>
+                    <div>
+                        @if ($club->logo != null)
+                        <img src="{{ Storage::url('public/clubs/' . $club->logo)}}" alt="{{$club->name}}" class="img-fluid img-thumbnail border border-4 rounded">
+                        @else
+                        <img src="" alt="{{$club->name}}">
+                        @endif
+                    </div>
+                </div>
+            </div>           
 
-
-    <div class="col-sm-12">
-        <div class="input-group mb-3">
-            <span class="input-group-text"><i class="fa-solid fa-pen"></i></span>
-            <input disabled type="text" class="form-control" value="Descripción:">
-            <input disabled type="text" class="form-control bg-white" value=" {{$club->description}}">
         </div>
     </div>
-
-</div>
-</div>
-<a href="{{route('clubs.index')}}">
-                                    <button type="button" class="buttonr"><i
-                                            class="fa-solid fa-arrow-left"></i>Regresar</button>
-                                </a>
+    <a href="{{route('clubs.index')}}">
+        <button type="button" class="buttonr"><i class="fa-solid fa-arrow-left"></i>Regresar</button>
+    </a>
 </div>
 
 @endsection

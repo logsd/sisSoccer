@@ -42,7 +42,7 @@
         </div>
 
         <div class="col-md-6">
-          <label for="address" class="form-label">Direccion:</label>
+          <label for="address" class="form-label">Dirección:</label>
           <input type="text" name="address" id="address" class="form-control" value="{{old('address')}}">
           @error('address')
           <small class="text-danger">{{'*'.$message}}</small>

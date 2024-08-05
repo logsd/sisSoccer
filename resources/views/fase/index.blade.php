@@ -96,7 +96,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {{$item->state ==1 ? 'Seguro que quieres eliminar esta Fase?' : 'Seguro que quieres restaurar esta Fase?'}}
+                                    {{$item->state ==1 ? '¿Seguro que quieres eliminar esta Fase?' : '¿Seguro que quieres restaurar esta Fase?'}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

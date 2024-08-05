@@ -102,7 +102,7 @@ class calendarioController extends Controller
             $calendario->update([
                 'state' => 0
             ]);
-            $message = 'Calendario Habilitado';
+            $message = 'Calendario Deshabilitado';
         }else{
             $calendario->update([
                 'state' => 1

@@ -99,7 +99,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$genEstado->state ==1 ? 'Seguro que quieres eliminar este Estado General?' : 'Seguro que quieres restaurar este Estado General?'}}
+        {{$genEstado->state ==1 ? '¿Seguro que quieres eliminar este Estado General?' : '¿Seguro que quieres restaurar este Estado General?'}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -121,7 +121,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Seguro que quieres eliminar este Estado General?
+                                    ¿Seguro que quieres eliminar este Estado General?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

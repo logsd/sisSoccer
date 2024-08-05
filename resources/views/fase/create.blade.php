@@ -20,26 +20,88 @@
 @endpush
 
 @section('content')
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Crear Fase Campeonatos</h1>
+
+<style>
+    #observation {
+        resize: none;
+    }
+
+    #description {
+        resize: none;
+    }
+
+    .cuerpo {
+        border: solid 3px black;
+        border-radius: 10px;
+        padding: 20px;
+        background: #4EA93B;
+        color: black;
+        margin-bottom: 20px
+    }
+
+    .dt {
+        border-left: solid 2px black;
+        padding-left: 6%;
+
+    }
+
+    h4 {
+        text-align: center;
+        padding: 4px 5px;
+    }
+
+    .buttong {
+        background-color: #32fc08;
+        color: black;
+        padding: 8px 15px 8px 15px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+    }
+
+    .buttonr {
+        background-color: #A5D29A;
+        color: black;
+        padding: 8px 20px 8px 20px;
+        margin-left: 10px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+    }
+
+    .buttonr:hover,
+    .buttong:hover {
+        background-color: #337326;
+        color: white;
+
+    }
+
+
+    .fa-check,
+    .fa-arrow-left {
+        padding-right: 10px;
+    }
+</style>
+
+<div class="container-fluid my-4">
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('fases.index')}}"> Fase Campeonatos</a> </li>
-        <li class="breadcrumb-item active">Crear Fase Campeonatos</li>
+        <li class="breadcrumb-item active">Nueva Fase Campeonato</li>
     </ol>
-    <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
+    <h1 class="my-4 text-center">Nueva Fase Campeonato</h1>
+    <div class="cuerpo">
         <form action="{{route('fases.store')}}" method="post">
             @csrf
-            <div class="container mt-4">
+
                 <div class="row gy-4">
                     <!--Crear Campeonato--->
                     <div class="col-md-8">
-                        <div class="text-white bg-primary p-1 text-center">
-                            Detalles Fase Campeonato
-                        </div>
-                        <div class="p-3 border border-3 border-primary">
-
+                        <div>
                             <div class="col-md-12 mb-2">
+                                <h4>Detalles Campeonato</h4>
                                 <label for="name" class="form-label">Nombre:</label>
                                 <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
                                 @error('name')
@@ -74,15 +136,13 @@
                         </div>
                     </div>
                     <!---Campeonato-->
+
                     <div class="col-md-4">
-                        <div class="text-white bg-success p-1 text-center">
-                            Campeonatos
-                        </div>
-                        <div class="p-3 border border-3 border-success">
+
+                        <div class="dt mb-5">
                             <div class="row">
-
-
-                                <div class="col-md-12 mb-2">
+                                <h4>Campeonatos</h4>
+                                <div class="col-md-12 mb-2"></div>
                                     <label class="form-label" for="championship_id">Campeonato:</label>
                                     <select data-size="3" title="Seleccione un Campeonato" data-live-search="true" name="championship_id" id="championship_id" class="form-control selectpicker show-tick">
                                         <option value=""></option>
@@ -95,13 +155,21 @@
                                     @enderror
                                 </div>
 
+                        </div>
+                        <div class="row text-end">
+                            <div class="col-md-12 mb-2 ">
+                                <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
+                                <a href="{{route('fases.index')}}">
+                                    <button type="button" class="buttonr"><i
+                                            class="fa-solid fa-arrow-left"></i>Regresar</button>
+                                </a>
+                                <div class="col-md-12 mb-2">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 mb-2 mt-4 text-center">
-                    <button type="submit" class="btn btn-success">Guardar</button>
-                </div>
+
             </div>
         </form>
     </div>

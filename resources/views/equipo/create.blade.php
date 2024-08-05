@@ -13,45 +13,70 @@
 @endpush
 
 <style>
-    .cuerpo{
+    #description {
+        resize: none;
+    }
+
+    #description {
+        resize: none;
+    }
+
+    .cuerpo {
         border: solid 3px black;
         border-radius: 10px;
         padding: 20px;
-        background:#4EA93B;
+        background: #4EA93B;
         color: black;
+        margin-bottom: 20px
     }
 
-    h4{
+    h4 {
         text-align: center;
         padding: 4px 5px;
     }
 
-    .button{
-        background-color: #1A320F;
-        color: white;
-        padding: 8px 25px 8px 25px;
-        margin: 15px;
+    .buttong {
+        background-color: #32fc08;
+        color: black;
+        padding: 8px 20px 8px 20px;
         border: solid 2px black;
         border-radius: 20px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        font-size: 20px;
+        font-size: 17px;
     }
 
-    .button:hover{
-        background-color:#337326;
-        color:white;
+    .buttonr {
+        background-color: #A5D29A;
+        color: black;
+        padding: 8px 20px 8px 20px;
+        margin-left: 10px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
     }
 
+    .buttonr:hover,
+    .buttong:hover {
+        background-color: #337326;
+        color: white;
+
+    }
+
+    .fa-check,
+    .fa-arrow-left {
+        padding-right: 10px;
+    }
 </style>
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center mb-4">Crear Equipos</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('equipos.index')}}">Equipos</a> </li>
-        <li class="breadcrumb-item active">Crear Equipos</li>
+        <li class="breadcrumb-item active">Nuevo Equipo</li>
     </ol>
+    <h1 class="my-4 text-center ">Nuevo Equipo</h1>
         <form action="{{route('equipos.store')}}" method="post">
             @csrf
             <div class="container ">
@@ -130,11 +155,18 @@
                             </div>
                             </div>
                         </div>
-                        <div class="mb-2 mt-4">
-                        <button type="submit" class="btn btn-success">Guardar</button>
-        <a href="{{route('equipos.index')}}">
-            <button type="button" class="button">Regresar</button>
-        </a>
+                        <div class="col-12 text-center">
+                    <div class="row text-center">
+                        <div class="col-md-12 mb-2 mt-2">
+                            <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
+                            <a href="{{route('equipos.index')}}">
+                                <button type="button" class="buttonr"><i
+                                        class="fa-solid fa-arrow-left"></i>Regresar</button>
+                            </a>
+                            <div class="col-md-12 mb-2">
+                            </div>
+                        </div>
+                    </div>
                 </div>
         </form>
     </div>

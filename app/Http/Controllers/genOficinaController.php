@@ -53,7 +53,7 @@ class genOficinaController extends Controller
             //return $e;
             DB::rollBack();
         }
-        return redirect()->route('genOficinas.index')->with('success', 'Oficina General registrado!');
+        return redirect()->route('genOficinas.index')->with('success', 'Oficina General registrada!');
     
     }
 
@@ -102,7 +102,7 @@ class genOficinaController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('genOficinas.index')->with('success', 'Oficina general actualizado!');
+        return redirect()->route('genOficinas.index')->with('success', 'Oficina general actualizada!');
     
     }
 
@@ -119,12 +119,12 @@ class genOficinaController extends Controller
             $genOficina->update([
                 'state' => 0
             ]);
-            $message = 'Oficina General Desabilitado';
+            $message = 'Oficina General Deshabilitado';
         }else{
             $genOficina->update([
                 'state' => 1
             ]);
-            $message = 'Oficina General restaurado';
+            $message = 'Oficina General Habilitada';
         }
         return redirect()->route('genOficinas.index')->with('success', $message);
     }
@@ -133,9 +133,9 @@ class genOficinaController extends Controller
         $genOficina = GenOffice::find($id);
         if ($genOficina) {
             $genOficina->delete();
-            return redirect()->route('genOficinas.index')->with('success', 'Oficina General eliminado definitivamente');
+            return redirect()->route('genOficinas.index')->with('success', 'Oficina General eliminada definitivamente');
         }
 
-        return redirect()->route('genOficinas.index')->with('error', 'La Oficina General no fue encontrado');
+        return redirect()->route('genOficinas.index')->with('error', 'La Oficina General no fue encontrada');
     }
 }

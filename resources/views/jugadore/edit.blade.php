@@ -34,7 +34,7 @@
                         <div class="p-3 border border-3 border-primary">
 
                             <div class="col-md-12 mb-2">
-                                <label for="dni" class="form-label">Cedula:</label>
+                                <label for="dni" class="form-label">Cédula:</label>
                                 <input type="number" name="dni" id="dni" class="form-control" value="{{old('dni',$jugadore->dni)}}">
                                 @error('dni')
                                 <small class="text-danger">{{'*'.$message}}</small>
@@ -130,7 +130,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="img_url" class="form-label">Imagén:</label>
+                                    <label for="img_url" class="form-label">Imagen:</label>
                                     <input type="file" name="img_url" id="img_url" class="form-control" accept="Image/*">
                                     @error('img_url')
                                     <small class="text-danger">{{'*'.$message}}</small>

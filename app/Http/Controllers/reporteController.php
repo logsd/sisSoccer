@@ -86,12 +86,12 @@ class reporteController extends Controller
             $reporte->update([
                 'state' => 0
             ]);
-            $message = 'Reporte desabilitado';
+            $message = 'Reporte Deshabilitado';
         }else{
             $reporte->update([
                 'state' => 1
             ]);
-            $message = 'Reporte restaurado';
+            $message = 'Reporte Habilitado';
         }
         return redirect()->route('reportes.index')->with('success', $message);
     }

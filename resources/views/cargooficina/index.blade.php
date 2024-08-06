@@ -95,7 +95,7 @@ Toast.fire({
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Nombre Corto</th>
-                                            <th>Descripcion</th>
+                                            <th>Descripción</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -175,8 +175,8 @@ Toast.fire({
       </div>
       <div class="modal-body">
       {!! $cargooficina->state == 1
-        ? '¿Seguro que quieres <strong>deshabilitar</strong> este Cargo de Oficina?'
-        : '¿Seguro que quieres <strong>habilitar</strong> este Cargo de Oficina?' !!}
+        ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Cargo de Oficina?'
+        : '¿Seguro que quieres <strong>Habilitar</strong> este Cargo de Oficina?' !!}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

@@ -44,7 +44,7 @@ class directClubController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('directClubs.index')->with('success', 'Directivo registrado!');
+        return redirect()->route('directClubs.index')->with('success', '¡Directivo registrado!');
     }
 
     /**
@@ -79,7 +79,7 @@ class directClubController extends Controller
             $directClub->update($validatedData);
     
             DB::commit();
-            return redirect()->route('directClubs.index')->with('success', 'Directivo actualizado correctamente!');
+            return redirect()->route('directClubs.index')->with('success', '¡Directivo actualizado correctamente!');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->route('directClubs.index')->with('error', 'Hubo un problema al actualizar el directivo.');
@@ -98,12 +98,12 @@ class directClubController extends Controller
             $directClub->update([
                 'state' => 0
             ]);
-            $message = 'Directivo desabilitado';
+            $message = 'Directivo Deshabilitado';
         }else{
             $directClub->update([
                 'state' => 1
             ]);
-            $message = 'Directivo restaurado';
+            $message = 'Directivo Habilitado';
         }
         return redirect()->route('directClubs.index')->with('success', $message);
     }

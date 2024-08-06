@@ -106,8 +106,8 @@
                             </div>
 
                             <div class="col-md-6 mb-2">
-                                <label class="form-label" for="category_id">Categoria:</label>
-                                <select data-size="3" title="Seleccione una Categoria" data-live-search="true"
+                                <label class="form-label" for="category_id">Categoría:</label>
+                                <select data-size="3" title="Seleccione una Categoría" data-live-search="true"
                                     name="category_id" id="category_id" class="form-control selectpicker show-tick">
                                     @foreach ($categorias as $item)
                                     <option value="{{$item->id}}" {{old('category_id')==$item->id ? 'selected' :

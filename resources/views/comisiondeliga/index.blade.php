@@ -71,12 +71,12 @@ Toast.fire({
 <div class="container-fluid px-4 ">
                         <ol class="breadcrumb mt-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item active">Comision de Ligas</li>
+                            <li class="breadcrumb-item active">Comisión de Ligas</li>
                         </ol>
-                        <h1 class="text-center mb-4">Comision de Ligas</h1>
+                        <h1 class="text-center mb-4"> Comisión de Ligas</h1>
                         <div class="mb-4">
                         <a href="{{route('comisiondeligas.create')}}">
-                            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nueva Comision de Ligas</button>
+                            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nueva Comisión de Ligas</button>
                         </a>
                         </div>
                         <div class="card mb-4">
@@ -142,7 +142,7 @@ Toast.fire({
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-4 border-white">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Comision de ligas Detalles</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Comisión de Ligas Detalles</h1>
         <button type="button" class="buttonc shadow-none" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body">
@@ -186,7 +186,7 @@ Toast.fire({
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content ">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Comision de ligas Detalles</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Comisión de ligas Detalles</h1>
         <button type="button" class="buttonc shadow-none" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body">
@@ -219,8 +219,8 @@ Toast.fire({
       </div>
       <div class="modal-body bg-white">
       {!! $comisiondeliga->state == 1
-                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> esta Comision de Liga?'
-                        : '¿Seguro que quieres <strong>Habilitar</strong> esta Comision de Liga?' !!}
+                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> esta Comisión de Liga?'
+                        : '¿Seguro que quieres <strong>Habilitar</strong> esta Comisión de Liga?' !!}
                          </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

@@ -18,11 +18,11 @@
 
 @section('content')
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Editar Tipos de Parametros</h1>
+                        <h1 class="mt-4">Editar Tipos de Parámetros</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item "><a href="{{route('tparametros.index')}}">Tipos de Parametros</a> </li>
-                            <li class="breadcrumb-item active">Editar Tipo de Parametro</li>
+                            <li class="breadcrumb-item "><a href="{{route('tparametros.index')}}">Tipos de Parámetros</a> </li>
+                            <li class="breadcrumb-item active">Editar Tipo de Parámetro</li>
                         </ol>
 
                         <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">

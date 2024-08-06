@@ -94,7 +94,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Email</th>
-                        <th>Telefono</th>
+                        <th>Teléfono</th>
                         <th>Posición</th>
                         <th>Estado</th>
                         <th>Acciones</th>

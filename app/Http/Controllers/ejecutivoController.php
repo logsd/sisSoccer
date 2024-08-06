@@ -64,7 +64,7 @@ class ejecutivoController extends Controller
             DB::commit();
     
             // Redireccionar con un mensaje de éxito
-            return redirect()->route('ejecutivos.index')->with('success', 'Ejecutivo registrado!');
+            return redirect()->route('ejecutivos.index')->with('success', '¡Ejecutivo registrado!');
         } catch (Exception $e) {
             // Revertir la transacción en caso de error
             DB::rollBack();
@@ -125,7 +125,7 @@ class ejecutivoController extends Controller
             DB::commit();
         } catch (Exception $e) {
         }
-        return redirect()->route('ejecutivos.index')->with('success', 'Ejecutivo actualizado!');
+        return redirect()->route('ejecutivos.index')->with('success', '¡Ejecutivo actualizado!');
     }
     
 
@@ -144,12 +144,12 @@ class ejecutivoController extends Controller
             $ejecutivo->update([
                 'state' => 0
             ]);
-            $message = 'Ejecutivo desabilitado';
+            $message = 'Ejecutivo Deshabilitado';
         }else{
             $ejecutivo->update([
                 'state' => 1
             ]);
-            $message = 'Ejecutivo restaurado';
+            $message = 'Ejecutivo Habilitado';
         }
         return redirect()->route('ejecutivos.index')->with('success', $message);
     }

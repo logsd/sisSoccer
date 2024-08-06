@@ -95,12 +95,12 @@ class periodoController extends Controller
             $periodo->update([
                 'state' => 0
             ]);
-            $message = 'Periodo desabilitado';
+            $message = 'Periodo Deshabilitado';
         }else{
             $periodo->update([
                 'state' => 1
             ]);
-            $message = 'Periodo restaurado';
+            $message = 'Periodo Habilitado';
         }
         return redirect()->route('periodos.index')->with('success', $message);
     }

@@ -41,7 +41,7 @@ class CargoOficinaController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('cargooficinas.index')->with('success', 'Equipo registrado!');
+        return redirect()->route('cargooficinas.index')->with('success', '¡Equipo registrado!');
     }
 
     /**
@@ -95,12 +95,12 @@ class CargoOficinaController extends Controller
             $cargooficina->update([
                 'state' => 0
             ]);
-            $message = 'Cargo de Oficina eliminada';
+            $message = 'Cargo de Oficina Deshabilitado ';
         } else {
             $cargooficina->update([
                 'state' => 1
             ]);
-            $message = 'Cargo de Oficina restaurada';
+            $message = 'Cargo de Oficina Habilitado ';
         }
         return redirect()->route('cargooficinas.index')->with('success', $message);
     }

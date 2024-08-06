@@ -46,7 +46,7 @@ class equipoController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('equipos.index')->with('success', 'Equipo registrado!');
+        return redirect()->route('equipos.index')->with('success', '¡Equipo registrado!');
     }
 
     /**
@@ -82,7 +82,7 @@ class equipoController extends Controller
             $equipo->update($validatedData);
     
             DB::commit();
-            return redirect()->route('equipos.index')->with('success', 'Equipo actualizado correctamente!');
+            return redirect()->route('equipos.index')->with('success', '¡Equipo actualizado correctamente!');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->route('equipos.index')->with('error', 'Hubo un problema al actualizar el equipo.');
@@ -101,12 +101,12 @@ class equipoController extends Controller
             $equipo->update([
                 'state' => 0
             ]);
-            $message = 'Equipo desabilitado';
+            $message = 'Equipo Deshabilitado';
         }else{
             $equipo->update([
                 'state' => 1
             ]);
-            $message = 'Equipo restaurado';
+            $message = 'Equipo Habilitado';
         }
         return redirect()->route('equipos.index')->with('success', $message);
     }

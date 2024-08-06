@@ -76,7 +76,7 @@
             <div class="row g-3">
 
                 <div class="col-md-6">
-                    <label for="dni" class="form-label">DNI:</label>
+                    <label for="dni" class="form-label">CI:</label>
                     <input type="number" name="dni" id="dni" class="form-control" value="{{old('dni')}}">
                     @error('dni')
                         <small class="text-danger">{{'*' . $message}}</small>
@@ -102,7 +102,7 @@
 
 
                 <div class="col-md-6">
-                    <label for="address" class="form-label">Address:</label>
+                    <label for="address" class="form-label">Dirección:</label>
                     <input type="text" name="address" id="address" class="form-control" value="{{old('address')}}">
                     @error('address')
                         <small class="text-danger">{{'*' . $message}}</small>
@@ -118,7 +118,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="img_path" class="form-label">Img:</label>
+                    <label for="img_path" class="form-label">Imagen:</label>
                     <input type="file" name="img_path" id="img_path" class="form-control" accept="Image/*">
                     @error('img_path')
                         <small class="text-danger">{{'*' . $message}}</small>

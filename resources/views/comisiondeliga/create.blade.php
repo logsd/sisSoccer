@@ -64,10 +64,10 @@
 <div class="container-fluid px-4">
     <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-        <li class="breadcrumb-item "><a href="{{route('comisiondeligas.index')}}">Comision de Liga</a> </li>
-        <li class="breadcrumb-item active">Nueva Comision de Liga</li>
+        <li class="breadcrumb-item "><a href="{{route('comisiondeligas.index')}}">Comisión de Liga</a> </li>
+        <li class="breadcrumb-item active">Nueva Comisión de Liga</li>
     </ol>
-    <h1 class="my-4 text-center">Nueva Comision de Liga</h1>
+    <h1 class="my-4 text-center">Nueva Comisión de Liga</h1>
     <div class="cuerpo">
         <form action="{{route('comisiondeligas.store')}}" method="post" enctype="multipart/form-data">
             @csrf
@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="description" class="form-label">Descripcion:</label>
+                    <label for="description" class="form-label">Descripción:</label>
                     <input type="text" name="description" id="description" class="form-control"
                         value="{{old('description')}}">
                     @error('description')

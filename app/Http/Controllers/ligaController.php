@@ -162,10 +162,10 @@ class ligaController extends Controller
         if ($liga) {
             if ($liga->state == 1) {
                 $liga->update(['state' => 0]);
-                $message = 'Liga eliminado lógicamente';
+                $message = 'Liga Deshabilitada';
             } else {
                 $liga->update(['state' => 1]);
-                $message = 'Liga restaurado';
+                $message = 'Liga Habilitada';
             }
         }
 
@@ -177,7 +177,7 @@ class ligaController extends Controller
         $liga = League::find($id);
         if ($liga) {
             $liga->delete();
-            return redirect()->route('ligas.index')->with('success', 'Liga eliminado definitivamente');
+            return redirect()->route('ligas.index')->with('success', 'Liga eliminada definitivamente');
         }
 
         return redirect()->route('ligas.index')->with('error', 'La Liga no fue encontrada');

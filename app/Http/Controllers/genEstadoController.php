@@ -109,12 +109,12 @@ class genEstadoController extends Controller
             $genEstado->update([
                 'state' => 0
             ]);
-            $message = 'Estado General Desabilitado';
+            $message = 'Estado General Deshabilitado';
         }else{
             $genEstado->update([
                 'state' => 1
             ]);
-            $message = 'Estado General restaurado';
+            $message = 'Estado General Habilitado';
         }
         return redirect()->route('genEstados.index')->with('success', $message);
     }

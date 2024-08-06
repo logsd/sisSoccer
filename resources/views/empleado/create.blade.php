@@ -86,7 +86,7 @@
 
             <div class="row">
                 <div class="col-md-4 mb-2">
-                    <label for="ci" class="form-label">Cedula:</label>
+                    <label for="ci" class="form-label">CI:</label>
                     <input type="number" name="ci" id="ci" class="form-control" value="{{old('ci')}}">
                     @error('ci')
                         <small class="text-danger">{{'*' . $message}}</small>
@@ -115,7 +115,7 @@
                     <label for="sex" class="form-label">Género:</label>
                     <select title="Seleccione una Categoria" name="sex" id="sex"
                         class="form-control selectpicker show-tick">
-                        <option value="1" {{ old('sex') == '1' ? 'selected' : '' }}>Varonil</option>
+                        <option value="1" {{ old('sex') == '1' ? 'selected' : '' }}>Masculino</option>
                         <option value="0" {{ old('sex') == '0' ? 'selected' : '' }}>Femenino</option>
                     </select>
                     @error('sex')
@@ -212,7 +212,7 @@
                 </div>
 
                 <div class="col-md-6 mb-2">
-                    <label class="form-label" for="position_id">Posicion</label>
+                    <label class="form-label" for="position_id">Posición</label>
                     <select data-size="4" title="Seleccione una Posicion" data-live-search="true" name="position_id"
                         id="position_id" class="form-control selectpicker show-tick">
                         @foreach ($posiciones as $item)

@@ -112,7 +112,7 @@
 
 
                                 <div class="col-md-6 mb-2">
-                                    <label for="phone" class="form-label">Telefono:</label>
+                                    <label for="phone" class="form-label">Teléfono:</label>
                                     <input type="text" name="phone" id="phone" class="form-control" value="{{old('phone',$directClub->phone)}}">
                                     @error('phone')
                                     <small class="text-danger">{{'*'.$message}}</small>

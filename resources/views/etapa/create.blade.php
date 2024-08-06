@@ -12,8 +12,6 @@
 @section('content')
 
 <style>
-
-
     #description {
         resize: none;
     }

@@ -186,12 +186,12 @@ class jugadorController extends Controller
             $jugadore->update([
                 'state' => 0
             ]);
-            $message = 'Jugador desabilitado';
+            $message = 'Jugador Deshabilitado';
         } else {
             $jugadore->update([
                 'state' => 1
             ]);
-            $message = 'Jugador restaurado';
+            $message = 'Jugador Habilitado';
         }
         return redirect()->route('jugadores.index')->with('success', $message);
     }

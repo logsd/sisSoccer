@@ -87,10 +87,10 @@
             <table id="datatablesSimple" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>DNI</th>
+                        <th>CI</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
-                        <th>Adress</th>
+                        <th>Dirección</th>
                         <th>Email</th>
                         <th>Estado</th>
                         <th>Acciones</th>

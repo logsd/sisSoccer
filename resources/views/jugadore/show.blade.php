@@ -99,7 +99,7 @@
 
                         <strong>Liga:</strong> {{ $jugadore->league->name}}<br>
 
-                        <strong>Categoria:</strong> {{ $jugadore->category->name}}<br>
+                        <strong>Categoría:</strong> {{ $jugadore->category->name}}<br>
                     </div>
                 </div>
             </div>

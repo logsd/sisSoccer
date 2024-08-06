@@ -32,11 +32,11 @@
                         <h1 class="mt-4">Tipos de Sanciones</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item active">Sancion</li>
+                            <li class="breadcrumb-item active">Sanción</li>
                         </ol>
                         <div class="mb-4">
                         <a href="{{route('sancion.create')}}">
-                            <button type="button" class="btn btn-primary">Añadir nueva Sancion</button>
+                            <button type="button" class="btn btn-primary">Añadir nueva Sanción</button>
                         </a>
                         </div>
                         <div class="card mb-4">
@@ -114,7 +114,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{$sancion->state ==1 ? 'Seguro que quieres eliminar esta Sancion?' : 'Seguro que quieres restaurar esta Sancion?'}}
+        {{$sancion->state ==1 ? '¿Seguro que quieres eliminar esta Sancion?' : '¿Seguro que quieres restaurar esta Sancion?'}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

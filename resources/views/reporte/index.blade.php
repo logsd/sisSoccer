@@ -102,7 +102,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {{$reporte->state ==1 ? 'Seguro que quieres desabilitar este Reporte?' : 'Seguro que quieres restaurar este Reporte?'}}
+                                    {{$reporte->state ==1 ? '¿Seguro que quieres desabilitar este Reporte?' : '¿Seguro que quieres restaurar este Reporte?'}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

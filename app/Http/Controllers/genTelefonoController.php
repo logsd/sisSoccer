@@ -48,7 +48,7 @@ class genTelefonoController extends Controller
             //return $e;
             DB::rollBack();
         }
-        return redirect()->route('genTelefonos.index')->with('success', 'Telegono registrado!');
+        return redirect()->route('genTelefonos.index')->with('success', 'Teléfono registrado!');
     
     }
 
@@ -92,7 +92,7 @@ class genTelefonoController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('genTelefonos.index')->with('success', 'Telefono actualizado!');
+        return redirect()->route('genTelefonos.index')->with('success', 'Teléfono actualizado!');
     }
 
     /**
@@ -108,12 +108,12 @@ class genTelefonoController extends Controller
             $genTelefono->update([
                 'state' => 0
             ]);
-            $message = 'Telefono Desabilitado';
+            $message = 'Teléfono Deshabilitado';
         }else{
             $genTelefono->update([
                 'state' => 1
             ]);
-            $message = 'Telefono restaurado';
+            $message = 'Teléfono Habilitado';
         }
         return redirect()->route('genTelefonos.index')->with('success', $message);
     }
@@ -123,10 +123,10 @@ class genTelefonoController extends Controller
         $genTelefono = GenTelephone::find($id);
         if ($genTelefono) {
             $genTelefono->delete();
-            return redirect()->route('genTelefonos.index')->with('success', 'Telefono eliminado definitivamente');
+            return redirect()->route('genTelefonos.index')->with('success', 'Teléfono eliminado definitivamente');
         }
 
-        return redirect()->route('genTelefonos.index')->with('error', 'El Telefono no fue encontrado');
+        return redirect()->route('genTelefonos.index')->with('error', 'El Teléfono no fue encontrado');
     }
 
 }

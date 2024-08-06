@@ -105,12 +105,12 @@ class dataClubController extends Controller
             $dataClub->update([
                 'state' => 0
             ]);
-            $message = 'Telefono desabilitado';
+            $message = 'Teléfono Deshabilitado';
         }else{
             $dataClub->update([
                 'state' => 1
             ]);
-            $message = 'Telefono restaurado';
+            $message = 'Teléfono Habilitado';
         }
         return redirect()->route('dataClubs.index')->with('success', $message);
     }

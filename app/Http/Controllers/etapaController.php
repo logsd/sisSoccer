@@ -91,7 +91,7 @@ class etapaController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('etapas.index')->with('success', 'Estapa actualizada!');
+        return redirect()->route('etapas.index')->with('success', 'Etapa actualizada!');
     }
 
     /**
@@ -107,12 +107,12 @@ class etapaController extends Controller
             $etapa->update([
                 'state' => 0
             ]);
-            $message = 'Etapa Desabilitada';
+            $message = 'Etapa Deshabilitada';
         } else {
             $etapa->update([
                 'state' => 1
             ]);
-            $message = 'Etapa restaurada';
+            $message = 'Etapa Habilitada';
         }
         return redirect()->route('etapas.index')->with('success', $message);
     }
@@ -125,6 +125,6 @@ class etapaController extends Controller
             return redirect()->route('etapas.index')->with('success', 'Etapa eliminada definitivamente');
         }
 
-        return redirect()->route('etapas.index')->with('error', 'La Etapa no fue encontrado');
+        return redirect()->route('etapas.index')->with('error', 'La Etapa no fue encontrada');
     }
 }

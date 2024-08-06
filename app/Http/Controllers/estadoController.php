@@ -85,12 +85,12 @@ class estadoController extends Controller
             $estado->update([
                 'state' => 0
             ]);
-            $message = 'Estado Desabilitado';
+            $message = 'Estado Deshabilitado';
         }else{
             $estado->update([
                 'state' => 1
             ]);
-            $message = 'Estado restaurado';
+            $message = 'Estado Habilitado';
         }
         return redirect()->route('estados.index')->with('success', $message);
     }

@@ -24,7 +24,7 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
                             <li class="breadcrumb-item "><a href="{{route('sancion.index')}}">Tipos de Sanciones</a> </li>
-                            <li class="breadcrumb-item active">Editar Sancion</li>
+                            <li class="breadcrumb-item active">Editar Sanción</li>
                         </ol>
 
                         <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">

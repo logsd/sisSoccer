@@ -47,7 +47,7 @@ class calendarioController extends Controller
         }catch(Exception $e){
             DB::rollBack();
         }
-        return redirect()->route('calendarios.index')->with('success', 'Partido registrado!');
+        return redirect()->route('calendarios.index')->with('success', '¡Partido registrado!');
     }
 
     /**
@@ -83,7 +83,7 @@ class calendarioController extends Controller
             $calendario->update($validatedData);
     
             DB::commit();
-            return redirect()->route('calendarios.index')->with('success', 'Partido actualizado correctamente!');
+            return redirect()->route('calendarios.index')->with('success', '¡Partido actualizado correctamente!');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->route('calendarios.index')->with('error', 'Hubo un problema al actualizar el partido.');
@@ -102,12 +102,12 @@ class calendarioController extends Controller
             $calendario->update([
                 'state' => 0
             ]);
-            $message = 'Calendario desabilitado';
+            $message = 'Calendario Deshabilitado';
         }else{
             $calendario->update([
                 'state' => 1
             ]);
-            $message = 'Calendario restaurado';
+            $message = 'Calendario Habilitado';
         }
         return redirect()->route('calendarios.index')->with('success', $message);
     }

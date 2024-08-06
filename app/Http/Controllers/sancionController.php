@@ -44,7 +44,7 @@ class sancionController extends Controller
             //return $e;
             DB::rollBack();
         }
-        return redirect()->route('sancion.index')->with('success', 'Sancion registrado!');
+        return redirect()->route('sancion.index')->with('success', 'Sanción registrada!');
     
     }
 
@@ -79,10 +79,10 @@ class sancionController extends Controller
             $sancion->update($validatedData);
 
             DB::commit();
-            return redirect()->route('sancion.index')->with('success', 'Sancion actualizado correctamente!');
+            return redirect()->route('sancion.index')->with('success', 'Sanción actualizada correctamente!');
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->route('sancion.index')->with('error', 'Hubo un problema al actualizar la Sancion.');
+            return redirect()->route('sancion.index')->with('error', 'Hubo un problema al actualizar la Sanción.');
         }
     }
 
@@ -99,12 +99,12 @@ class sancionController extends Controller
             $sancion->update([
                 'state' => 0
             ]);
-            $message = 'Sancion Desabilitado';
+            $message = 'Sanción Deshabilitada';
         }else{
             $sancion->update([
                 'state' => 1
             ]);
-            $message = 'Sancion restaurado';
+            $message = 'Sanción Habilitada';
         }
         return redirect()->route('sancion.index')->with('success', $message);
     }
@@ -114,10 +114,10 @@ class sancionController extends Controller
         $sancion = TypeSanction::find($id);
         if ($sancion) {
             $sancion->delete();
-            return redirect()->route('sancion.index')->with('success', 'Sancion eliminado definitivamente');
+            return redirect()->route('sancion.index')->with('success', 'Sanción eliminado definitivamente');
         }
 
-        return redirect()->route('sancion.index')->with('error', 'La Sancion no fue encontrada');
+        return redirect()->route('sancion.index')->with('error', 'La Sanción no fue encontrada');
     }
 
 }

@@ -93,7 +93,7 @@
         </div>
 
         <div class="col-md-6">
-                <label for="description" class="form-label">Descripcion:</label>
+                <label for="description" class="form-label">Descripción:</label>
                 <input type="text" name="description" id="description" class="form-control" value="{{old('description')}}">
                 @error('description')
                 <small class="text-danger">{{'*'.$message}}</small>

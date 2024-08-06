@@ -56,7 +56,7 @@ class empleadoController extends Controller
             //return $e;
             DB::rollBack();
         }
-        return redirect()->route('empleados.index')->with('success', 'Empleado registrado!');
+        return redirect()->route('empleados.index')->with('success', '¡Empleado registrado!');
     
     }
 
@@ -132,12 +132,12 @@ class empleadoController extends Controller
             $empleado->update([
                 'state' => 0
             ]);
-            $message = 'Empleado eliminado';
+            $message = 'Empleado Deshabilitado';
         }else{
             $empleado->update([
                 'state' => 1
             ]);
-            $message = 'Empleado restaurado';
+            $message = 'Empleado Habilitado';
         }
         return redirect()->route('empleados.index')->with('success', $message);
     }

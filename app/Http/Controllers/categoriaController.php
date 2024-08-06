@@ -46,7 +46,7 @@ class categoriaController extends Controller
         } catch (Exception $e) {
             DB::rollBack();
         }
-        return redirect()->route('categorias.index')->with('success', 'Categoria registrada!');
+        return redirect()->route('categorias.index')->with('success', 'Categoría registrada!');
     }
 
     /**
@@ -71,7 +71,7 @@ class categoriaController extends Controller
     public function update(StoreCategoriaRequest $request, Category $categoria)
     {
         $categoria->update($request->validated());
-        return redirect()->route('categorias.index')->with('success', 'Categoria actualizada!');
+        return redirect()->route('categorias.index')->with('success', 'Categoría actualizada!');
     }
 
     /**
@@ -86,12 +86,12 @@ class categoriaController extends Controller
             $categoria->update([
                 'state' => 0
             ]);
-            $message = 'Categoria Desabilitada';
+            $message = 'Categoría Deshabilitado';
         } else {
             $categoria->update([
                 'state' => 1
             ]);
-            $message = 'Categoria restaurada';
+            $message = 'Categoría Habilitada';
         }
         return redirect()->route('categorias.index')->with('success', $message);
     }
@@ -101,9 +101,9 @@ class categoriaController extends Controller
         $categoria = Category::find($id);
         if ($categoria) {
             $categoria->delete();
-            return redirect()->route('categorias.index')->with('success', 'Categoria eliminada definitivamente');
+            return redirect()->route('categorias.index')->with('success', 'Categoría eliminada definitivamente');
         }
 
-        return redirect()->route('categorias.index')->with('error', 'La Categoria no fue encontrado');
+        return redirect()->route('categorias.index')->with('error', 'La Categoría no fue encontrado');
     }
 }

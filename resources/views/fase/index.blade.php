@@ -73,14 +73,9 @@
 </style>
 
 <div class="container-fluid px-4">
-<<<<<<< HEAD
     <h1 class="mt-4">Fase Campeonatos</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
-=======
-    <ol class="breadcrumb my-4">
-        <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
->>>>>>> 3b3ad467ae7e171eae91dda45ed1c07434c9687c
         <li class="breadcrumb-item active">Fase Campeonatos</li>
     </ol>
     <h1 class="my-4 text-center">Fase Campeonatos</h1>
@@ -109,6 +104,9 @@
                     <tr>
                         <td>
                             {{$item->name}}
+                        </td>
+                        <td>
+                            {{$item->championship->name}}
                         </td>
 
                         <td>

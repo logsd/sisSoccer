@@ -76,7 +76,7 @@ Toast.fire({
 <div class="container-fluid px-4">
 
                         <ol class="breadcrumb my-4">
-                            <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
+                            <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
                             <li class="breadcrumb-item active">Cargos de Oficinas</li>
                         </ol>
                         <h1 class="my-4 text-center">Cargos de Oficinas</h1>

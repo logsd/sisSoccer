@@ -29,7 +29,7 @@
 <div class="container-fluid pt-4">
 
     <ol class="breadcrumb mb-8 ">
-        <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
+        <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('clubs.index')}}">club</a> </li>
     </ol>
 </div>

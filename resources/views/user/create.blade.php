@@ -60,6 +60,7 @@
 </style>
 
 <div class="container-fluid px-4">
+<<<<<<< HEAD
     <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('users.index')}}">Usuarios</a> </li>
@@ -165,6 +166,26 @@
 
 
                 <div class="col-12 text-center">
+=======
+                        <ol class="breadcrumb my-4">
+                            <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
+                            <li class="breadcrumb-item "><a href="{{route('departamentos.index')}}">Departamentos</a> </li>
+                            <li class="breadcrumb-item active">Nuevo Departamento</li>
+                        </ol>
+                        <h1 class="my-4 text-center">Nuevo Departamento</h1>
+<div class="cuerpo">
+<form action="{{route('departamentos.store')}}" method="post">
+    @csrf
+    <div class="row g-3">
+        <div class="col-md-6">
+                <label for="name" class="form-label">Nombre:</label>
+                <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
+                @error('name')
+                <small class="text-danger">{{'*'.$message}}</small>
+                @enderror
+        </div>
+        <div class="col-12 text-center">
+>>>>>>> 3bab08a9d882f7cf47267e182088a584e23e757d
                     <div class="row text-center">
                         <div class="col-md-12 mb-2 mt-2">
                             <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>

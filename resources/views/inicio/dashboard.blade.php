@@ -133,7 +133,6 @@
         </div>
     </div>
 
-
     <div class="tarjeta">
         <div class="imagen">
             <img src="{{ asset('img/consultas.png') }}" alt="Descripción de la imagen">
@@ -174,12 +173,13 @@
     </div>
     <div class="tarjeta">
         <div class="imagen">
-            <img src="{{ asset('img/parametros.png') }}" alt="Descripción de la imagen">
+            <img src="{{ asset('img/equipos.png') }}" alt="Descripción de la imagen">
         </div>
         <br>
         <div class="contenido">
-            <h1>Parametros del Sistema</h1>
-            <a href="#">Parametros Generales</a>
+            <h1>Equipos</h1>
+            <a href="{{route('categorias.index')}}">Equipos</a>
+            <a href="{{route('categorias.index')}}">Jugadores</a>
         </div>
     </div>
 

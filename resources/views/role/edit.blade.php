@@ -61,8 +61,13 @@
 <div class="container-fluid px-4">
     <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
+<<<<<<< HEAD
         <li class="breadcrumb-item "><a href="{{route('roles.index')}}">Roles</a> </li>
         <li class="breadcrumb-item active">Actualizar Rol</li>
+=======
+        <li class="breadcrumb-item "><a href="{{route('departamentos.index')}}">Departamentos</a> </li>
+        <li class="breadcrumb-item active">Actualizar Departamento</li>
+>>>>>>> 3bab08a9d882f7cf47267e182088a584e23e757d
     </ol>
     <h1 class="my-4 text-center">Actualizar Rol</h1>
     <div class="cuerpo">

@@ -31,7 +31,7 @@ Toast.fire({
 <div class="container-fluid px-4">
                         <h1 class="mt-4">Tipo de Parámetros</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
+                            <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
                             <li class="breadcrumb-item active">Parámetros</li>
                         </ol>
                         <div class="mb-4">

@@ -70,7 +70,7 @@ Toast.fire({
 
 <div class="container-fluid px-4 ">
                         <ol class="breadcrumb mt-4">
-                            <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
+                            <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
                             <li class="breadcrumb-item active">Comisión de Ligas</li>
                         </ol>
                         <h1 class="text-center mb-4"> Comisión de Ligas</h1>

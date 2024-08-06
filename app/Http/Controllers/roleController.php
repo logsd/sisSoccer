@@ -37,25 +37,24 @@ class roleController extends Controller
             'name' => 'required|unique:roles,name',
             'permission' => 'required'
         ]);
-    
+
         try {
             DB::beginTransaction();
-    
+
             // Crear rol
             $rol = Role::create(['name' => $request->name]);
-    
+
             $permissions = Permission::whereIn('id', $request->permission)->pluck('name')->toArray();
             // Asignar permisos
             $rol->syncPermissions($permissions);
-    
+
             DB::commit();
-    
+
             return redirect()->route('roles.index')->with('success', 'Rol registrado');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->route('roles.index')->with('error', 'Error al registrar el rol: ' . $e->getMessage());
         }
-
     }
 
     /**
@@ -69,17 +68,43 @@ class roleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Role $role)
     {
-        //
+        $permisos = Permission::all();
+        return view('role.edit', compact('role', 'permisos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:roles,name,' . $role->id,
+            'permission' => 'required'
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            // Actualizar rol
+             Role::where('id', $role->id)
+                ->update([
+                    'name' => $request->name
+                ]);
+            //Actualizar permisos
+            
+            $permissions = Permission::whereIn('id', $request->permission)->pluck('name')->toArray();
+            $role->syncPermissions($permissions);
+
+
+            DB::commit();
+
+            return redirect()->route('roles.index')->with('success', 'Rol editado');
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('roles.index')->with('error', 'Error al actualizar el rol: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -87,6 +112,8 @@ class roleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Role::where('id',$id)->delete();
+
+        return redirect()->route('roles.index')->with('success', 'Rol eliminado');
     }
 }

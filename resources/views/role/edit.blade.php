@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Actualizar Departamento')
+@section('title', 'Actualizar Rol')
 
 @push('css')
 
@@ -60,29 +60,53 @@
 
 <div class="container-fluid px-4">
     <ol class="breadcrumb my-4">
-        <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
-        <li class="breadcrumb-item "><a href="{{route('departamentos.index')}}">Departamentos</a> </li>
-        <li class="breadcrumb-item active">Actualizar Departamento</li>
+        <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
+        <li class="breadcrumb-item "><a href="{{route('roles.index')}}">Roles</a> </li>
+        <li class="breadcrumb-item active">Actualizar Rol</li>
     </ol>
-    <h1 class="my-4 text-center">Actualizar Departamentos</h1>
+    <h1 class="my-4 text-center">Actualizar Rol</h1>
     <div class="cuerpo">
-        <form action="{{route('departamentos.update', ['departamento' => $departamento])}}" method="post">
+        <form action="{{route('roles.update', ['role' => $role])}}" method="post">
             @method('PATCH')
             @csrf
             <div class="row g-3">
                 <div class="col-md-6">
                     <label for="name" class="form-label">Nombre:</label>
                     <input type="text" name="name" id="name" class="form-control"
-                        value="{{old('name', $departamento->name)}}">
+                        value="{{old('name', $role->name)}}">
                     @error('name')
                         <small class="text-danger">{{'*' . $message}}</small>
                     @enderror
                 </div>
+
+                <div class="col-12 mb-4">
+                    <label for="" class="form-label">Permisos para rol</label>
+
+                    @foreach ($permisos as $item )
+                    
+                    @if ( in_array($item->id, $role->permissions->pluck('id')->toArray()) )
+                    <div class="form-check mb-2">
+                        <input checked type="checkbox" name="permission[]" id="{{$item->id}}" class="form-check-input" value="{{$item->id}}">
+                        <label for="{{$item->id}}" class="form-check-label">{{$item->name}}</label>
+                    </div>
+                    @else
+                    <div class="form-check mb-2">
+                        <input type="checkbox" name="permission[]" id="{{$item->id}}" class="form-check-input" value="{{$item->id}}">
+                        <label for="{{$item->id}}" class="form-check-label">{{$item->name}}</label>
+                    </div>
+                    @endif
+
+                    @endforeach
+                </div>
+                @error('permission')
+                <small class="text-danger">{{'*'.$message}}</small>
+                @enderror
+
                 <div class="col-12 text-center">
                     <div class="row text-center">
                         <div class="col-md-12 mb-2 mt-2">
                             <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
-                            <a href="{{route('departamentos.index')}}">
+                            <a href="{{route('roles.index')}}">
                                 <button type="button" class="buttonr"><i
                                         class="fa-solid fa-arrow-left"></i>Cancelar</button>
                             </a>

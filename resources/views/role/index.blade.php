@@ -71,7 +71,7 @@
 <div class="container-fluid px-4">
     <h1 class="mt-4 text-center mb-2">Roles</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item "><a href="{{route('dashboard')}}">Inicio</a> </li>
+        <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
         <li class="breadcrumb-item active">Roles</li>
     </ol>
     <div class="mb-4">
@@ -102,7 +102,8 @@
                                 <form action="{{route('roles.edit',['role'=>$item])}}" method="get">
                                     <button type="submit" class="btn btn-primary rounded"><i class="fa-solid fa-pencil"></i></button>
                                 </form>
-                                <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i class="fa-solid fa-toggle-on fa-xl"></i></button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i
+                                class="fa-solid fa-trash"></i></button>
 
                             </div>
                         </td>

@@ -10,7 +10,7 @@
 <div class="container-fluid px-4">
     <h1 class="mt-4">Ver Fase Campeonato</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
+        <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('fases.index')}}"> Fases Campeonatos</a> </li>
     </ol>
 </div>

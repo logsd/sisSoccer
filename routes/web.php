@@ -27,17 +27,21 @@ use App\Http\Controllers\genEstadoController;
 use App\Http\Controllers\genOficinaController;
 use App\Http\Controllers\jugadorController;
 use App\Http\Controllers\directClubController;
+use App\Http\Controllers\homeController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\logOutController;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\roleController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
    // return view('template');
 //})->name('home');
 
-Route::get('/panel', function () {
+Route::get('/',[homeController::class,'index'])->name('home');
+
+Route::get('/dashboard', function () {
     return view('panel.index');
-})->name('panel');
-Route::get('/', function () {
-    return view('inicio.dashboard');
 })->name('dashboard');
 
 Route::get('/jugadores/carnetsPDF', [jugadorController::class, 'carnet'])->name('jugadores.carnet');
@@ -70,6 +74,8 @@ Route::resources([
     'genOficinas' => genOficinaController::class,
     'jugadores' => jugadorController::class,
     'directClubs' => directClubController::class,
+    'users' => userController::class,
+    'roles' => roleController::class,
 ]
 
 );
@@ -134,9 +140,14 @@ Route::delete('/empleados/force-delete/{id}', [empleadoController::class, 'force
 
 
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+Route::get('/login', [loginController::class, 'index']
+)->name('login');
+
+Route::post('/login', [loginController::class, 'login']
+);
+
+Route::get('/logout', [logOutController::class, 'logout']
+)->name('logout');
 
 Route::get('/401', function () {
     return view('pages.401');

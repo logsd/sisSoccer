@@ -15,8 +15,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         @stack('css')
     </head>
-
-    <body class="sb-nav-fixed">
+@auth
+<body class="sb-nav-fixed">
      <x-navigation-header></x-navigation-header>
         <div id="layoutSidenav">
             <x-navigation-menu></x-navigation-menu>
@@ -32,4 +32,10 @@
         <script src="{{ asset('js/scripts.js') }}"></script>
         @stack('js')
     </body>
+@endauth
+
+@guest
+    @include('pages.401')
+@endguest
+
 </html>

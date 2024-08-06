@@ -19,7 +19,7 @@
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{{ route('panel') }}"><img src="{{ asset('img/logo2.jpeg') }}" alt="Descripción de la imagen"></a>
+            <a class="navbar-brand ps-3" href="{{ route('home') }}"><img src="{{ asset('img/logo2.jpeg') }}" alt="Descripción de la imagen"></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar HORARIO-->
@@ -32,7 +32,7 @@
                         <li><a class="dropdown-item" href="#!">Configuracion</a></li>
                         <li><a class="dropdown-item" href="#!">Registro Actividad</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" href="{{route('logout')}}">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>

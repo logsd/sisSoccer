@@ -95,7 +95,6 @@
 @endpush
 
 @section('content')
-<<<<<<< HEAD
 @if (session('success'))
 <script>
     let message = "{{ session('success')}}";
@@ -124,84 +123,6 @@
     <div class="tarjeta">
         <div class="imagen">
             <img src="{{ asset('img/balon.png') }}" alt="Descripción de la imagen">
-=======
-                    <div class="container-fluid px-4">
-                       <u><b> <h1 class="mt-4 text-center">Bienvenidos....</h1> </b></u>
-                    </div>
-        <div class="contenedor">
-                    <div class="tarjeta">
-                        <div class="imagen">
-                             <img src="{{ asset('img/balon.png') }}" alt="Descripción de la imagen">
-                        </div>
-                            <br>
-                        <div class="contenido">
-                            <h1> Campeonatos</h1>
-                            <a href="#">Campeonato</a>
-                            <br>
-                            <a href="{{route('categorias.index')}}">Categoría</a>
-                         </div>
-                    </div>
-
-
-                    <div class="tarjeta">
-                        <div class="imagen">
-                             <img src="{{ asset('img/consultas.png') }}" alt="Descripción de la imagen">
-                        </div>
-                            <br>
-                        <div class="contenido">
-                            <h1>Consultas</h1>
-                            <a href="#">Equipos en Campeonatos</a>
-                            <br>
-                            <a href="{{route('categorias.index')}}">Jugadores en Campeonatos</a>
-                         </div>
-                    </div>
-
-                    <div class="tarjeta">
-                        <div class="imagen">
-                             <img src="{{ asset('img/club.png') }}" alt="Descripción de la imagen">
-                        </div>
-                            <br>
-                        <div class="contenido">
-                            <h1>Clubes</h1>
-                            <a href="#">Clubs</a>
-                            <a href="{{route('categorias.index')}}">Directivos</a>
-                            <a href="{{route('categorias.index')}}">Directivos Clubes</a>
-                         </div>
-                    </div>
-
-                    <div class="tarjeta">
-                        <div class="imagen">
-                             <img src="{{ asset('img/jugadores.png') }}" alt="Descripción de la imagen">
-                        </div>
-                            <br>
-                        <div class="contenido">
-                            <h1>Jugadores</h1>
-                            <a href="{{route('categorias.index')}}">Listado de Jugadores</a>
-                         </div>
-                    </div>
-                    <div class="tarjeta">
-                        <div class="imagen">
-                             <img src="{{ asset('img/equipos.png') }}" alt="Descripción de la imagen">
-                        </div>
-                            <br>
-                        <div class="contenido">
-                            <h1>Equipos</h1>
-                            <a href="{{route('categorias.index')}}">Equipos</a>
-                            <a href="{{route('categorias.index')}}">Jugadores</a>
-                         </div>
-                    </div>
-
-                    <div class="tarjeta">
-                        <div class="imagen">
-                             <img src="{{ asset('img/calendario.png') }}" alt="Descripción de la imagen">
-                        </div>
-                            <br>
-                        <div class="contenido">
-                            <h1>Calendario</h1>
-                            <a href="#">Lista de Calendarios</a>
-                         </div>
-                    </div>
->>>>>>> 3b3ad467ae7e171eae91dda45ed1c07434c9687c
         </div>
         <br>
         <div class="contenido">

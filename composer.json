@@ -9,12 +9,8 @@
         "barryvdh/laravel-dompdf": "^2.2",
         "intervention/image": "^3.7",
         "laravel/framework": "^11.9",
-<<<<<<< HEAD
         "laravel/tinker": "^2.9",
         "spatie/laravel-permission": "^6.9"
-=======
-        "laravel/tinker": "^2.9"
->>>>>>> 3b3ad467ae7e171eae91dda45ed1c07434c9687c
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

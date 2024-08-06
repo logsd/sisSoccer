@@ -75,7 +75,7 @@
 <div class="container-fluid px-4">
 
     <ol class="breadcrumb my-4">
-        <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
+        <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('cargooficinas.index')}}">Cargos de Oficinas</a> </li>
         <li class="breadcrumb-item active">Actualizar Cargo de Oficina</li>
     </ol>

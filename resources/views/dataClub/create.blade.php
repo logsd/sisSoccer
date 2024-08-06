@@ -64,7 +64,7 @@
 <div class="container-fluid px-4">
     <h1 class="mt-4 text-center mb-4">Nuevo Teléfono Club</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item "><a href="{{route('panel')}}">Inicio</a> </li>
+        <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('dataClubs.index')}}">Teléfono Club</a> </li>
         <li class="breadcrumb-item active">Nuevo Teléfono Club</li>
     </ol>

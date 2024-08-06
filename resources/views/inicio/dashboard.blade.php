@@ -133,7 +133,6 @@
         </div>
     </div>
 
-
     <div class="tarjeta">
         <div class="imagen">
             <img src="{{ asset('img/consultas.png') }}" alt="Descripción de la imagen">

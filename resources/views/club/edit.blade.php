@@ -163,6 +163,21 @@
                                         @enderror
                                 </div>
 
+                                <div class="col-md-6">
+                                        <label for="parish" class="form-label">Parroquia:</label>
+                                        <input type="text" name="parish" id="parish" class="form-control" value="{{old('parish',$club->parish)}}">
+                                        @error('parish')
+                                        <small class="text-danger">{{'*'.$message}}</small>
+                                        @enderror
+                                </div>
+                                <div class="col-md-6">
+                                        <label for="description" class="form-label">Descripción:</label>
+                                        <textarea name="description" id="description" rows="3" class="form-control">{{old('description',$club->description)}}</textarea>
+                                        @error('description')
+                                        <small class="text-danger">{{'*'.$message}}</small>
+                                        @enderror
+                                </div>
+
 
                                 <div class="col-md-6">
                                         <label for="logo" class="form-label">Logo:</label>
@@ -178,25 +193,8 @@
                                         @enderror
                                 </div>
 
-                                <div class="col-md-12">
-                                        <label for="description" class="form-label">Descripción:</label>
-                                        <textarea name="description" id="description" rows="3" class="form-control">{{old('description',$club->description)}}</textarea>
-                                        @error('description')
-                                        <small class="text-danger">{{'*'.$message}}</small>
-                                        @enderror
-                                </div>
-
-                                <div class="col-md-6">
-                                        <label for="parish" class="form-label">Parroquia:</label>
-                                        <input type="text" name="parish" id="parish" class="form-control" value="{{old('parish',$club->parish)}}">
-                                        @error('parish')
-                                        <small class="text-danger">{{'*'.$message}}</small>
-                                        @enderror
-                                </div>
-
-
-                                <div class="row text-center mt-4">
-                            <div class="col-md-12 mb-2 mt-2">
+                                <div class="row text-starts ">
+                            <div class="col-md-12 mb-2">
                                 <button type="submit" class="buttong"><i class="fa-solid fa-check"></i>Guardar</button>
                                 <a href="{{route('dataClubs.index')}}">
                                     <button type="button" class="buttonr"><i class="fa-solid fa-arrow-left"></i>Cancelar</button>

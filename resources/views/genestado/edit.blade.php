@@ -117,11 +117,21 @@
                     <small class="text-danger">{{'*'.$message}}</small>
                     @enderror
         </div>
+        <div class="row text-center">
+                            <div class="col-md-12 mb-2 mt-3">
+                                <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
+                                <a href="{{route('genEstados.index')}}">
+                                    <button type="button" class="buttonr"><i
+                                            class="fa-solid fa-arrow-left"></i>Regresar</button>
+                                </a>
 
-    
+                            </div>
+                        </div>
+
 </form>
 </div>
 </div>
+
 @endsection
 
 @push('js')

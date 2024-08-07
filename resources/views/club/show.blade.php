@@ -139,11 +139,11 @@
                         @endif
                     </div>
                 </div>
-            </div>           
+            </div>
 
         </div>
     </div>
-    <a href="{{route('clubs.index')}}">
+    <a href="{{route('dataClubs.index')}}">
         <button type="button" class="buttonr"><i class="fa-solid fa-arrow-left"></i>Regresar</button>
     </a>
 </div>

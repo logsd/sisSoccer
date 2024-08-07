@@ -97,7 +97,6 @@ class jugadorController extends Controller implements HasMiddleware
             // Redireccionar con un mensaje de éxito
             return redirect()->route('jugadores.index')->with('success', 'Jugador registrado!');
         } catch (Exception $e) {
-            dd($e);
             // Revertir la transacción en caso de error
             DB::rollBack();
     

@@ -79,11 +79,13 @@
         <li class="breadcrumb-item active">Fase Campeonatos</li>
     </ol>
     <h1 class="my-4 text-center">Fase Campeonatos</h1>
+    @can('crear-fase')
     <div class="mb-4">
         <a href="{{route('fases.create')}}">
             <button type="button" class="button "><i class="fa-solid fa-plus"></i>Nueva Fase Campeonato</button>
         </a>
     </div>
+    @endcan
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
@@ -106,7 +108,7 @@
                             {{$item->name}}
                         </td>
                         <td>
-                            {{$item->championship->name}}
+                            {{$item->championship->name ?? ''}}
                         </td>
 
                         <td>
@@ -118,21 +120,24 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <form action="{{route('fases.show',['fase'=>$item])}}">
-                                    <button type="submit" class="btn btn-success "><i
-                                    class="fa-solid fa-eye"></i></button>
+                                <form action="{{route('fases.show',['fase'=>$item])}}">
+                                    <button type="submit" class="btn btn-success "><i class="fa-solid fa-eye"></i></button>
                                 </form>
+                                @can('editar-fase')
                                 <form action="{{route('fases.edit',['fase'=>$item])}}" method="get">
-                                    <button type="submit" class="btn btn-primary"><i
-                                    class="fa-solid fa-pencil"></i></button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></button>
                                 </form>
+                                @endcan
+                                @can('desabilizar-fase')
                                 @if ($item->state == 1)
                                 <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i class="fa-solid fa-toggle-off fa-xl"></i></button>
                                 @else
                                 <button type="button" class="btn btn-info rounded " data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i class="fa-solid fa-toggle-on fa-xl"></i></button>
                                 @endif
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$item->id}}"><i
-                                class="fa-solid fa-trash"></i></button>
+                                @endcan
+                                @can('eliminar-fase')
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$item->id}}"><i class="fa-solid fa-trash"></i></button>
+                                @endcan
                             </div>
                         </td>
                     </tr>
@@ -145,25 +150,24 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                {!! $item->state == 1
-                                                            ? '¿Seguro que quieres <strong>Deshabilitar</strong> esta Fase?'
-                                                            : '¿Seguro que quieres <strong>Habilitar</strong> esta Fase?' !!} </div>
+                                    {!! $item->state == 1
+                                    ? '¿Seguro que quieres <strong>Deshabilitar</strong> esta Fase?'
+                                    : '¿Seguro que quieres <strong>Habilitar</strong> esta Fase?' !!} </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     <form action="{{route('fases.destroy',['fase'=>$item->id])}}" method="post">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit"
-                                                class="btn {{$item->state == 1 ? 'btn-warning' : 'btn-info'}}">
-                                                {{$item->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
-                                            </button>
+                                        <button type="submit" class="btn {{$item->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                                            {{$item->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
+                                        </button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                     <!-- Modal Eliminar-->
-                     <div class="modal fade" id="deleteModal-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- Modal Eliminar-->
+                    <div class="modal fade" id="deleteModal-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -176,10 +180,10 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     <form action="{{route('fases.forceDelete',[$item->id])}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                </form>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

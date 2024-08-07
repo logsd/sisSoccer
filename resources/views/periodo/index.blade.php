@@ -35,9 +35,11 @@
         <li class="breadcrumb-item active">Periodos</li>
     </ol>
     <div class="mb-4">
+        @can('crear-periodo')
         <a href="{{route('periodos.create')}}">
             <button type="button" class="btn btn-primary">Añadir nuevo Periodo</button>
         </a>
+        @endcan
     </div>
     <div class="card mb-4">
         <div class="card-header">
@@ -84,15 +86,21 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                @can('editar-periodo')
                                 <form action="{{route('periodos.edit',['periodo'=>$item])}}" method="get">
                                     <button type="submit" class="btn btn-warning">Editar</button>
                                 </form>
+                                @endcan
+                                @can('desabilizar-periodo')
                                 @if ($item->state == 1)
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}">Desabilitar</button>
                                 @else
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}">Restaurar</button>
                                 @endif
+                                @endcan
+                                @can('eliminar-periodo')
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$item->id}}">Eliminar</button>
+                                @endcan
                             </div>
                         </td>
                     </tr>

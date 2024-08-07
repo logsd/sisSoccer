@@ -34,11 +34,13 @@
     <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
     <li class="breadcrumb-item active">Ligas</li>
   </ol>
+  @can('crear-liga')
   <div class="mb-4">
     <a href="{{route('ligas.create')}}">
       <button type="button" class="btn btn-primary">Añadir nueva Liga</button>
     </a>
   </div>
+  @endcan
   <div class="card mb-4">
     <div class="card-header">
       <i class="fas fa-table me-1"></i>
@@ -81,16 +83,22 @@
             </td>
             <td>
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                @can('editar-liga')
                 <form action="{{route('ligas.edit',['liga'=>$liga])}}" method="get">
                   <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
+                @endcan
                 <button type="button" class="btn btn-secondary " data-bs-toggle="modal" data-bs-target="#verModal-{{$liga->id}}">Ver</button>
+                @can('desabilizar-liga')
                 @if ($liga->state == 1)
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$liga->id}}">Desabilitar</button>
                 @else
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$liga->id}}">Restaurar</button>
                 @endif
+                @endcan
+                @can('eliminar-liga')
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$liga->id}}">Eliminar</button>
+                @endcan
               </div>
             </td>
           </tr>

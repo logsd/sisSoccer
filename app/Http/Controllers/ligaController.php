@@ -9,9 +9,23 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TaxpayerType;
 use App\Models\League;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class ligaController extends Controller
+class ligaController extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-liga|crear-liga|editar-liga|mostrar-liga|desabilizar-liga|eliminar-liga'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-liga'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-liga'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('mostrar-liga'),only:['show']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-liga'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-liga'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

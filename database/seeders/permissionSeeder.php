@@ -184,6 +184,16 @@ class permissionSeeder extends Seeder
             'editar-typeParameter',
             'desabilizar-typeParameter',
             'eliminar-typeParameter',
+            //usuarios
+            'ver-usuario',
+            'crear-usuario',
+            'editar-usuario',
+            'eliminar-usuario',
+            //roles
+            'ver-role',
+            'crear-role',
+            'editar-role',
+            'eliminar-role',
         ];
 
         foreach ($permisos as $permiso) {

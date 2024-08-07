@@ -8,10 +8,24 @@ use Illuminate\Support\Facades\DB;
 use App\Models\GenState;
 use App\Models\LeagueExecutive;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 
-class etapaController extends Controller
+class etapaController extends Controller implements HasMiddleware
 {
+
+        
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-etapa|crear-etapa|editar-etapa|desabilizar-etapa|eliminar-etapa'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-etapa'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-etapa'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-etapa'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-etapa'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

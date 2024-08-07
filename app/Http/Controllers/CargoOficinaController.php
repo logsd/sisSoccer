@@ -8,9 +8,23 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreCargoOficina;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class CargoOficinaController extends Controller
+class CargoOficinaController extends Controller implements HasMiddleware
 {
+
+        
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-cargoOficina|crear-cargoOficina|editar-cargoOficina|desabilizar-cargoOficina|eliminar-cargoOficina'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-cargoOficina'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-cargoOficina'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-cargoOficina'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-cargoOficina'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

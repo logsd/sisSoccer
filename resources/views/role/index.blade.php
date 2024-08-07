@@ -75,9 +75,11 @@
         <li class="breadcrumb-item active">Roles</li>
     </ol>
     <div class="mb-4">
+        @can('crear-role')
         <a href="{{route('roles.create')}}">
             <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Rol</button>
         </a>
+        @endcan
     </div>
     <div class="card mb-4">
         <div class="card-header">
@@ -99,11 +101,15 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                @can('editar-role')
                                 <form action="{{route('roles.edit',['role'=>$item])}}" method="get">
                                     <button type="submit" class="btn btn-primary rounded"><i class="fa-solid fa-pencil"></i></button>
                                 </form>
+                                @endcan
+                                @can('eliminar-role')
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i
                                 class="fa-solid fa-trash"></i></button>
+                                @endcan
 
                             </div>
                         </td>

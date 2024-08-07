@@ -8,9 +8,22 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreTypeParameterRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class TypeParameterController extends Controller
+class TypeParameterController extends Controller implements HasMiddleware
 {
+    
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-typeParameter|crear-typeParameter|editar-typeParameter|desabilizar-typeParameter|eliminar-typeParameter'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-typeParameter'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-typeParameter'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-typeParameter'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-typeParameter'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

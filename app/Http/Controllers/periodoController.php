@@ -8,9 +8,22 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Period;
 use App\Models\Team;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class periodoController extends Controller
+class periodoController extends Controller implements HasMiddleware
 {
+        
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-periodo|crear-periodo|editar-periodo|desabilizar-periodo|eliminar-periodo'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-periodo'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-periodo'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-periodo'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-periodo'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

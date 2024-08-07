@@ -18,7 +18,10 @@
     }
 
     .contenedor {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        /*display: flex;*/
         flex-wrap: wrap;
         justify-content: 5px space-between;
         /* Espacio entre las tarjetas */
@@ -31,8 +34,8 @@
 
     .tarjeta {
         flex: 1 1 calc(50% - 25px);
-        width: 500px;
-        height: 250px;
+        width: 400px;
+        height: 200px;
         border: 3px solid #4EA93B;
         border-radius: 10px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -53,9 +56,9 @@
     }
 
     .imagen {
-        height: 90%;
+        height: 80%;
         /* Asegura que la imagen tome toda la altura del contenedor */
-        width: 60%;
+        width: 45%;
         /* Ajusta el ancho según sea necesario */
         margin-top: -20px;
         overflow: hidden;
@@ -63,16 +66,16 @@
     }
 
     .imagen img {
-        width: 100%;
+        width: 90%;
         /* Ajusta el ancho de la imagen */
-        height: 100%;
+        height: 90%;
         object-fit: cover;
         position: absolute;
     }
 
     .contenido {
         text-align: center;
-        width: 55%;
+        width: 65%;
         /* Ajusta el ancho del contenido */
         box-sizing: border-box;
         /* Incluye el padding en el ancho y alto del contenedor */
@@ -163,7 +166,7 @@
 
     <div class="tarjeta">
         <div class="imagen">
-            <img src="{{ asset('img/jugadores.png') }}" alt="Descripción de la imagen">
+            <img src="{{ asset('img/lista.png') }}" alt="Descripción de la imagen">
         </div>
         <br>
         <div class="contenido">

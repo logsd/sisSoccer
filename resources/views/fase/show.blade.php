@@ -7,16 +7,41 @@
 @endpush
 
 @section('content')
+
+<style>
+    .card{
+        background-color: #4EA93B;
+    }
+
+
+    .buttonr {
+        background-color: #A5D29A;
+        color: black;
+        padding: 7px 25px 7px 25px;
+        border: solid 2px black;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+        margin-left: 2%;
+    }
+
+    .fa-arrow-left{
+        margin-right: 10px;
+    }
+</style>
+
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Ver Fase Campeonato</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('fases.index')}}"> Fases Campeonatos</a> </li>
+        <li class="breadcrumb-item "> Fase Campeonato</a> </li>
     </ol>
 </div>
-<div class="container w-100 ">
 
-    <div class="card p-2">
+<h1 class="my-4 text-center m-2">Fase Campeonato</h1>
+<div class="cuerpo m-3">
+
+    <div class="card p-4">
         <div class="row mb-2">
 
             <div class="col-sm-4">
@@ -26,7 +51,7 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <input disabled type="text" class="form-control" value="{{$fase->championship->name}}">
+                <input disabled type="text" class="form-control bg-white" value="{{$fase->championship->name}}">
             </div>
 
 
@@ -37,7 +62,7 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <input disabled type="text" class="form-control" value=" {{\Carbon\Carbon::parse($fase->championship->start_date)->format('d-m-Y')}}">
+                <input disabled type="text" class="form-control bg-white" value=" {{\Carbon\Carbon::parse($fase->championship->start_date)->format('d-m-Y')}}">
             </div>
 
             <div class="col-sm-4">
@@ -47,7 +72,7 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <input disabled type="text" class="form-control" value=" {{\Carbon\Carbon::parse($fase->championship->end_date)->format('d-m-Y')}}">
+                <input disabled type="text" class="form-control bg-white" value=" {{\Carbon\Carbon::parse($fase->championship->end_date)->format('d-m-Y')}}">
             </div>
 
 
@@ -58,7 +83,7 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <input disabled type="text" class="form-control" value=" {{$fase->name}}">
+                <input disabled type="text" class="form-control bg-white" value=" {{$fase->name}}">
             </div>
 
             <div class="col-sm-4">
@@ -68,7 +93,7 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <input disabled type="text" class="form-control" value="{{$fase->description}}">
+                <input disabled type="text" class="form-control bg-white" value="{{$fase->description}}">
             </div>
 
             <div class="col-sm-4">
@@ -79,7 +104,7 @@
             </div>
             <div class="col-sm-8">
                 @foreach ($fase->leagueGroups as $grupo)
-                <input disabled type="text" class="form-control" value="{{$grupo->name}}">
+                <input disabled type="text" class="form-control bg-white" value="{{$grupo->name}}">
                 @endforeach
             </div>
 
@@ -91,13 +116,18 @@
             </div>
             <div class="col-sm-8">
                 @foreach ($fase->leagueGroups as $grupo)
-                <input disabled type="text" class="form-control" value="{{$grupo->description}}">
+                <input disabled type="text" class="form-control bg-white" value="{{$grupo->description}}">
                 @endforeach
             </div>
 
         </div>
     </div>
+
 </div>
+<a href="{{route('fases.index')}}">
+                                    <button type="button" class="buttonr"><i
+                                            class="fa-solid fa-arrow-left"></i>Regresar</button>
+                                </a>
 @endsection
 
 @push('js')

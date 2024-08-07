@@ -134,7 +134,7 @@
                                                         data-bs-target="#confirmModal-{{$genTelefono->id}}"><i
                                                             class="fa-solid fa-toggle-on fa-xl"></i></button>
                                                 @endif
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal"
                                                     data-bs-target="#deleteModal-{{$genTelefono->id}}"><i
                                                         class="fa-solid fa-trash"></i></button>
 

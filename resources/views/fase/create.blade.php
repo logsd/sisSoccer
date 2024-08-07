@@ -98,10 +98,9 @@
 
                 <div class="row gy-4">
                     <!--Crear Campeonato--->
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div>
                             <div class="col-md-12 mb-2">
-                                <h4>Detalles Campeonato</h4>
                                 <label for="name" class="form-label">Nombre:</label>
                                 <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
                                 @error('name')
@@ -109,13 +108,26 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-12 mb-2">
                                 <label for="description" class="form-label">Descripción:</label>
                                 <textarea name="description" id="description" rows="3" class="form-control"></textarea>
                                 @error('description')
                                 <small class="text-danger">{{'*'.$message}}</small>
                                 @enderror
                             </div>
+
+                            <div class="col-md-12 mb-2">
+                                    <label class="form-label" for="championship_id">Campeonato:</label>
+                                    <select data-size="3" title="Seleccione un Campeonato" data-live-search="true" name="championship_id" id="championship_id" class="form-control selectpicker show-tick">
+                                        <option value=""></option>
+                                        @foreach ($campeonatos as $item)
+                                        <option value="{{$item->id}}" {{old('championship_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('championship_id')
+                                    <small class="text-danger">{{'*'.$message}}</small>
+                                    @enderror
+                                </div>
 
                             <div class="col-md-12 mb-2 grupo d-none">
                                 <label for="nameGrupo" class="form-label">Nombre Grupo:</label>
@@ -137,27 +149,11 @@
                     </div>
                     <!---Campeonato-->
 
-                    <div class="col-md-4">
 
-                        <div class="dt mb-5">
-                            <div class="row">
-                                <h4>Campeonatos</h4>
-                                <div class="col-md-12 mb-2"></div>
-                                    <label class="form-label" for="championship_id">Campeonato:</label>
-                                    <select data-size="3" title="Seleccione un Campeonato" data-live-search="true" name="championship_id" id="championship_id" class="form-control selectpicker show-tick">
-                                        <option value=""></option>
-                                        @foreach ($campeonatos as $item)
-                                        <option value="{{$item->id}}" {{old('championship_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('championship_id')
-                                    <small class="text-danger">{{'*'.$message}}</small>
-                                    @enderror
-                                </div>
 
                         </div>
-                        <div class="row text-end">
-                            <div class="col-md-12 mb-2 ">
+                        <div class="row text-center">
+                            <div class="col-md-12 mb-2 mt-2">
                                 <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
                                 <a href="{{route('fases.index')}}">
                                     <button type="button" class="buttonr"><i

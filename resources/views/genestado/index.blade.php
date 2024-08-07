@@ -130,7 +130,7 @@
                                                     @else
                                                     <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genEstado->id}}"><i class="fa-solid fa-toggle-on fa-xl"></i></button>
                                                     @endif
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$genEstado->id}}"><i
+                                                    <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$genEstado->id}}"><i
                                                     class="fa-solid fa-trash"></i></button>
 
                                                 </div>

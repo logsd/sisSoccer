@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Crear EstadoGeneral')
+@section('title', 'Nuevo EstadoGeneral')
 
 @push('css')
 <style>

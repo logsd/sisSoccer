@@ -51,7 +51,6 @@
                         <a class="nav-link" href="{{route('equipos.create')}}">Vocales - Campeonatos</a>
                     </nav>
                 </div>
-
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
                     Consultas

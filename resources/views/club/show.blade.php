@@ -30,7 +30,7 @@
 
     <ol class="breadcrumb mb-8 ">
         <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
-        <li class="breadcrumb-item "><a href="{{route('clubs.index')}}">club</a> </li>
+        <li class="breadcrumb-item "><a href="{{route('dataClubs.index')}}">club</a> </li>
     </ol>
 </div>
 <div class="container">

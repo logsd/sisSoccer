@@ -8,10 +8,23 @@ use Illuminate\Support\Facades\DB;
 use App\Models\GenState;
 use App\Models\LeagueExecutive;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 
-class genEstadoController extends Controller
-{
+class genEstadoController extends Controller implements HasMiddleware
+{ 
+       
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-genEstado|crear-genEstado|editar-genEstado|desabilizar-genEstado|eliminar-genEstado'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-genEstado'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-genEstado'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-genEstado'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-genEstado'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

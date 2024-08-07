@@ -12,9 +12,21 @@ use Spatie\Permission\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class userController extends Controller
+class userController extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-usuario|crear-usuario|editar-usuario|eliminar-usuario'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-usuario'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-usuario'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-usuario'), only:['destroy']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

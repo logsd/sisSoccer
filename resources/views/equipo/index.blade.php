@@ -77,11 +77,13 @@
         <li class="breadcrumb-item active">Equipos</li>
     </ol>
     <h1 class="my-4 text-center">Equipos</h1>
+    @can('crear-equipo')
     <div class="mb-4">
         <a href="{{route('equipos.create')}}">
             <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Equipo</button>
         </a>
     </div>
+    @endcan
     <div class="card mb-4">
         <div class="card-header">
             Tabla Equipos
@@ -130,29 +132,51 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <form action="{{route('equipos.show',['equipo'=>$item])}}">
+                                <form action="{{route('equipos.show',['equipo'=>$item])}}">
                                     <button type="submit" class="btn btn-success "><i class="fa-solid fa-eye"></i></button>
                                 </form>
+                                @can('editar-equipo')
                                 <form action="{{route('equipos.edit',['equipo'=>$item])}}" method="get">
-                                    <button type="submit" class="btn btn-primary"><i
-                                    class="fa-solid fa-pencil"></i></button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></button>
                                 </form>
+                                @endcan
+                                @can('desabilizar-equipo')
                                 @if ($item->state == 1)
-                                <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i
-                                class="fa-solid fa-toggle-off fa-xl"></i></button>
+                                <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i class="fa-solid fa-toggle-off fa-xl"></i></button>
                                 @else
-                                <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i
-                                class="fa-solid fa-toggle-on fa-xl"></i></button>
+                                <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i class="fa-solid fa-toggle-on fa-xl"></i></button>
                                 @endif
-                                <form action="{{route('equipos.forceDelete',[$item->id])}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"><i
-                                    class="fa-solid fa-trash"></i></button>
-                                </form>
+                                @endcan
+                                @can('eliminar-equipo')
+                                <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$item->id}}"><i class="fa-solid fa-trash"></i></button>
+                                @endcan
+
                             </div>
                         </td>
                     </tr>
+                    <!-- Modal Eliminar-->
+                    <div class="modal fade" id="deleteModal-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Seguro que quieres eliminar este Equipo?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <form action="{{route('equipos.forceDelete',[$item->id])}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Modal -->
                     <div class="modal fade" id="confirmModal-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -162,17 +186,17 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                {!! $item->state == 1
-                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Equipo?'
-                        : '¿Seguro que quieres <strong>Habilitar</strong> este Equipo?' !!} </div>
+                                    {!! $item->state == 1
+                                    ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Equipo?'
+                                    : '¿Seguro que quieres <strong>Habilitar</strong> este Equipo?' !!} </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     <form action="{{route('equipos.destroy',['equipo'=>$item->id])}}" method="post">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn {{$item->state == 1 ? 'btn-warning' : 'btn-info'}}">
-                            {{$item->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
-                        </button>
+                                            {{$item->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
+                                        </button>
                                     </form>
                                 </div>
                             </div>

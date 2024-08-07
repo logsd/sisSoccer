@@ -9,9 +9,24 @@ use App\Models\Championship;
 use App\Models\LeaguePhase;
 use App\Models\LeagueGroups;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class faseController extends Controller
+class faseController extends Controller implements HasMiddleware
 {
+
+    
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-fase|crear-fase|editar-fase|mostrar-fase|desabilizar-fase|eliminar-fase'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-fase'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-fase'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('mostrar-fase'),only:['show']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-fase'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-fase'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

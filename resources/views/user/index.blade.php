@@ -69,99 +69,17 @@
 </style>
 
 <div class="container-fluid px-4">
-<<<<<<< HEAD
     <h1 class="mt-4 text-center mb-2">Usuarios</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
         <li class="breadcrumb-item active">Usuarios</li>
     </ol>
     <div class="mb-4">
+        @can('crear-usuario')
         <a href="{{route('users.create')}}">
             <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Usuario</button>
         </a>
-=======
-                        <h1 class="mt-4 text-center mb-2">Departamentos</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
-                            <li class="breadcrumb-item active">Departamentos</li>
-                        </ol>
-                        <div class="mb-4">
-                        <a href="{{route('departamentos.create')}}">
-                            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Departamento</button>
-                        </a>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                Tabla Departamentos
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple" class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Estado</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($departamentos as $departamento )
-                                            <tr>
-                                                <td>
-                                                    {{$departamento->name}}
-                                                </td>
-                                                <td>
-                                                    @if ($departamento->state == 1)
-                                                    <span class="fw-bolder p-1 rounded bg-info text-black">Habilitado</span>
-                                                    @else
-                                                    <span class="fw-bolder p-1 rounded bg-warning text-black">Deshabilitado</span>
-
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                    <form action="{{route('departamentos.edit',['departamento'=>$departamento])}}" method="get">
-                                                    <button type="submit" class="btn btn-primary rounded"><i
-                                                    class="fa-solid fa-pencil"></i></button>
-                                                    </form>
-                                                    @if ($departamento->state == 1)
-                                                    <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}"><i
-                                                    class="fa-solid fa-toggle-off fa-xl"></i></button>
-                                                    @else
-                                                    <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$departamento->id}}"><i
-                                                    class="fa-solid fa-toggle-on fa-xl"></i></button>
-                                                    @endif
-                                                    <form action="{{route('departamentos.forceDelete',[$departamento->id])}}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash"></i></button>
-                                                    </form>
-                                                </div>
-                                                </td>
-                                            </tr>
-<!-- Modal -->
-<div class="modal fade" id="confirmModal-{{$departamento->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      {!! $departamento->state == 1
-                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Departamento?'
-                        : '¿Seguro que quieres <strong>Habilitar</strong> este Departamento?' !!} </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <form action="{{route('departamentos.destroy',['departamento'=>$departamento->id])}}" method="post">
-            @method('DELETE')
-            @csrf
-            <button type="submit"   class="btn {{$departamento->state == 1 ? 'btn-warning' : 'btn-info'}}">
-                                                {{$departamento->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
-                                            </button>
-        </form>
-      </div>
->>>>>>> 3bab08a9d882f7cf47267e182088a584e23e757d
+        @endcan
     </div>
     <div class="card mb-4">
         <div class="card-header">
@@ -191,10 +109,14 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                @can('editar-usuario')
                                 <form action="{{route('users.edit',['user'=>$item])}}" method="get">
                                     <button type="submit" class="btn btn-primary rounded"><i class="fa-solid fa-pencil"></i></button>
                                 </form>
+                                @endcan
+                                @can('eliminar-usuario')
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i class="fa-solid fa-trash"></i></button>
+                                @endcan
                             </div>
                         </td>
                     </tr>

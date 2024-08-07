@@ -11,9 +11,24 @@ use App\Models\Category;
 use App\Models\Championship;
 use App\Models\CLub;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class equipoController extends Controller
+class equipoController extends Controller implements HasMiddleware
 {
+
+    
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-equipo|crear-equipo|editar-equipo|mostrar-equipo|desabilizar-equipo|eliminar-equipo'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-equipo'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-equipo'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('mostrar-equipo'),only:['show']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-equipo'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-equipo'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

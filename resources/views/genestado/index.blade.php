@@ -78,11 +78,13 @@
                             <li class="breadcrumb-item active">Estado General</li>
                         </ol>
                         <h1 class="my-4 text-center">Estado General</h1>
+                        @can('crear-genEstado')
                         <div class="mb-4">
                         <a href="{{route('genEstados.create')}}">
                             <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Estado General</button>
                         </a>
                         </div>
+                        @endcan
                         <div class="card mb-4">
                             <div class="card-header">
 
@@ -121,18 +123,23 @@
                                                 </td>
                                                 <td>
                                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                    @can('editar-genEstado')
                                                     <form action="{{route('genEstados.edit',['genEstado'=>$genEstado])}}" method="get">
                                                     <button type="submit" class="btn btn-primary"><i
                                                     class="fa-solid fa-pencil"></i></button>
                                                     </form>
+                                                    @endcan
+                                                    @can('desabilizar-genEstado')
                                                     @if ($genEstado->state == 1)
                                                     <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genEstado->id}}"><i class="fa-solid fa-toggle-off fa-xl"></i></button>
                                                     @else
                                                     <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genEstado->id}}"><i class="fa-solid fa-toggle-on fa-xl"></i></button>
                                                     @endif
+                                                    @endcan
+                                                    @can('eliminar-genEstado')
                                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$genEstado->id}}"><i
                                                     class="fa-solid fa-trash"></i></button>
-
+                                                    @endcan
                                                 </div>
                                                 </td>
                                             </tr>

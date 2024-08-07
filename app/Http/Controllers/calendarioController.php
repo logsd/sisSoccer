@@ -10,10 +10,24 @@ use App\Models\Calendar;
 use App\Models\Championship;
 use App\Models\Team;
 use App\Models\LeaguePhase;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Exception;
 
-class calendarioController extends Controller
+class calendarioController  extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-partido|crear-partido|editar-partido|mostrar-partido|desabilizar-partido|eliminar-partido'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-partido'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-partido'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('mostrar-partido'),only:['show']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-partido'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-partido'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

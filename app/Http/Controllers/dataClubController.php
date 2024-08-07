@@ -8,9 +8,23 @@ use Illuminate\Support\Facades\DB;
 use App\Models\DateClub;
 use App\Models\Club;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class dataClubController extends Controller
+class dataClubController extends Controller implements HasMiddleware
 {
+
+        
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-dataClub|crear-dataClub|editar-dataClub|desabilizar-dataClub|eliminar-dataClub|ver-club|crear-club|editar-club|mostrar-club|desabilizar-club|eliminar-club'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-dataClub'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-dataClub'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-dataClub'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-dataClub'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

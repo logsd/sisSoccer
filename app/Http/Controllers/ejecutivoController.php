@@ -8,9 +8,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\LeagueExecutive;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class ejecutivoController extends Controller
+class ejecutivoController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-ejecutivo|crear-ejecutivo|editar-ejecutivo|desabilizar-ejecutivo|eliminar-ejecutivo'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-ejecutivo'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-ejecutivo'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-ejecutivo'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-ejecutivo'), only:['forceDelete']),
+        ];
+     }
+
     /**
      * Display a listing of the resource.
      */

@@ -8,9 +8,22 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use Exception;
 use Illuminate\Validation\Rules\Can;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class categoriaController extends Controller
+class categoriaController extends Controller implements HasMiddleware
 {
+        
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-categoria|crear-categoria|editar-categoria|desabilizar-categoria|eliminar-categoria'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-categoria'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-categoria'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-categoria'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-categoria'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

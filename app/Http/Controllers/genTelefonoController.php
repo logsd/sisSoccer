@@ -9,9 +9,22 @@ use App\Models\GenTelephone;
 use App\Models\Employee;
 use App\Models\LeagueExecutive;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class genTelefonoController extends Controller
+class genTelefonoController extends Controller implements HasMiddleware
 {
+     
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-genTelefono|crear-genTelefono|editar-genTelefono|desabilizar-genTelefono|eliminar-genTelefono'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-genTelefono'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-genTelefono'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-genTelefono'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-genTelefono'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

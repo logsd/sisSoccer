@@ -7,10 +7,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\GenReport;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 
-class reporteController extends Controller
+class reporteController extends Controller implements HasMiddleware
 {
+
+        
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-reporte|crear-reporte|editar-reporte|desabilizar-reporte|eliminar-reporte'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-reporte'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-reporte'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-reporte'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-reporte'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

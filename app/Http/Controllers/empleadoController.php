@@ -11,10 +11,24 @@ use App\Models\Province;
 use App\Models\Department;
 use App\Models\CivilStatus;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 
-class empleadoController extends Controller
+class empleadoController extends Controller implements HasMiddleware
 {
+    
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-empleado|crear-empleado|editar-empleado|mostrar-empleado|desabilizar-empleado|eliminar-empleado'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-empleado'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-empleado'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('mostrar-empleado'),only:['show']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-empleado'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-empleado'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

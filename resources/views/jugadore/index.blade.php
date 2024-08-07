@@ -75,16 +75,20 @@
     </ol>
     <h1 class="my-4 text-center">Jugadores</h1>
     <div class="row">
-    <div class="col-md-6 mb-4">
-        <a href="{{route('jugadores.create')}}">
-            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Jugador</button>
-        </a>
-    </div>
-    <div class="col-md-6 mb-4 text-end">
-        <a href="{{route('jugadores.carnet')}}"  target="_blank">
-            <button type="button" class="button" >Carnetizar</button>
-        </a>
-    </div>
+        <div class="col-md-6 mb-4">
+            @can('crear-jugador')
+            <a href="{{route('jugadores.create')}}">
+                <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Jugador</button>
+            </a>
+            @endcan
+        </div>
+        <div class="col-md-6 mb-4 text-end">
+
+            <a href="{{route('jugadores.carnet')}}" target="_blank">
+                <button type="button" class="button">Carnetizar</button>
+            </a>
+
+        </div>
     </div>
 
     <div class="card mb-4">
@@ -121,7 +125,7 @@
                             {{$item->team->name}}
                         </td>
                         <td>
-                            {{$item->category->name}}
+                            {{$item->category->name ?? ''}}
                         </td>
                         <td>
                             @if ($item->state == 1)
@@ -132,23 +136,24 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <form action="{{route('jugadores.show',['jugadore'=>$item])}}">
-                                    <button type="submit" class="btn btn-success "><i
-                                    class="fa-solid fa-eye"></i></button>
+                                <form action="{{route('jugadores.show',['jugadore'=>$item])}}">
+                                    <button type="submit" class="btn btn-success "><i class="fa-solid fa-eye"></i></button>
                                 </form>
+                                @can('editar-jugador')
                                 <form action="{{route('jugadores.edit',['jugadore'=>$item])}}" method="get">
-                                    <button type="submit" class="btn btn-primary"><i
-                                    class="fa-solid fa-pencil"></i></button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></button>
                                 </form>
-
+                                @endcan
+                                @can('desabilizar-jugador')
                                 @if ($item->state == 1)
                                 <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i class="fa-solid fa-toggle-off fa-xl"></i></button>
                                 @else
                                 <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i class="fa-solid fa-toggle-on fa-xl"></i></button>
                                 @endif
-                                <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$item->id}}"><i
-                                class="fa-solid fa-trash"></i></button>
-
+                                @endcan
+                                @can('eliminar-jugador')
+                                <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$item->id}}"><i class="fa-solid fa-trash"></i></button>
+                                @endcan
                             </div>
                         </td>
                     </tr>
@@ -161,18 +166,17 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                {!! $item->state == 1
-                                                            ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Jugador?'
-                                                            : '¿Seguro que quieres <strong>Habilitar</strong> este Jugador?' !!} </div>
+                                    {!! $item->state == 1
+                                    ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Jugador?'
+                                    : '¿Seguro que quieres <strong>Habilitar</strong> este Jugador?' !!} </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     <form action="{{route('jugadores.destroy',['jugadore'=>$item->id])}}" method="post">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit"
-                                                class="btn {{$item->state == 1 ? 'btn-warning' : 'btn-info'}}">
-                                                {{$item->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
-                                            </button>
+                                        <button type="submit" class="btn {{$item->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                                            {{$item->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
+                                        </button>
                                     </form>
                                 </div>
                             </div>

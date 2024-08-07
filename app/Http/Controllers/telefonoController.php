@@ -7,9 +7,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\PhoneOperator;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class telefonoController extends Controller
+class telefonoController extends Controller implements HasMiddleware
 {
+        
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-telefono|crear-telefono|editar-telefono|desabilizar-telefono|eliminar-telefono'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-telefono'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-telefono'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-telefono'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-telefono'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

@@ -35,9 +35,11 @@
         <li class="breadcrumb-item active">Reportes</li>
     </ol>
     <div class="mb-4">
+        @can('crear-reporte')
         <a href="{{route('reportes.create')}}">
             <button type="button" class="btn btn-primary">Añadir nuevo Reporte</button>
         </a>
+        @endcan
     </div>
     <div class="card mb-4">
         <div class="card-header">
@@ -77,22 +79,47 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                @can('editar-reporte')
                                 <form action="{{route('reportes.edit',['reporte'=>$reporte])}}" method="get">
                                     <button type="submit" class="btn btn-warning">Editar</button>
                                 </form>
+                                @endcan
+                                @can('desabilizar-reporte')
                                 @if ($reporte->state == 1)
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$reporte->id}}">Desabilitar</button>
                                 @else
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$reporte->id}}">Restaurar</button>
                                 @endif
-                                <form action="{{route('reportes.forceDelete',[$reporte->id])}}" method="POST">
+                                @endcan
+                                @can('eliminar-reporte')
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$reporte->id}}">Eliminar</button>
+                                @endcan
+                               
+                            </div>
+                        </td>
+                    </tr>
+                     <!-- Modal Eliminar-->
+                     <div class="modal fade" id="deleteModal-{{$reporte->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Seguro que quieres eliminar este Reporte?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <form action="{{route('reportes.forceDelete',[$reporte->id])}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Eliminar</button>
                                 </form>
+                                </div>
                             </div>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <!-- Modal -->
                     <div class="modal fade" id="confirmModal-{{$reporte->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

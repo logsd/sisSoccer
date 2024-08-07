@@ -12,10 +12,24 @@ use App\Models\Province;
 use App\Models\Team;
 use App\Models\League;
 use App\Models\Category;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Exception;
 
-class jugadorController extends Controller
+class jugadorController extends Controller implements HasMiddleware
 {
+    
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-jugador|crear-jugador|editar-jugador|mostrar-jugador|desabilizar-jugador|eliminar-jugador'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-jugador'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-jugador'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('mostrar-jugador'),only:['show']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-jugador'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-jugador'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

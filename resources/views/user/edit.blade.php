@@ -61,13 +61,8 @@
 <div class="container-fluid px-4">
     <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
-<<<<<<< HEAD
         <li class="breadcrumb-item "><a href="{{route('users.index')}}">Usuarios</a> </li>
         <li class="breadcrumb-item active">Actualizar Usuario</li>
-=======
-        <li class="breadcrumb-item "><a href="{{route('departamentos.index')}}">Departamentos</a> </li>
-        <li class="breadcrumb-item active">Actualizar Departamento</li>
->>>>>>> 3bab08a9d882f7cf47267e182088a584e23e757d
     </ol>
     <h1 class="my-4 text-center">Actualizar Usuarios</h1>
     <div class="cuerpo">

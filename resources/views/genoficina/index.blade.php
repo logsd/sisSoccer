@@ -74,11 +74,13 @@
                             <li class="breadcrumb-item active">Oficina General</li>
                         </ol>
                         <h1 class="my-4 text-center">Oficina General</h1>
+                        @can('crear-oficina')
                         <div class="mb-4">
                         <a href="{{route('genOficinas.create')}}">
                             <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nueva Oficina General</button>
                         </a>
                         </div>
+                        @endcan
                         <div class="card mb-4">
                             <div class="card-header">
                                 Tabla de Oficinas Generales
@@ -132,10 +134,13 @@
                                                 </td>
                                                 <td>
                                                   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                    @can('editar-oficina')
                                                     <form action="{{route('genOficinas.edit',['genOficina'=>$genOficina])}}" method="get">
                                                     <button type="submit" class="btn btn-primary"><i
                                                     class="fa-solid fa-pencil"></i></button>
                                                     </form>
+                                                    @endcan
+                                                    @can('desabilizar-oficina')
                                                     @if ($genOficina->state == 1)
                                                     <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genOficina->id}}"><i
                                                     class="fa-solid fa-toggle-off fa-xl rounded"></i></button>
@@ -143,8 +148,11 @@
                                                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$genOficina->id}}"><i
                                                     class="fa-solid fa-toggle-on fa-xl"></i></button>
                                                     @endif
+                                                    @endcan
+                                                    @can('eliminar-oficina')
                                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$genOficina->id}}"><i
                                                     class="fa-solid fa-trash"></i></button>
+                                                    @endcan
                                                    </div>
                                                 </td>
                                             </tr>

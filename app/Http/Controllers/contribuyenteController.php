@@ -7,8 +7,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\TaxpayerType;
 use Exception;
-class contribuyenteController extends Controller
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+class contribuyenteController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-contribuyente|crear-contribuyente|editar-contribuyente|desabilizar-contribuyente|eliminar-contribuyente'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-contribuyente'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-contribuyente'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-contribuyente'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-contribuyente'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

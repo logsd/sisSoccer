@@ -8,9 +8,22 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Models\Club;
 use Exception;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class clubController extends Controller
+class clubController extends Controller implements HasMiddleware
 {
+    
+    public static function middleware(): array {
+        return [ 
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-club'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-club'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('mostrar-club'),only:['show']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-club'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-club'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

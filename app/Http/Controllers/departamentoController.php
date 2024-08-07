@@ -7,9 +7,22 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class DepartamentoController extends Controller
+class DepartamentoController extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array {
+        return [ 
+          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-departamento|crear-departamento|editar-departamento|desabilizar-departamento|eliminar-departamento'),only:['index']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-departamento'), only:['create','store']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-departamento'),only:['edit','update']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('desabilizar-departamento'), only:['destroy']),
+         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-departamento'), only:['forceDelete']),
+        ];
+     }
     /**
      * Display a listing of the resource.
      */

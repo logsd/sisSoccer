@@ -1,11 +1,69 @@
 @extends('template')
 
-@section('title', 'Editar Periodo')
+@section('title', 'Actualizar Periodo')
 
 @push('css')
 <style>
+    #observation {
+        resize: none;
+    }
+
     #description {
         resize: none;
+    }
+
+    .cuerpo {
+        border: solid 3px black;
+        border-radius: 10px;
+        padding: 20px;
+        background: #4EA93B;
+        color: black;
+        margin-bottom: 20px
+    }
+
+    .dt {
+        border-left: solid 2px black;
+        padding-left: 6%;
+
+    }
+
+    h4 {
+        text-align: center;
+        padding: 4px 5px;
+    }
+
+    .buttong {
+        background-color: #32fc08;
+        color: black;
+        padding: 8px 15px 8px 15px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+    }
+
+    .buttonr {
+        background-color: #A5D29A;
+        color: black;
+        padding: 8px 20px 8px 20px;
+        margin-left: 10px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+    }
+
+    .buttonr:hover,
+    .buttong:hover {
+        background-color: #337326;
+        color: white;
+
+    }
+
+
+    .fa-check,
+    .fa-arrow-left {
+        padding-right: 10px;
     }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -14,26 +72,25 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Editar Periodos</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
         <li class="breadcrumb-item "><a href="{{route('periodos.index')}}">Periodos</a> </li>
-        <li class="breadcrumb-item active">Editar Periodo</li>
+        <li class="breadcrumb-item active">Actualizar Periodo</li>
     </ol>
-    <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
+    <h1 class="my-4 text-center">Actualizar Periodo</h1>
+
         <form action="{{route('periodos.update',['periodo'=>$periodo])}}" method="post">
             @csrf
             @method('PATCH')
-            <div class="container mt-4">
+            <div class="row gy-4">
+                    <!--Crear Equipo--->
+                    <div class="cuerpo">
                 <div class="row gy-4">
                     <!--Crear Campeonato--->
                     <div class="col-md-8">
-                        <div class="text-white bg-primary p-1 text-center">
-                            Detalles Periodo
-                        </div>
-                        <div class="p-3 border border-3 border-primary">
-
+                        <div>
                             <div class="col-md-12 mb-2">
+                                <h4>Detalles Periodo</h4>
                                 <label for="name" class="form-label">Nombre:</label>
                                 <input type="text" name="name" id="name" class="form-control" value="{{old('name',$periodo->name)}}">
                                 @error('name')
@@ -41,6 +98,7 @@
                                 @enderror
                             </div>
 
+                            <div class="row mb-2">
                             <div class="col-md-6">
                                 <label for="start" class="form-label">Fecha Inicio:</label>
                                 <input type="date" name="start" id="start" class="form-control" value="{{old('start',$periodo->start)}}">
@@ -50,15 +108,14 @@
                             </div>
 
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-2">
                                 <label for="end" class="form-label">Fecha Fin:</label>
                                 <input type="date" name="end" id="end" class="form-control" value="{{old('end',$periodo->end)}}">
                                 @error('end')
                                 <small class="text-danger">{{'*'.$message}}</small>
                                 @enderror
                             </div>
-
-
+                            </div>
 
                             <div class="col-md-12">
                                 <label for="description" class="form-label">Descripción:</label>
@@ -72,13 +129,10 @@
                     </div>
                     <!---Equipo-->
                     <div class="col-md-4">
-                        <div class="text-white bg-success p-1 text-center">
-                            Equipo
-                        </div>
-                        <div class="p-3 border border-3 border-success">
-                            <div class="row">
 
-                                <div class="col-md-12 mb-2">
+<div class="dt mb-5">
+    <div class="row">
+        <h4>Equipo</h4>
                                     <label class="form-label" for="club_id">Equipo:</label>
                                     <select data-size="3" title="Seleccione un Club" data-live-search="true" name="team_id" id="team_id" class="form-control selectpicker show-tick">
                                     @foreach ($equipos as $item)
@@ -97,11 +151,19 @@
 
                             </div>
                         </div>
+                        <div class="row text-center mt-4">
+                            <div class="col-md-12 mb-2 ">
+                                <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
+                                <a href="{{route('periodos.index')}}">
+                                    <button type="button" class="buttonr"><i
+                                            class="fa-solid fa-arrow-left"></i>Cancelar</button>
+                                </a>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-12 mb-2 mt-4 text-center">
-                    <button type="submit" class="btn btn-success">Guardar</button>
-                </div>
+
             </div>
         </form>
     </div>

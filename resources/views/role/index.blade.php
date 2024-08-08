@@ -107,7 +107,7 @@
                                 </form>
                                 @endcan
                                 @can('eliminar-role')
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i
+                                <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i
                                 class="fa-solid fa-trash"></i></button>
                                 @endcan
 

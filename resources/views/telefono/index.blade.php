@@ -29,7 +29,6 @@
 </script>
 @endif
 <div class="container-fluid px-4">
-  <h1 class="mt-4">Operadoras</h1>
   <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
     <li class="breadcrumb-item active">Operadoras</li>
@@ -37,13 +36,12 @@
   <div class="mb-4">
     @can('crear-telefono')
     <a href="{{route('telefonos.create')}}">
-      <button type="button" class="btn btn-primary">Añadir nuevo Operadora</button>
+      <button type="button" class="button">Nueva Operadora</button>
     </a>
     @endcan
   </div>
   <div class="card mb-4">
     <div class="card-header">
-      <i class="fas fa-table me-1"></i>
       Tabla Operadoras
     </div>
     <div class="card-body">
@@ -86,7 +84,7 @@
                 @can('eliminar-telefono')
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$telefono->id}}">Eliminar</button>
                 @endcan
-                
+
               </div>
             </td>
           </tr>

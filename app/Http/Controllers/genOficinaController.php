@@ -35,7 +35,9 @@ class genOficinaController extends Controller implements HasMiddleware
     {
         //
         $genOficinas = GenOffice::with(['genReport','genCharge','commissionLeague','club'])->latest()->get();
+        
         return view('genOficina.index',compact('genOficinas'));
+        
 
     }
 

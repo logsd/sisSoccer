@@ -32,13 +32,14 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\logOutController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\roleController;
+use App\Http\Controllers\perfilController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
    // return view('template');
 //})->name('home');
 
-Route::get('/',[homeController::class,'index'])->name('home');
+Route::get('/home',[homeController::class,'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('panel.index');
@@ -76,6 +77,7 @@ Route::resources([
     'directClubs' => directClubController::class,
     'users' => userController::class,
     'roles' => roleController::class,
+    'profile' => perfilController::class,
 ]
 
 );
@@ -159,4 +161,8 @@ Route::get('/404', function () {
 
 Route::get('/500', function () {
     return view('pages.500');
+});
+
+Route::get('/', function () {
+    return redirect()->route('login');
 });

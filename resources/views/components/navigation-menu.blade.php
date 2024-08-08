@@ -40,9 +40,12 @@
                     Campeonatos
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
+
                 <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
+
                         <a class="nav-link" href="{{route('categorias.index')}}">Categorias</a>
+
                         <a class="nav-link" href="{{route('campeonatos.index')}}">Campeonatos</a>
                         <a class="nav-link" href="{{route('fases.index')}}">Fase</a>
                         <a class="nav-link" href="{{route('clubs.index')}}">Clubs</a>
@@ -53,6 +56,7 @@
                         <a class="nav-link" href="{{route('periodos.index')}}">Periodos</a>
                     </nav>
                 </div>
+
 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-magnifying-glass"></i></div>

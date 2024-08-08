@@ -130,7 +130,7 @@
         <br>
         <div class="contenido">
             <h1> Campeonatos</h1>
-            <a href="#">Campeonato</a>
+            <a href="{{route('campeonatos.index')}}">Campeonato</a>
             <br>
             <a href="{{route('categorias.index')}}">Categoria</a>
         </div>
@@ -143,9 +143,9 @@
         <br>
         <div class="contenido">
             <h1>Consultas</h1>
-            <a href="#">Equipos en Campeonatos</a>
+            <a href="{{route('equipos.index')}}">Equipos en Campeonatos</a>
             <br>
-            <a href="{{route('categorias.index')}}">Jugadores en Campeonatos</a>
+            <a href="{{route('jugadores.index')}}">Jugadores en Campeonatos</a>
         </div>
     </div>
 
@@ -156,11 +156,9 @@
         <br>
         <div class="contenido">
             <h1>Clubes</h1>
-            <a href="#">Clubs</a>
-            <a href="{{route('categorias.index')}}">Directivos</a>
-            <a href="{{route('categorias.index')}}">Directivos Club</a>
-            <a href="{{route('categorias.index')}}">Equipos</a>
-            <a href="{{route('categorias.index')}}">Jugadores</a>
+            <a href="{{route('dataClubs.index')}}">Clubs</a>
+            <a href="{{route('ejecutivos.index')}}">Directivos</a>
+            <a href="{{route('directClubs.index')}}">Directivos Club</a>
         </div>
     </div>
 
@@ -171,7 +169,7 @@
         <br>
         <div class="contenido">
             <h1>Jugadores</h1>
-            <a href="{{route('categorias.index')}}">Listado de Jugadores</a>
+            <a href="{{route('jugadores.index')}}">Listado de Jugadores</a>
         </div>
     </div>
     <div class="tarjeta">
@@ -181,8 +179,7 @@
         <br>
         <div class="contenido">
             <h1>Equipos</h1>
-            <a href="{{route('categorias.index')}}">Equipos</a>
-            <a href="{{route('categorias.index')}}">Jugadores</a>
+            <a href="{{route('jugadores.index')}}">Jugadores</a>
         </div>
     </div>
 
@@ -193,7 +190,7 @@
         <br>
         <div class="contenido">
             <h1>Calendario</h1>
-            <a href="#">Lista de Calendarios</a>
+            <a href="{{route('calendarios.index')}}">Lista de Calendarios</a>
         </div>
     </div>
 </div>

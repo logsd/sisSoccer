@@ -44,7 +44,7 @@
                 <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         @can('ver-categoria')
-                        <a class="nav-link" href="{{route('categorias.index')}}">Categorias</a>
+                        <a class="nav-link" href="{{route('categorias.index')}}">Categorías</a>
                         @endcan
 
                         @can('ver-campeonato')
@@ -182,10 +182,10 @@
                 <div class="collapse" id="collapseLayouts10" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                     @can('ver-typeParameter')
-                        <a class="nav-link" href="{{route('tparametros.index')}}">Tipo de Parametro</a>
+                        <a class="nav-link" href="{{route('tparametros.index')}}">Tipo de Parámetro</a>
                         @endcan
                         @can('ver-estado')
-                        <a class="nav-link" href="{{route('estados.index')}}">Estado de Parametrp</a>
+                        <a class="nav-link" href="{{route('estados.index')}}">Estado de Parámetro</a>
                         @endcan
                     </nav>
                 </div>

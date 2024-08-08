@@ -56,7 +56,9 @@
         padding-right: 10px;
     }
 </style>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
 <div class="container-fluid px-4">
     <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('dashboard')}}">Inicio</a> </li>
@@ -77,12 +79,21 @@
                 </div>
                 <div class="col-12 mb-4">
                     <label for="" class="form-label">Permisos para rol</label>
-                    @foreach ($permisos as $item )
-                    <div class="form-check mb-2">
-                        <input type="checkbox" name="permission[]" id="{{$item->id}}" class="form-check-input" value="{{$item->id}}">
-                        <label for="{{$item->id}}" class="form-check-label">{{$item->name}}</label>
-                    </div>
-                    @endforeach
+                    <div class="container">
+                <div class="row">
+                     @foreach ($permisos as $index => $item)
+                 <div class="col-md-3">
+                 <div class="form-check mb-2">
+                    <input type="checkbox" name="permission[]" id="{{$item->id}}" class="form-check-input" value="{{$item->id}}">
+                    <label for="{{$item->id}}" class="form-check-label">{{$item->name}}</label>
+                </div>
+                 </div>
+                 @if (($index + 1) % 4 == 0)
+                </div><div class="row">
+                 @endif
+                 @endforeach
+                 </div>
+                </div>
                 </div>
                 @error('permission')
                 <small class="text-danger">{{'*'.$message}}</small>

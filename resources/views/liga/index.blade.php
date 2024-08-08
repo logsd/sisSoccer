@@ -137,7 +137,7 @@
                                                     @if ($liga->state == 1)
                                                         <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal"
                                                             data-bs-target="#confirmModal-{{$liga->id}}"><i
-                                                                class="fa-solid fa-toggle-off fa-xl rounded"></i></button>
+                                                                class="fa-solid fa-toggle-off fa-xl"></i></button>
                                                     @else
                                                         <button type="button" class="btn btn-info rounded" data-bs-toggle="modal"
                                                             data-bs-target="#confirmModal-{{$liga->id}}"><i

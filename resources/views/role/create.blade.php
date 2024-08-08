@@ -76,7 +76,7 @@
                     @enderror
                 </div>
                 <div class="col-12 mb-4">
-                    <label for="" class="form-label">Permisos para rol</label>
+                    <label for="" class="form-label"><strong>Permisos para ROL</strong></label>
                     @foreach ($permisos as $item )
                     <div class="form-check mb-2">
                         <input type="checkbox" name="permission[]" id="{{$item->id}}" class="form-check-input" value="{{$item->id}}">

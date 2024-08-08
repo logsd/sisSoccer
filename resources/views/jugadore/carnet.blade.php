@@ -93,7 +93,8 @@
 
         @foreach($jugadores as $player)
             <div class="card">
-                <div class="card-header">LIGA DEPORTIVA CANTONAL PELILEO</div>
+                <div class="card-header"><strong>{{ $player->league->name }}</strong>
+                </div>
                 <div class="tittle"><label><strong>Cod:</strong> L{{ sprintf('%04d', $player->id) }}</label>
                     <strong>Cédula:</strong> {{ $player->dni }}
                 </div>
@@ -101,6 +102,8 @@
 
                 <img class="photo" src="{{ public_path('storage/jugadores/' . $player->img_url) }}"
                     alt="{{ $player->name }}">
+        
+
                 <div class="info">
                     <table class="table">
                         <tbody>

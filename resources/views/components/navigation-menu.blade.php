@@ -45,7 +45,7 @@
                         <a class="nav-link" href="{{route('categorias.index')}}">Categorias</a>
                         <a class="nav-link" href="{{route('campeonatos.index')}}">Campeonatos</a>
                         <a class="nav-link" href="{{route('fases.index')}}">Fase</a>
-                        <a class="nav-link" href="{{route('clubs.index')}}">Clubs</a>
+                        <a class="nav-link" href="{{route('dataClubs.index')}}">Clubs</a>
                         <a class="nav-link" href="{{route('equipos.index')}}">Equipos</a>
                         <a class="nav-link" href="{{route('calendarios.index')}}">Calendario</a>
                         <a class="nav-link" href="{{route('contribuyentes.index')}}">Contribuyente</a>
@@ -112,29 +112,29 @@
                     </nav>
                 </div>
 
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts6" aria-expanded="false" aria-controls="collapseLayouts">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts10" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fa-regular fa-futbol"></i></div>
                     Parametros
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="collapseLayouts6" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="collapseLayouts10" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{route('tparametros.index')}}">Tipo de Parametro</a>
                         <a class="nav-link" href="{{route('estados.index')}}">Estado de Parametrp</a>
                     </nav>
                 </div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts9" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-house-laptop"></i></div>
                     Otros
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="collapseLayouts9" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{route('users.index')}}">Usuarios</a>
                         <a class="nav-link" href="{{route('roles.index')}}">Roles</a>
                     </nav>
                 </div>
-                
+
             </div>
 
         </div>

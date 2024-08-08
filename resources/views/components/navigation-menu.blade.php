@@ -28,7 +28,7 @@
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Inicio</div>
                 <a class="nav-link" href="{{ route('home') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                     Home
                 </a>
 

@@ -3,53 +3,209 @@
 @section('title', 'Panel')
 
 @push('css')
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 @endpush
 
 @section('content')
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Warning Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
+    <h1 class="mt-4">Dashboard</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+    <div class="row">
+        <!--Jugadores-->
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <i class="fa-solid fa-people-group"></i><span class="m-1">Jugadores</span>
                         </div>
+                        <div class="col-4">
+                            <?php
+                            use App\Models\Player;
+                            $jugadores = count(Player::all());
+                            ?>
+                            <p class="text-center fw-bold fs-4">{{$jugadores}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('jugadores.index')}}">Ver más</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!--Campeonatos-->
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <i class="fa-solid fa-dragon"></i><span class="m-1">Campeonatos</span>
+                        </div>
+                        <div class="col-4">
+                            <?php
+                            use App\Models\Championship;
+                            $campeonatos = count(Championship::all());
+                            ?>
+                            <p class="text-center fw-bold fs-4">{{$campeonatos}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('campeonatos.index')}}">Ver más</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <!--Equipos-->
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <i class="fa-solid fa-user-plus"></i><span class="m-1">Equipos</span>
+                        </div>
+                        <div class="col-4">
+                            <?php
+                            use App\Models\Team;
+                            $equipos = count(Team::all());
+                            ?>
+                            <p class="text-center fw-bold fs-4">{{$equipos}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('equipos.index')}}">Ver más</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <!--Clubs-->
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <i class="fa-solid fa-cube"></i><span class="m-1">Clubs</span>
+                        </div>
+                        <div class="col-4">
+                            <?php
+                            use App\Models\Club;
+                            $clubs = count(Club::all());
+                            ?>
+                            <p class="text-center fw-bold fs-4">{{$clubs}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('dataClubs.index')}}">Ver más</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <!--Departamentos-->
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <i class="fa-solid fa-building"></i><span class="m-1">Departamentos</span>
+                        </div>
+                        <div class="col-4">
+                            <?php
+                            use App\Models\Department;
+                            $departamentos = count(Department::all());
+                            ?>
+                            <p class="text-center fw-bold fs-4">{{$departamentos}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('departamentos.index')}}">Ver más</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        
+        <!--Empleados-->
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <i class="fa-solid fa-user"></i><span class="m-1">Empleados</span>
+                        </div>
+                        <div class="col-4">
+                            <?php
+                            use App\Models\Employee;
+                            $empleados = count(Employee::all());
+                            ?>
+                            <p class="text-center fw-bold fs-4">{{$empleados}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('empleados.index')}}">Ver más</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+       <!--Oficinas-->
+       <div class="col-xl-3 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <i class="fa-solid fa-book"></i><span class="m-1">Oficinas</span>
+                        </div>
+                        <div class="col-4">
+                            <?php
+                            use App\Models\GenOffice;
+                            $oficinas = count(GenOffice::all());
+                            ?>
+                            <p class="text-center fw-bold fs-4">{{$oficinas}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('genOficinas.index')}}">Ver más</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+ <!--Directivos-->
+ <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <i class="fa-solid fa-chess-knight"></i><span class="m-1">Directivos</span>
+                        </div>
+                        <div class="col-4">
+                            <?php
+                            use App\Models\DirectClub;
+                            $directivos = count(DirectClub::all());
+                            ?>
+                            <p class="text-center fw-bold fs-4">{{$directivos}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('directClubs.index')}}">Ver más</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+
+        
+    <!--
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
@@ -557,14 +713,14 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
+                        </div>-->
+</div>
 @endsection
 
 @push('js')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="{{ asset('assets/demo/chart-area-demo.js') }}"></script>
-        <script src="{{ asset('assets/demo/chart-bar-demo.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="{{ asset('assets/demo/chart-area-demo.js') }}"></script>
+<script src="{{ asset('assets/demo/chart-bar-demo.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+<script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
 @endpush

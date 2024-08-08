@@ -3,6 +3,7 @@
 @section('title', 'Panel')
 
 @push('css')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 @endpush
 
@@ -50,6 +51,13 @@
                             <?php
                             use App\Models\Championship;
                             $campeonatos = count(Championship::all());
+                            $championships = Championship::withCount('teams')
+                            ->where('end_date', '>=', now())
+                            ->orderBy('start_date', 'asc')
+                            ->get();
+                
+                        $championshipNames = $championships->pluck('name');
+                        $teamCounts = $championships->pluck('teams_count');
                             ?>
                             <p class="text-center fw-bold fs-4">{{$campeonatos}}</p>
                         </div>
@@ -203,8 +211,11 @@
                 </div>
             </div>
         </div>
-
-        
+        <div class="container">
+        <h1>Estadísticas de Campeonatos</h1>
+        <canvas id="championshipChart" width="400" height="200"></canvas>
+    </div>
+    
     <!--
                         <div class="row">
                             <div class="col-xl-6">
@@ -718,6 +729,32 @@
 @endsection
 
 @push('js')
+<script>
+        const ctx = document.getElementById('championshipChart').getContext('2d');
+        const championshipNames = <?php echo json_encode($championshipNames); ?>;
+        const teamCounts = <?php echo json_encode($teamCounts); ?>;
+
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: championshipNames,
+                datasets: [{
+                    label: 'Número de Equipos',
+                    data: teamCounts,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="{{ asset('assets/demo/chart-area-demo.js') }}"></script>
 <script src="{{ asset('assets/demo/chart-bar-demo.js') }}"></script>

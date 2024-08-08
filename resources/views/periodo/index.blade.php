@@ -12,7 +12,7 @@
 <script>
     let message = "{{ session('success') ?? session('error') }}";
     let icon = "{{ session('success') ? 'success' : 'error' }}";
-    
+
     Swal.fire({
         toast: true,
         position: "top-end",
@@ -28,22 +28,61 @@
     });
 </script>
 @endif
+
+<style>
+    .button {
+        background-color: #4EA93B;
+        color: black;
+        padding: 8px 15px 8px 15px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .button:hover {
+        background-color: #337326;
+        color: white;
+    }
+
+    .fa-plus {
+        padding-right: 10px;
+    }
+
+    .card-header {
+        background-color: #1A320F;
+        color: white;
+    }
+
+    .btn {
+        padding: 6px 15px 6px 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 0 5px 0 0;
+    }
+
+    .modal-header,
+    .buttonc {
+        background-color: #4EA93B;
+        color: white;
+        font-size: 110%;
+        border: none;
+    }
+</style>
+
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Periodos</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb my-4">
         <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
         <li class="breadcrumb-item active">Periodos</li>
     </ol>
+    <h1 class="my-4 text-center">Periodos</h1>
     <div class="mb-4">
         @can('crear-periodo')
         <a href="{{route('periodos.create')}}">
-            <button type="button" class="btn btn-primary">Añadir nuevo Periodo</button>
+            <button type="button" class="button"><i class="fa-solid fa-plus"></i>Nuevo Periodo</button>
         </a>
         @endcan
     </div>
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-table me-1"></i>
             Tabla Periodos
         </div>
         <div class="card-body">
@@ -79,27 +118,31 @@
                         </td>
                         <td>
                             @if ($item->state == 1)
-                            <span class="fw-bolder rounded p-1 bg-success text-white">Activo</span>
+                            <span class="fw-bolder rounded p-1 bg-info text-black">Habilitado</span>
                             @else
-                            <span class="fw-bolder rounded p-1 bg-danger text-white">Inactivo</span>
+                            <span class="fw-bolder rounded p-1 bg-warning text-black">Deshabilitado</span>
                             @endif
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                 @can('editar-periodo')
                                 <form action="{{route('periodos.edit',['periodo'=>$item])}}" method="get">
-                                    <button type="submit" class="btn btn-warning">Editar</button>
+                                    <button type="submit" class="btn btn-primary"><i
+                                    class="fa-solid fa-pencil"></i></button>
                                 </form>
                                 @endcan
                                 @can('desabilizar-periodo')
                                 @if ($item->state == 1)
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}">Desabilitar</button>
+                                <button type="button" class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i
+                                class="fa-solid fa-toggle-off fa-xl rounded"></i></button>
                                 @else
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}">Restaurar</button>
+                                <button type="button" class="btn btn-info rounded" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"><i
+                                class="fa-solid fa-toggle-on fa-xl"></i></button>
                                 @endif
                                 @endcan
                                 @can('eliminar-periodo')
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$item->id}}">Eliminar</button>
+                                <button type="button" class="btn btn-danger rounded" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$item->id}}"><i
+                                class="fa-solid fa-trash"></i></button>
                                 @endcan
                             </div>
                         </td>
@@ -113,14 +156,18 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {{$item->state ==1 ? '¿Seguro que quieres desabilitar este Periodo?' : '¿Seguro que quieres restaurar este Periodo?'}}
-                                </div>
+                                {!! $item->state == 1
+                        ? '¿Seguro que quieres <strong>Deshabilitar</strong> este Periodo?'
+                        : '¿Seguro que quieres <strong>Habilitar</strong> este Periodo?' !!}</div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     <form action="{{route('periodos.destroy',['periodo'=>$item->id])}}" method="post">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit" class="btn btn-danger">Confirmar</button>
+                                        <button type="submit"
+                                                            class="btn {{$item->state == 1 ? 'btn-warning' : 'btn-info'}}">
+                                                            {{$item->state == 1 ? 'Deshabilitar' : 'Habilitar'}}
+                                                        </button>
                                     </form>
                                 </div>
                             </div>

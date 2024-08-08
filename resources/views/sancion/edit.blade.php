@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Editar Sanciones')   
+@section('title', 'Editar Sanciones')
 
 @push('css')
 <style>
@@ -19,15 +19,65 @@
 @endpush
 
 @section('content')
+
+<style>
+    .cuerpo {
+        border: solid 3px black;
+        border-radius: 10px;
+        padding: 20px;
+        background: #4EA93B;
+        color: black;
+        margin-bottom: 20px
+    }
+
+    h4 {
+        text-align: center;
+        padding: 4px 5px;
+    }
+
+    .buttong {
+        background-color: #32fc08;
+        color: black;
+        padding: 8px 20px 8px 20px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+    }
+
+    .buttonr {
+        background-color:#A5D29A;
+        color: black;
+        padding: 8px 15px 8px 15px;
+        margin-left: 10px;
+        border: solid 2px black;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 17px;
+    }
+
+    .buttonr:hover,
+    .buttong:hover {
+        background-color: #337326;
+        color: white;
+
+    }
+
+
+    .fa-check,
+    .fa-arrow-left {
+        padding-right: 10px;
+    }
+</style>
+
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Editar Tipos de Sanciones</h1>
-                        <ol class="breadcrumb mb-4">
+                        <ol class="breadcrumb my-4">
                             <li class="breadcrumb-item "><a href="{{route('home')}}">Inicio</a> </li>
                             <li class="breadcrumb-item "><a href="{{route('sancion.index')}}">Tipos de Sanciones</a> </li>
-                            <li class="breadcrumb-item active">Editar Sanción</li>
+                            <li class="breadcrumb-item active">Actualizar Sanción</li>
                         </ol>
-
-                        <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
+                        <h1 class="my-4 text-center">Actualizar Sancion</h1>
+                        <div class="cuerpo">
 <form action="{{route('sancion.update',['sancion'=>$sancion])}}" method="post">
     @method('PATCH')
     @csrf
@@ -46,12 +96,21 @@
                 @error('description')
                 <small class="text-danger">{{'*'.$message}}</small>
                 @enderror
-        </div>    
+        </div>
 
         <div class="col-12 text-center">
-            <button type="submit" class="btn btn-success ">Actualizar</button>
-            <button type="reset" class="btn btn-secondary">Reiniciar</button>
-        </div>
+                    <div class="row text-center">
+                        <div class="col-md-12 mb-2 mt-2">
+                            <button type="submit" class="buttong"><i class="fa-solid fa-check"></i> Guardar</button>
+                            <a href="{{route('sancion.index')}}">
+                                <button type="button" class="buttonr"><i
+                                        class="fa-solid fa-arrow-left"></i>Cancelar</button>
+                            </a>
+                            <div class="col-md-12 mb-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
     </div>
 </form>
 </div>

@@ -40,7 +40,7 @@
                     Campeonatos
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                @can('ver-campeonato','ver-partido')
+                @canany(['ver-partido', 'ver-club', 'ver-campeonato'])
                 <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         @can('ver-categoria')
@@ -74,7 +74,7 @@
                         @endcan
                     </nav>
                 </div>
-                @endcan
+                @endcanany
 
 
 
